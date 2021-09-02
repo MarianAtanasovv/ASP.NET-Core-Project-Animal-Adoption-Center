@@ -7,13 +7,13 @@ namespace AnimalAdoptionCenter.Data.Models
     public class Animal
     {   public Animal()
         {
-            this.Images = new List<Image>();
+            this.AnimalImages = new List<Image>();
         }
 
         public int Id { get; set; }
 
         [Required]
-        public IEnumerable<Image> Images { get; set; } 
+        public List<Image> AnimalImages { get; set; } 
 
         [Required]
         [MaxLength(AnimalNameMaxLength)]

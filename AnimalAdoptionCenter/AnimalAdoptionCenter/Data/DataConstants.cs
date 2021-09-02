@@ -13,7 +13,7 @@
         public const int AnimalAgeMin = 1;
         public const int AnimalAgeMax = 50;
         public const int AnimalBreedMaxLength = 50;
-        public const int AnimalBreedMinLength = 50;
+        public const int AnimalBreedMinLength = 5;
 
 
     }

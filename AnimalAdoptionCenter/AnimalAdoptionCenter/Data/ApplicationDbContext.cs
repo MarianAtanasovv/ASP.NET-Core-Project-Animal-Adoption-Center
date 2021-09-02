@@ -15,6 +15,9 @@ namespace AnimalAdoptionCenter.Data
         {
         }
 
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<Animal> Animals { get; set; }
         
     }
 }

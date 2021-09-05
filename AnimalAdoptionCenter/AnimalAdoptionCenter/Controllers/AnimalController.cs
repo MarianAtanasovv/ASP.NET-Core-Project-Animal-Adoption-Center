@@ -1,6 +1,8 @@
 ﻿using AnimalAdoptionCenter.Data;
 using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Models.Animals;
+using AnimalAdoptionCenter.Services;
+using AnimalAdoptionCenter.Services.Animals;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,10 +17,12 @@ namespace AnimalAdoptionCenter.Controllers
 
         private readonly ApplicationDbContext data;
         private readonly IWebHostEnvironment webHostEnvironment;
-        public AnimalController(ApplicationDbContext data, IWebHostEnvironment hostEnvironment)
+        private readonly IAnimalService animal;
+        public AnimalController(ApplicationDbContext data, IWebHostEnvironment hostEnvironment, IAnimalService animal)
         {
             this.data = data;
             this.webHostEnvironment = hostEnvironment;
+            this.animal = animal;
         }
 
 
@@ -69,6 +73,31 @@ namespace AnimalAdoptionCenter.Controllers
             this.data.SaveChanges();
 
             return RedirectToAction("Index", "Home", new { area = "" });
+        }
+
+        public IActionResult Details(int id)
+        {
+
+            var animal = this.animal.Details(id);
+
+            if (animal == null)
+            {
+                return NotFound();
+            }
+
+            return View(new AnimalDetailsServiceModel
+            {
+                Id = animal.Id,
+                Name = animal.Name,
+                Color = animal.Color,
+                Breed = animal.Breed,
+                Age = animal.Age,
+                Type = animal.Type,
+                Agressive = animal.Agressive,
+                Gender = animal.Gender,
+                Images = animal.Images
+            });
+
         }
         private string UploadedFile(IFormFile imageData)
         {

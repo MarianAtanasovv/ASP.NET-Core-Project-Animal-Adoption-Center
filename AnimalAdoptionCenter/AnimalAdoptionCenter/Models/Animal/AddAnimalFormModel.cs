@@ -2,10 +2,7 @@
 using AnimalAdoptionCenter.Data.Models;
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AnimalAdoptionCenter.Models.Animals
 {
@@ -21,6 +18,10 @@ namespace AnimalAdoptionCenter.Models.Animals
         [Required]
         [StringLength(AnimalNameMaxLength, MinimumLength = AnimalNameMinLength, ErrorMessage = "Name should be between {2} and {1} characters long.")]
         public string Name { get; set; }
+
+        [Required]
+        [StringLength(AnimalDescriptionMaxLength, MinimumLength = AnimalDescriptionMinLength, ErrorMessage = "Description should be between {2} and {1} characters long.")]
+        public string Description { get; set; }
 
         [Required]
         [Range(AnimalAgeMin, AnimalAgeMax, ErrorMessage = "Age should be between {2} and {1} years.")]

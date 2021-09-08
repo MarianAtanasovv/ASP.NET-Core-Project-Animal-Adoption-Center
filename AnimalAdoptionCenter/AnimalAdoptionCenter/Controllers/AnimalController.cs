@@ -50,6 +50,7 @@ namespace AnimalAdoptionCenter.Controllers
                 Age = animalModel.Age,
                 Breed = animalModel.Breed,
                 Color = animalModel.Color,
+                Description = animalModel.Description,
                 Type = animalModel.Type,
                 Gender = animalModel.Gender,
                 Agressive = animalModel.Agressive
@@ -89,6 +90,7 @@ namespace AnimalAdoptionCenter.Controllers
             {
                 Id = animal.Id,
                 Name = animal.Name,
+                Description = animal.Description,
                 Color = animal.Color,
                 Breed = animal.Breed,
                 Age = animal.Age,

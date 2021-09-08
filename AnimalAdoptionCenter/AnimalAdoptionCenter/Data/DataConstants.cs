@@ -14,6 +14,9 @@
         public const int AnimalAgeMax = 50;
         public const int AnimalBreedMaxLength = 50;
         public const int AnimalBreedMinLength = 5;
+        public const int AnimalDescriptionMaxLength = 1000;
+        public const int AnimalDescriptionMinLength = 100;
+
 
 
     }

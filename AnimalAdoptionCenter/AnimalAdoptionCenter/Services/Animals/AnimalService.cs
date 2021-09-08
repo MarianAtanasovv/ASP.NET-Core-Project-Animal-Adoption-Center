@@ -1,11 +1,5 @@
 ﻿using AnimalAdoptionCenter.Data;
-using AnimalAdoptionCenter.Data.Models;
-using AnimalAdoptionCenter.Models.Animals;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.IO;
 using System.Linq;
 
 namespace AnimalAdoptionCenter.Services.Animals
@@ -27,6 +21,7 @@ namespace AnimalAdoptionCenter.Services.Animals
             {
                 Id = x.Id,
                 Name = x.Name,
+                Description = x.Description,
                 Breed = x.Breed,
                 Age = x.Age,
                 Gender = x.Gender,

@@ -19,7 +19,7 @@ namespace AnimalAdoptionCenter.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Animal", b =>
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Dog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,13 +49,14 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
+                    b.Property<string>("Health")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -285,7 +286,7 @@ namespace AnimalAdoptionCenter.Data.Migrations
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Image", b =>
                 {
-                    b.HasOne("AnimalAdoptionCenter.Data.Models.Animal", "Animal")
+                    b.HasOne("AnimalAdoptionCenter.Data.Models.Dog", "Animal")
                         .WithMany("AnimalImages")
                         .HasForeignKey("AnimalId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -345,7 +346,7 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Animal", b =>
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Dog", b =>
                 {
                     b.Navigation("AnimalImages");
                 });

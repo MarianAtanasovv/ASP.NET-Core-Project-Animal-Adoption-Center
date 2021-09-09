@@ -1,0 +1,91 @@
+﻿@model DogDetailsServiceModel
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        </head>
+        <body>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:200px; width: 300px; margin-top: 30px">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    @foreach (var image in Model.Images)
+                    {
+                        @if (Model.Images.First() == image)
+                        {
+                            <div class="item active">
+
+                                <img class="animalImage" src="/databaseFiles/Animals/@image.Name" style="width: 100%; " alt="@Model.Name" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="item">
+
+                                <img class="animalImage" src="/databaseFiles/Animals/@image.Name" style="width:100%" alt="@Model.Name" />
+                            </div>
+                        }
+
+                    }
+
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <table style="text-align:left;border: 1px solid black; margin-top: 70px">
+
+
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size: 20px;border: 1px solid black; margin-top:10px;color:black">Name: </td>
+                    <td style="color: black ;border: 1px solid black">@Model.Name</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size: 20px;border: 1px solid black; margin-top:10px; color:black">Description: &nbsp;&nbsp;&nbsp; </td>
+                    <td style="color: black;border: 1px solid black">@Model.Description</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size: 20px; border: 1px solid black;margin-top:10px; color:black">Breed: </td>
+                    <td style="color: black ;border: 1px solid black">@Model.Breed</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size:20px; border: 1px solid black;margin-top:10px; color:black ">Age: </td>
+                    <td style="color: black; ;border: 1px solid black">@Model.Age</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size:20px; border: 1px solid black;margin-top:10px; color:black">Gender: </td>
+                    <td style="color: black;border: 1px solid black">@Model.Gender</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size:20px; border: 1px solid black; margin-top:10px; color:black">Aggressive: &nbsp;&nbsp;&nbsp; </td>
+                    <td style="color: black;border: 1px solid black">@Model.Agressive</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size:20px; border: 1px solid black;margin-top:10px; color:black">Color: </td>
+                    <td style="color: black;border: 1px solid black">@Model.Color</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size:20px;border: 1px solid black; margin-top:10px; color:black">Health: </td>
+                    <td style="color: black;border: 1px solid black">@Model.Health</td>
+                </tr>
+
+            </table>
+        </body>
+    </html>
+

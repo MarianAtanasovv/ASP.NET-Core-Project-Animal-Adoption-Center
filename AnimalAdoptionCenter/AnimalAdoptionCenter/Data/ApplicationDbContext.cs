@@ -17,7 +17,7 @@ namespace AnimalAdoptionCenter.Data
 
         public DbSet<Image> Images { get; set; }
 
-        public DbSet<Dog> Animals { get; set; }
+        public DbSet<Dog> Dogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

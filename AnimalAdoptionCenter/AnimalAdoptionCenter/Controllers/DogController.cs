@@ -120,6 +120,21 @@ namespace AnimalAdoptionCenter.Controllers
             });
 
         }
+
+        public IActionResult Remove(int id)
+        {
+            var dog = this.dog.Remove(id);
+
+            if(dog == 0)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("All", "Dog");
+
+        }
+
+
         private string UploadedFile(IFormFile imageData)
         {
             string uniqueFileName = null;
@@ -135,5 +150,7 @@ namespace AnimalAdoptionCenter.Controllers
 
             return uniqueFileName;
         }
+
+        
     }
 }

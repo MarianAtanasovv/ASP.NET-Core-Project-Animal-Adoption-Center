@@ -110,6 +110,16 @@ namespace AnimalAdoptionCenter.Services.Animals
                 .OrderBy(x => x)
                 .ToList();
         }
+
+        public int Remove(int id)
+        {
+            var dog = this.data.Dogs.Where(x => x.Id == id).FirstOrDefault();
+
+            this.data.Dogs.Remove(dog);
+            this.data.SaveChanges();
+
+            return dog.Id;
+        }
     }
 
 }

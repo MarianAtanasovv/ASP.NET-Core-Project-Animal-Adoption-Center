@@ -17,5 +17,7 @@ namespace AnimalAdoptionCenter.Services
         public IEnumerable<string> AllDogs();
 
         public int Remove(int id);
+
+
     }
 }

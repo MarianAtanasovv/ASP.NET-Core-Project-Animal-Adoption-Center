@@ -95,6 +95,7 @@ namespace AnimalAdoptionCenter.Controllers
             return RedirectToAction("Index", "Home", new { area = "" });
         }
 
+        [HttpGet]
         public IActionResult Details(int id)
         {
 
@@ -132,6 +133,12 @@ namespace AnimalAdoptionCenter.Controllers
 
             return RedirectToAction("All", "Dog");
 
+        }
+
+        [HttpGet]
+        public IActionResult Adopt()
+        {
+            return View();
         }
 
 

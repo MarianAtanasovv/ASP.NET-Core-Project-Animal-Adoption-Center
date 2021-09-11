@@ -42,5 +42,7 @@ namespace AnimalAdoptionCenter.Data.Models
 
         [Required]
         public string Health { get; set; }
+
+        public List<PotentialAdopter> PotentialAdopters { get; set; }
     }
 }

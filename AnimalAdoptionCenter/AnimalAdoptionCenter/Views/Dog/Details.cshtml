@@ -107,26 +107,9 @@
                     </a>
                 </div>
 
-                <div class="adoption-container" style="float:right;">
-
-                    <button href="#" class="myButton"> Adopt me!</button>
-
-                    <p style="font-size: 24px">
-                        Adoption Process
-                    </p>
-
-                    <p style="font-size: 18px">
-                        1. Submit Application
-                    </p>
 
 
-                    <p style="font-size: 18px">
-                        2. Interview
-                    </p>
-
-                </div>
-
-                <table style="text-align:left; margin-top: 70px">
+                <table style="text-align:left; margin-top:100px" >
 
                     <tr class="nk-post-text">
                         <td class="nk-post-date mt-10 mb-10" style="font-size: 20px;margin-top:10px;color:black">Name: </td>
@@ -163,7 +146,28 @@
                     </tr>
                 </table>
             </div>
-            <a asp-controller="Dog" asp-action="Remove" asp-route-id="@Model.Id" class="deleteButton">Remove</a>
+            <div class="adoption-container" style="float:left; margin-top:30px">
+
+                <button href="#" class="myButton"> Adopt me!</button>
+
+                <p style="font-size: 24px">
+                    Adoption Process
+                </p>
+
+                <p style="font-size: 18px">
+                    1. Submit Application
+                </p>
+
+
+                <p style="font-size: 18px">
+                    2. Interview
+                </p>
+
+            </div>
+            <div style="float:right; margin-top:30px">
+                <a asp-controller="Dog" asp-action="Remove" asp-route-id="@Model.Id" class="deleteButton">Remove</a>
+            </div>
+          
 
         </body>
     </html>

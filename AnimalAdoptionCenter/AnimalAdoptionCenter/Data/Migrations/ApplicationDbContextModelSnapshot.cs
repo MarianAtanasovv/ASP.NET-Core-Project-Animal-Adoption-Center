@@ -84,6 +84,27 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.ToTable("Images");
                 });
 
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.PotentialAdopter", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("DogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("DogId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("PotentialAdopter");
+                });
+
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -295,6 +316,25 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Navigation("Animal");
                 });
 
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.PotentialAdopter", b =>
+                {
+                    b.HasOne("AnimalAdoptionCenter.Data.Models.Dog", "Dog")
+                        .WithMany("PotentialAdopters")
+                        .HasForeignKey("DogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AnimalAdoptionCenter.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dog");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -349,6 +389,8 @@ namespace AnimalAdoptionCenter.Data.Migrations
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Dog", b =>
                 {
                     b.Navigation("AnimalImages");
+
+                    b.Navigation("PotentialAdopters");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,14 +4,16 @@ using AnimalAdoptionCenter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AnimalAdoptionCenter.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210911104532_Adopters")]
+    partial class Adopters
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,17 +88,23 @@ namespace AnimalAdoptionCenter.Data.Migrations
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.PotentialAdopter", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("DogId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserId1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId");
 
                     b.HasIndex("DogId");
 
-                    b.ToTable("PotentialAdopters");
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("PotentialAdopter");
                 });
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.User", b =>
@@ -318,7 +326,15 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AnimalAdoptionCenter.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Dog");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

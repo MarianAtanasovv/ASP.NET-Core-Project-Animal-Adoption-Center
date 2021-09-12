@@ -17,6 +17,21 @@
         public const int AnimalDescriptionMaxLength = 1000;
         public const int AnimalDescriptionMinLength = 100;
 
+        public const int AdopterNameMaxLength = 50;
+        public const int AdopterNameMinLength = 5;
+
+        public const int AdopterHomeInformationMaxLength = 2000;
+        public const int AdopterHomeInformationMinLength = 250;
+        public const int AdopterHoursAlone = 24;
+        public const int AdopterAllergiesInFamilyMaxLength = 2000;
+        public const int AdopterAllergiesInFamilyMinLength = 5;
+
+        public const int AdopterBreedExplanationMaxLength = 2000;
+        public const int AdopterBreedExplanationMinLength = 50;
+
+        public const int EnclosureMaxLenght = 50;
+        public const int VetKnowledgeMaxLength = 2000;
+        public const int VetKnowledgeMinLength = 250;
 
 
     }

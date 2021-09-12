@@ -49,7 +49,6 @@ namespace AnimalAdoptionCenter.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-
             return View();
         }
 
@@ -126,7 +125,7 @@ namespace AnimalAdoptionCenter.Controllers
         {
             var dog = this.dog.Remove(id);
 
-            if(dog == 0)
+            if (dog == 0)
             {
                 return NotFound();
             }
@@ -134,13 +133,6 @@ namespace AnimalAdoptionCenter.Controllers
             return RedirectToAction("All", "Dog");
 
         }
-
-        [HttpGet]
-        public IActionResult Adopt()
-        {
-            return View();
-        }
-
 
         private string UploadedFile(IFormFile imageData)
         {

@@ -19,6 +19,8 @@ namespace AnimalAdoptionCenter.Data
 
         public DbSet<Dog> Dogs { get; set; }
 
+        public DbSet<PotentialAdopter> PotentialAdopters { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
@@ -28,6 +30,12 @@ namespace AnimalAdoptionCenter.Data
              .WithMany(f => f.AnimalImages)
              .HasForeignKey(fi => fi.AnimalId)
              .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<PotentialAdopter>()
+                .HasOne(x => x.Dog)
+                .WithMany(x => x.PotentialAdopters)
+                .HasForeignKey(x => x.DogId);
+                
 
             base.OnModelCreating(builder);
         }

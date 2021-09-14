@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimalAdoptionCenter.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210909102126_Dogs")]
-    partial class Dogs
+    [Migration("20210914084051_AdoptionInterviewDog")]
+    partial class AdoptionInterviewDog
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,12 +21,69 @@ namespace AnimalAdoptionCenter.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.AdoptionInterview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AllergiesInFamily")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<string>("BreedExplanation")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("DogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Enclosure")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("HomeInformation")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("HoursAlone")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("OwnHome")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VetKnowledge")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AdoptionInterviews");
+                });
+
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Dog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AdoptionInterviewId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -62,6 +119,8 @@ namespace AnimalAdoptionCenter.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AdoptionInterviewId");
+
                     b.ToTable("Dogs");
                 });
 
@@ -84,6 +143,21 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.HasIndex("AnimalId");
 
                     b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.PotentialAdopter", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("DogId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DogId");
+
+                    b.ToTable("PotentialAdopters");
                 });
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.User", b =>
@@ -286,6 +360,15 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Dog", b =>
+                {
+                    b.HasOne("AnimalAdoptionCenter.Data.Models.AdoptionInterview", "AdoptionInterview")
+                        .WithMany("Dogs")
+                        .HasForeignKey("AdoptionInterviewId");
+
+                    b.Navigation("AdoptionInterview");
+                });
+
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Image", b =>
                 {
                     b.HasOne("AnimalAdoptionCenter.Data.Models.Dog", "Animal")
@@ -295,6 +378,17 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Animal");
+                });
+
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.PotentialAdopter", b =>
+                {
+                    b.HasOne("AnimalAdoptionCenter.Data.Models.Dog", "Dog")
+                        .WithMany("PotentialAdopters")
+                        .HasForeignKey("DogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dog");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -348,9 +442,16 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.AdoptionInterview", b =>
+                {
+                    b.Navigation("Dogs");
+                });
+
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Dog", b =>
                 {
                     b.Navigation("AnimalImages");
+
+                    b.Navigation("PotentialAdopters");
                 });
 #pragma warning restore 612, 618
         }

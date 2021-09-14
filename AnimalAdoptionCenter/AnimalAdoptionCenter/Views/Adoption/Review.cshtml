@@ -1,0 +1,115 @@
+﻿@model IList<DogAdoptionInterviewsReviews> 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        h1{
+            color:black;
+            font:bold
+        }
+        p {
+            display: inline;
+            color: black ;
+            word-wrap: break-word;
+            width: 70%
+        }
+        .info {
+            
+            padding: 5px 100px;
+            text-align:center
+        }
+        .divInfo {
+            width: 90%;
+        }
+        .nk-post-text {
+            margin-top: 20px;
+            text-align: center
+        }
+        .approve {
+            float:left
+        }
+        .disapprove {
+            float:right
+        }
+      
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="inner">
+            <form>
+                @foreach (var dog in Model)
+                {
+                    <div class="info">
+
+
+                        <div class="nk-post-text">
+                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px; color:black">Name:</h1>
+
+                            <p>@dog.Name</p>
+                        </div>
+                        <div class="nk-post-text">
+                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Home:</h1>
+                            <div class="divInfo">
+                                <p>@dog.HomeInformation</p>
+                            </div>
+
+                        </div>
+                        <div class="nk-post-text">
+                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Does adopter own the home:</h1>
+                            <p>@dog.OwnHome</p>
+                        </div>
+                        <div class="nk-post-text">
+                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Breed knowledge:</h1>
+                            <div class="divInfo">
+                                <p>@dog.BreedExplanation</p>
+                            </div>
+                        </div>
+                        <div class="nk-post-text">
+                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Hours alone:</h1>
+                            <p>@dog.HoursAlone</p>
+                        </div>
+                        <div class="nk-post-text">
+                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Allergies in family:</h1>
+                            <div class="divInfo">
+                                <p>@dog.AllergiesInFamily</p>
+                            </div>
+                        </div>
+                        <div class="nk-post-text">
+                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Enclosure:</h1>
+                            <p>@dog.Enclosure</p>
+                        </div>
+                        <div class="nk-post-text">
+                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Vet knowledge:</h1>
+                            <div class="divInfo">
+                                <p>@dog.VetKnowledge</p>
+                            </div>
+                        </div>
+                        <div style="text-align:center; margin-top:20px;">
+                            <button class="approve" margin-right:20px">
+                                Approve
+                                <i class="zmdi zmdi-arrow-right"></i>
+                            </button>
+                            <button class="disapprove">
+                                Disapprove
+                                <i class="zmdi zmdi-arrow-right"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <br />
+                    <div style="border-bottom: 2px solid red">
+
+                    </div>
+
+                }
+
+            </form>
+        </div>
+    </div>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

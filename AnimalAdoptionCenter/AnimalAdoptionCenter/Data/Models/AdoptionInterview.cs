@@ -42,8 +42,11 @@ namespace AnimalAdoptionCenter.Data.Models
         [MaxLength(VetKnowledgeMaxLength)]
         public string VetKnowledge { get; set; }
 
-        public User User { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
+
+        public Dog Dog { get; set; }
+
+        public int DogId { get; set; }
     }
 }

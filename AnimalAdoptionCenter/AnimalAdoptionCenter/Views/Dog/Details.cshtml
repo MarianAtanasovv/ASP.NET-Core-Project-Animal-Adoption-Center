@@ -1,174 +1,187 @@
 ﻿@model DogDetailsServiceModel
 
     <html xmlns="http://www.w3.org/1999/xhtml">
-        <head>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-            <style>
-                .myButton {
-                    box-shadow: inset 0px 1px 0px 0px #3dc21b;
-                    background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
-                    background-color: #44c767;
-                    border-radius: 6px;
-                    border: 1px solid #18ab29;
-                    display: inline-block;
-                    cursor: pointer;
-                    color: #ffffff;
-                    font-family: Arial;
-                    font-size: 15px;
-                    font-weight: bold;
-                    padding: 15px 76px;
-                    text-decoration: none;
-                    text-shadow: 0px 1px 0px #2f6627;
-                }
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
 
-                    .myButton:hover {
-                        background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
-                        background-color: #5cbf2a;
-                    }
+           
 
-                    .myButton:active {
-                        position: relative;
-                        top: 1px;
-                    }
+        .myButton {
+        box-shadow: inset 0px 1px 0px 0px #3dc21b;
+        background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+        background-color: #44c767;
+        border-radius: 6px;
+        border: 1px solid #18ab29;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 15px 76px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #2f6627;
+        }
 
+        .myButton:hover {
+        background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+        background-color: #5cbf2a;
+        }
 
-
-                .deleteButton {
-                    box-shadow: inset 0px 39px 0px -24px #e67a73;
-                    background-color: #e4685d;
-                    border-radius: 4px;
-                    border: 1px solid #ffffff;
-                    display: inline-block;
-                    cursor: pointer;
-                    color: #ffffff;
-                    font-family: Arial;
-                    font-size: 15px;
-                    padding: 6px 15px;
-                    text-decoration: none;
-                    text-shadow: 0px 1px 0px #b23e35;
-                }
-
-                    .deleteButton:hover {
-                        background-color: #eb675e;
-                    }
-
-                    .deleteButton:active {
-                        position: relative;
-                        top: 1px;
-                    }
+        .myButton:active {
+        position: relative;
+        top: 1px;
+        }
 
 
-            </style>
-        </head>
 
-        <body style="background-color: floralwhite">
-            <div style="float:left; margin-top:30px">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 200px; width: 30%; margin-top: 30px; margin:0">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>
+        .deleteButton {
+        box-shadow: inset 0px 39px 0px -24px #e67a73;
+        background-color: #e4685d;
+        border-radius: 4px;
+        border: 1px solid #ffffff;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 15px;
+        padding: 6px 15px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #b23e35;
+        }
 
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        @foreach (var image in Model.Images)
+        .deleteButton:hover {
+        background-color: #eb675e;
+        }
+
+        .deleteButton:active {
+        position: relative;
+        top: 1px;
+        }
+
+
+        </style>
+    </head>
+
+    <body style="background-color: floralwhite">
+
+        <div style="float:left; margin-top:30px">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 200px; width: 30%; margin-top: 30px; margin:0">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    @foreach (var image in Model.Images)
+                    {
+                        @if (Model.Images.First() == image)
                         {
-                            @if (Model.Images.First() == image)
-                            {
-                                <div class="item active">
+                            <div class="item active">
 
-                                    <img class="animalImage" src="/databaseFiles/Animals/@image.Name" style="width: 100%; " alt="@Model.Name" />
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="item">
+                                <img class="animalImage" src="/databaseFiles/Animals/@image.Name" style="width: 100%; " alt="@Model.Name" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="item">
 
-                                    <img class="animalImage" src="/databaseFiles/Animals/@image.Name" style="width:100%" alt="@Model.Name" />
-                                </div>
-                            }
-
+                                <img class="animalImage" src="/databaseFiles/Animals/@image.Name" style="width:100%" alt="@Model.Name" />
+                            </div>
                         }
 
-                    </div>
+                    }
 
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
 
-
-
-                <table style="text-align:left; margin-top:100px" >
-
-                    <tr class="nk-post-text">
-                        <td class="nk-post-date mt-10 mb-10" style="font-size: 20px;margin-top:10px;color:black">Name: </td>
-                        <td style="color: black">@Model.Name</td>
-                    </tr>
-
-                    <tr class="nk-post-text">
-                        <td class="nk-post-date mt-10 mb-10" style="font-size: 20px;margin-top:10px; color:black">Breed: </td>
-                        <td style="color: black">@Model.Breed</td>
-                    </tr>
-                    <tr class="nk-post-text">
-                        <td class="nk-post-date mt-10 mb-10" style="font-size:20px; margin-top:10px; color:black ">Age: </td>
-                        <td style="color: black;">@Model.Age</td>
-                    </tr>
-                    <tr class="nk-post-text">
-                        <td class="nk-post-date mt-10 mb-10" style="font-size:20px; margin-top:10px; color:black">Gender: </td>
-                        <td style="color: black;">@Model.Gender</td>
-                    </tr>
-                    <tr class="nk-post-text">
-                        <td class="nk-post-date mt-10 mb-10" style="font-size:20px; margin-top:10px; color:black">Aggressive: &nbsp;&nbsp;&nbsp; </td>
-                        <td style="color: black;">@Model.Agressive</td>
-                    </tr>
-                    <tr class="nk-post-text">
-                        <td class="nk-post-date mt-10 mb-10" style="font-size:20px;margin-top:10px; color:black">Color: </td>
-                        <td style="color: black;">@Model.Color</td>
-                    </tr>
-                    <tr class="nk-post-text">
-                        <td class="nk-post-date mt-10 mb-10" style="font-size:20px; margin-top:10px; color:black">Health: </td>
-                        <td style="color: black;">@Model.Health</td>
-                    </tr>
-                    <tr class="nk-post-text">
-                        <td class="nk-post-date mt-10 mb-10" style="font-size: 20px; margin-top:10px; color:black">Description: &nbsp;&nbsp;&nbsp; </td>
-                        <td style="color: black;">@Model.Description</td>
-                    </tr>
-                </table>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-            <div class="adoption-container" style="float:left; margin-top:30px">
-
-                <button asp-controller="Adoption" asp-action="Interview" class="myButton"> Adopt me!</button>
-
-                <p style="font-size: 24px">
-                    Adoption Process
-                </p>
-
-                <p style="font-size: 18px">
-                    1. Submit Application
-                </p>
 
 
-                <p style="font-size: 18px">
-                    2. Interview
-                </p>
 
-            </div>
-            <div style="float:right; margin-top:30px">
-                <a asp-controller="Dog" asp-action="Remove" asp-route-id="@Model.Id" class="deleteButton">Remove</a>
-            </div>
-          
+            <table style="text-align:left; margin-top:100px">
 
-        </body>
+                <tr class="nk-post-text">
+                    <td class="pets-name" style="font-size: 20px;margin-top:10px;color:black">Name: </td>
+                    <td style="color: black">@Model.Name</td>
+                </tr>
+
+                <tr class="pets-breed">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size: 20px;margin-top:10px; color:black">Breed: </td>
+                    <td style="color: black">@Model.Breed</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size:20px; margin-top:10px; color:black ">Age: </td>
+                    <td style="color: black;">@Model.Age</td>
+                </tr>
+                <tr class="pets-gender">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size:20px; margin-top:10px; color:black">Gender: </td>
+                    <td style="color: black;">@Model.Gender</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size:20px; margin-top:10px; color:black">Aggressive: &nbsp;&nbsp;&nbsp; </td>
+                    <td style="color: black;">@Model.Agressive</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size:20px;margin-top:10px; color:black">Color: </td>
+                    <td style="color: black;">@Model.Color</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size:20px; margin-top:10px; color:black">Health: </td>
+                    <td style="color: black;">@Model.Health</td>
+                </tr>
+                <tr class="nk-post-text">
+                    <td class="nk-post-date mt-10 mb-10" style="font-size: 20px; margin-top:10px; color:black">Description: &nbsp;&nbsp;&nbsp; </td>
+                    <td style="color: black;">@Model.Description</td>
+                </tr>
+            </table>
+        </div>
+
+
+
+
+
+
+        <div class="adoption-container" style="float:left; margin-top:30px">
+
+
+            <a asp-controller="Adoption" asp-action="Interview" asp-route-dogId="@Model.Id" class="myButton"> Adopt me!</a>
+
+            <p style="font-size: 24px">
+                Adoption Process
+            </p>
+
+            <p style="font-size: 18px">
+                1. Submit Application
+            </p>
+
+
+            <p style="font-size: 18px">
+                2. Interview
+            </p>
+
+
+        </div>
+        <a style="float:right; margin-top:30px" asp-controller="Adoption" asp-action="Review" asp-route-dogId="@Model.Id" class="deleteButton"> Review interviews!</a>
+        <div style="float:right; margin-top:30px">
+            <a asp-controller="Dog" asp-action="Remove" asp-route-id="@Model.Id" class="deleteButton">Remove</a>
+        </div>
+
+
+    </body>
     </html>
 

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model AdoptionInterviewFormModel
+ 
+<!DOCTYPE html>
 <html>
 <head>
     <style>
@@ -35,37 +37,45 @@
 
     <h2 style="text-align:center; width:100%; ">Dog adoption interview</h2>
 
-    <form action="/action_page.php" style="text-align:center">
-        <label for="fname">Please state your full name!</label><br>
-        <input type="text" id="fname" name="fname" ><br><br>
+    <form method="post" style="text-align:center">
+        <label >Please state your full name!</label><br>
+        <input asp-for="Name" type="text"><br><br>
 
-        <label for="lname">Give us some information about your home:</label><br>
-        <textarea rows="15" class="inputAdopton" type="text" id="lname" name="lname" ></textarea><br />
+        <label >Give us some information about your home:</label><br>
+        <textarea asp-for="HomeInformation" rows="15" class="inputAdopton" type="text"></textarea><br />
 
-        <label for="lname">Do you own your home?</label><br>
-        <input type="text" id="fname" name="fname"><br><br>
+        <label asp-for="OwnHome">
+            Do you own your home?
+            <select>
+
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </label><br />
 
 
-        <label for="lname">How long the dog will be left alone each day?</label><br>
-        <input type="text" id="lname" name="lname" ><br><br>
+        <label >How long the dog will be left alone each day?</label><br>
+        <input asp-for="HoursAlone" type="text"><br><br>
 
-        <label for="lname">Does anyone in your family have any allergies.</label><br>
-        <input type="text" id="lname" name="lname" ><br><br>
+        <label >Does anyone in your family have any allergies.</label><br>
+        <input asp-for="AllergiesInFamily" type="text" ><br><br>
 
-        <label for="lname">A detailed explanation of why you want the particular breed you do.</label><br>
-        <textarea rows="15" class="inputAdopton" type="text" id="lname" name="lname" ></textarea><br />
+        <label >A detailed explanation of why you want the particular breed you do.</label><br>
+        <textarea asp-for="BreedExplanation" rows="15" class="inputAdopton" type="text" ></textarea><br />
 
-        <label for="lname">What kind of enclosure you’ll use, if any (such as a dog crate, birdcage, or critter cage)?</label><br>
-        <input type="text" id="lname" name="lname" ><br><br>
+        <label >What kind of enclosure you’ll use, if any (such as a dog crate, birdcage, or critter cage)?</label><br>
+        <input asp-for="Enclosure" type="text" ><br><br>
 
-        <label for="lname">
+        <label >
             How much you know about basic veterinary care, pest control management, or conditions common to the breed?
         </label><br>
-        <input type="text" id="lname" name="lname"><br><br>
+        <input asp-for="VetKnowledge" type="text"><br><br>
 
 
 
-        <input type="submit" value="Submit">
+        <div class="d-flex justify-content-center">
+            <button class="nk-btn nk-btn-rounded nk-btn-color-main-1">Submit</button>
+        </div>
     </form>
 
     

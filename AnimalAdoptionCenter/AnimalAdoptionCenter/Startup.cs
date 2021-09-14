@@ -2,6 +2,7 @@ using AnimalAdoptionCenter.Data;
 using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Infrastructure;
 using AnimalAdoptionCenter.Services;
+using AnimalAdoptionCenter.Services.Adoption;
 using AnimalAdoptionCenter.Services.Animals;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +48,8 @@ namespace AnimalAdoptionCenter
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
             services.AddTransient<IDogService, DogService>();
+            services.AddTransient<IAdoptionService, AdoptionService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

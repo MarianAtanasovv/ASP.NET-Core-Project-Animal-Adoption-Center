@@ -19,6 +19,62 @@ namespace AnimalAdoptionCenter.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.AdoptionInterview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AllergiesInFamily")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<string>("BreedExplanation")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("DogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Enclosure")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("HomeInformation")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("HoursAlone")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("OwnHome")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VetKnowledge")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DogId");
+
+                    b.ToTable("AdoptionInterviews");
+                });
+
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Dog", b =>
                 {
                     b.Property<int>("Id")
@@ -299,6 +355,17 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.AdoptionInterview", b =>
+                {
+                    b.HasOne("AnimalAdoptionCenter.Data.Models.Dog", "Dog")
+                        .WithMany("AdoptionInterviews")
+                        .HasForeignKey("DogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dog");
+                });
+
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Image", b =>
                 {
                     b.HasOne("AnimalAdoptionCenter.Data.Models.Dog", "Animal")
@@ -374,6 +441,8 @@ namespace AnimalAdoptionCenter.Data.Migrations
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Dog", b =>
                 {
+                    b.Navigation("AdoptionInterviews");
+
                     b.Navigation("AnimalImages");
 
                     b.Navigation("PotentialAdopters");

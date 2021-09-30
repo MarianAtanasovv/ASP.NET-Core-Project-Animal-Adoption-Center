@@ -20,5 +20,7 @@ namespace AnimalAdoptionCenter.Services.Adoption
             int dogId);
 
         public IList<DogAdoptionInterviewsReviews> Review(int id);
+
+        public int Approve(int dogId);
     }
 }

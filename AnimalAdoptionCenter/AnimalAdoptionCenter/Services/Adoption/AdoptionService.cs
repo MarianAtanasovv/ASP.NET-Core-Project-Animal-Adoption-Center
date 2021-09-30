@@ -30,6 +30,7 @@ namespace AnimalAdoptionCenter.Services.Adoption
         {
             var interview = new AdoptionInterview()
             {
+
                 Name = name,
                 HomeInformation = homeInformation,
                 HoursAlone = hoursAlone,
@@ -48,12 +49,23 @@ namespace AnimalAdoptionCenter.Services.Adoption
             return interview.Id;
         }
 
+        public int Approve(int dogId)
+        {
+            var dog = this.data.Dogs.Where(x => x.Id == dogId).FirstOrDefault();
+
+            this.data.Remove(dog);
+            this.data.SaveChanges();
+
+            return dog.Id;
+        }
+
         public IList<DogAdoptionInterviewsReviews> Review(int dogId)
         {
             return this.data.AdoptionInterviews
                  .Where(x => x.DogId == dogId)
                  .Select(x => new DogAdoptionInterviewsReviews
                  {
+                     Id = dogId,
                      Name = x.Name,
                      AllergiesInFamily = x.AllergiesInFamily,
                      BreedExplanation = x.BreedExplanation,

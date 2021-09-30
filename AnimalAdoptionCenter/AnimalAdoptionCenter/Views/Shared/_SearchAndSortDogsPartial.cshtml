@@ -1,20 +1,19 @@
 ﻿@model AllDogsQueryModel
-
-<div style="margin-left: 35%; margin-right: 25%; margin-bottom: 10%; width: 50%">
-    <form method="get">
-        <div class="form-group row-sm-2 float-left">
-            <label  style="color: white" asp-for="SearchTerm"></label>
-            <input asp-for="SearchTerm" class="form-control" placeholder="Bobo">
-        </div>
-
-        <div class="form-group row-sm-2 ml-30 float-left">
-            <div class="form-group">
-                <label style="color: white" asp-for="Sorting"></label>
-                <select asp-for="Sorting" class="form-control">
-                    <option value="0" selected>Name</option>
-                    <option value="1">Age</option>
-                </select>
+<div style="margin-left: 35%; margin-right: 25%; margin-bottom: 16%; width: 30%; height:5px">
+        <form method="get" style="display:inline-block;">
+            <div class="form-group row-sm-2" style="display: inline-block;border: solid black 1px">
+                <label style="color: black" asp-for="SearchTerm"></label>
+                <input asp-for="SearchTerm" class="form-control" placeholder="Bobo" style="color: black">
             </div>
-        </div>
-    </form>
-</div>
+
+            <div class="form-group row-sm-2 ml-30" style="display: inline-block; border: solid black 1px;">
+                <div class="form-group" >
+                    <label style="color: black" asp-for="Sorting"></label>
+                    <select asp-for="Sorting" class="form-control" style="color:black">
+                        <option value="0" selected>Name</option>
+                        <option value="1">Age</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>

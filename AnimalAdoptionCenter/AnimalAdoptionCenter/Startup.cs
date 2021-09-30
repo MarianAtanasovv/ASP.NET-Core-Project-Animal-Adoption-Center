@@ -49,6 +49,7 @@ namespace AnimalAdoptionCenter
             });
             services.AddTransient<IDogService, DogService>();
             services.AddTransient<IAdoptionService, AdoptionService>();
+            services.AddTransient<INewsService, NewsService>();
 
         }
 

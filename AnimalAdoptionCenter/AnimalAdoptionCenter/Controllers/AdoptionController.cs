@@ -48,5 +48,19 @@ namespace AnimalAdoptionCenter.Controllers
 
             return View(interview);
         }
+
+        [HttpGet]
+        public IActionResult Approve(int dogId)
+        {
+            var approved = this.interview.Approve(dogId);
+
+            return RedirectToAction("ThankYou", "Adoption");
+        }
+
+        [HttpGet]
+        public IActionResult ThankYou()
+        {
+            return this.View();
+        }
     }
 }

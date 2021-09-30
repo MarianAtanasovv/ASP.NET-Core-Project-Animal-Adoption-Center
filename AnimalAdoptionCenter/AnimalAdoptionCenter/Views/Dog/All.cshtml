@@ -69,7 +69,7 @@
 
             var maxPage = Math.Ceiling((double)Model.TotalDogs / AllDogsQueryModel.DogsPerPage); }
 
-        <div class="row mb-5">
+        <div class="row mb-5" style="float:left">
             <div class="col-md-6">
                 <a class="nk-btn nk-btn-rounded nk-btn-color-main-1 nk-btn-hover-color-main-1 @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
                    asp-controller="Dog"
@@ -83,7 +83,7 @@
             @{ var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
                                                              !Model.Dogs.Any(); }
 
-            <div class="col-md-6">
+            <div class="col-md-6" style="float: right">
                 <a class="nk-btn nk-btn-rounded nk-btn-color-main-1 nk-btn-hover-color-main-1 float-sm-right @(shouldButtonBeDisabled ? "disabled" : string.Empty)" style="margin-top: 10px"
                    asp-controller="Dog"
                    asp-action="All"

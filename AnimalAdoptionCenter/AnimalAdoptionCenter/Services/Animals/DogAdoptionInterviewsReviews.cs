@@ -7,6 +7,7 @@ namespace AnimalAdoptionCenter.Services.Animals
 {
     public class DogAdoptionInterviewsReviews
     {
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public string HomeInformation { get; set; }

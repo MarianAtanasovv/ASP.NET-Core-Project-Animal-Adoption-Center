@@ -8,6 +8,8 @@ namespace AnimalAdoptionCenter.Data.Models
     {   public Dog()
         {
             this.AnimalImages = new List<Image>();
+            this.AdoptedDogs = new List<Dog>();
+            this.PotentialAdopters = new List<PotentialAdopter>();
         }
 
         public int Id { get; set; }
@@ -47,7 +49,7 @@ namespace AnimalAdoptionCenter.Data.Models
 
         public List<AdoptionInterview> AdoptionInterviews { get; set; }
 
-
+        public List<Dog> AdoptedDogs { get; set; }
 
     }
 }

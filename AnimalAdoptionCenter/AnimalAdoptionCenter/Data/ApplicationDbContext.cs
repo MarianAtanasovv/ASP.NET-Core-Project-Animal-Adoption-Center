@@ -23,6 +23,8 @@ namespace AnimalAdoptionCenter.Data
 
         public DbSet<AdoptionInterview> AdoptionInterviews { get; set; }
 
+        public DbSet<News> News { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

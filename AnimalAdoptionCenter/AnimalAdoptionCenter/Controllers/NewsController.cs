@@ -2,6 +2,7 @@
 using AnimalAdoptionCenter.Models;
 using AnimalAdoptionCenter.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace AnimalAdoptionCenter.Controllers
 {
@@ -35,6 +36,16 @@ namespace AnimalAdoptionCenter.Controllers
             return RedirectToAction("Home", "Index");
 
             
+        }
+
+        [HttpGet]
+        public IActionResult All()
+        {
+
+            var news = this.news.All();
+
+            return View(news);
+
         }
 
     }

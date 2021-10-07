@@ -1,0 +1,25 @@
+﻿@model List<AllNewsViewModel>
+
+
+    <div class="grid_5 prefix_1">
+        <h2 class="ic1">Latest News</h2>
+        <ul class="list">
+            @foreach (var news in Model)
+            {
+                <li>
+                    <span style="width: 150px">
+                         @news.DateTime
+                        </span>
+                    <div class="extra_wrapper">
+                        <div class="col1">
+                            <a href="#">@news.Title</a>
+                            <time datetime="@news.DateTime"></time>
+                        </div>
+                        <span>
+                            @news.Body.Substring(0, 50)...
+                        </span>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>

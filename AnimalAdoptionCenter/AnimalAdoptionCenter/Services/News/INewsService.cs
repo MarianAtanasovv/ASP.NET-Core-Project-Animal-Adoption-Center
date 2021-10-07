@@ -1,7 +1,6 @@
-﻿using System;
+﻿using AnimalAdoptionCenter.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AnimalAdoptionCenter.Services
 {
@@ -11,5 +10,7 @@ namespace AnimalAdoptionCenter.Services
             string title,
             string body,
             DateTime dateTime);
+
+        public IEnumerable<AllNewsViewModel> All();
     }
 }

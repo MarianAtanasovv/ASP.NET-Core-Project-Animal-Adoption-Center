@@ -1,7 +1,10 @@
 ﻿using AnimalAdoptionCenter.Data;
 using AnimalAdoptionCenter.Data.Models;
+using AnimalAdoptionCenter.Models;
 using AnimalAdoptionCenter.Services;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AnimalAdoptionCenter
 {
@@ -28,6 +31,18 @@ namespace AnimalAdoptionCenter
             this.data.SaveChanges();
 
             return news.Id;
+        }
+
+        public IEnumerable<AllNewsViewModel> All()
+        {
+            var news =  this.data.News.Select(x => new AllNewsViewModel
+            {
+                Body = x.Body,
+                Title = x.Title,
+                DateTime = x.PublishedOn
+            }).ToList();
+
+            return news;
         }
     }
 }

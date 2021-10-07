@@ -1,6 +1,7 @@
 ﻿using AnimalAdoptionCenter.Data;
 using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Models;
+using AnimalAdoptionCenter.Models.News;
 using AnimalAdoptionCenter.Services;
 using System;
 using System.Collections.Generic;
@@ -37,12 +38,28 @@ namespace AnimalAdoptionCenter
         {
             var news =  this.data.News.Select(x => new AllNewsViewModel
             {
+                Id = x.Id,
                 Body = x.Body,
                 Title = x.Title,
                 DateTime = x.PublishedOn
             }).ToList();
 
             return news;
+        }
+
+        public NewsDetailsViewModel Details(int newsId)
+        {
+            var details = this.data.News.Where(x => x.Id == newsId)
+           .Select(d => new NewsDetailsViewModel
+           {
+               Id = d.Id,
+               Title = d.Title,
+               Body = d.Body,
+               PublishedOn = d.PublishedOn
+           })
+            .FirstOrDefault();
+
+            return details;
         }
     }
 }

@@ -33,7 +33,7 @@
         public const int VetKnowledgeMaxLength = 2000;
         public const int VetKnowledgeMinLength = 250;
 
-        public const int NewsTitleMaxLength = 60;
+        public const int NewsTitleMaxLength = 100;
         public const int NewsTitleMinLength = 15;
         public const int NewsBodyMinLength = 100;
         public const int NewsBodyMaxLength = 10000;

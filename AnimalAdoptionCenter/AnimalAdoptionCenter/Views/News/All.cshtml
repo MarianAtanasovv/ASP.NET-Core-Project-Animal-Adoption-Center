@@ -12,7 +12,7 @@
                         </span>
                     <div class="extra_wrapper">
                         <div class="col1">
-                            <a href="#">@news.Title</a>
+                            <a asp-controller="News" asp-route-newsId="@news.Id" asp-action="Details">@news.Title</a>
                             <time datetime="@news.DateTime"></time>
                         </div>
                         <span>

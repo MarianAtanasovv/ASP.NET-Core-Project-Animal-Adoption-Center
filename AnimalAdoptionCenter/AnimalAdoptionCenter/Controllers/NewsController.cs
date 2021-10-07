@@ -1,5 +1,6 @@
 ﻿using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Models;
+using AnimalAdoptionCenter.Models.News;
 using AnimalAdoptionCenter.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -43,9 +44,30 @@ namespace AnimalAdoptionCenter.Controllers
         {
 
             var news = this.news.All();
-
             return View(news);
 
+        }
+
+        [HttpGet]
+        public IActionResult Details(int newsId)
+        {
+            var details = this.news.Details(newsId);
+
+            if (details == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(new NewsDetailsViewModel
+            {
+                Id = details.Id,
+                Title = details.Title,
+                Body = details.Body,
+                PublishedOn = details.PublishedOn
+
+
+            });
         }
 
     }

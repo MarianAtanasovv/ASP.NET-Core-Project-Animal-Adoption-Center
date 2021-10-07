@@ -1,0 +1,38 @@
+﻿@model NewsDetailsViewModel
+
+<!DOCTYPE html>
+
+<html lang="en">
+<body style="background-color: white">
+
+    <article class="container" style="text-align: center; background-color: white; color: black; margin-top:20px">
+        <div class="row vertical-gap">
+            <div class="row-md-6">
+                <div class="nk-blog-post">
+                    <a class="nk-post-img">
+                        <h3 style="color: black">
+                            @Model.Title
+                        </h3>
+                        <h1 style="color: black">
+                            @Model.PublishedOn
+                        </h1>
+                    </a>
+                    <div class="nk-gap"></div>
+                   
+                    <div class="nk-gap"></div>
+                        
+                        <p class="nk-post-text">@Model.Body</p>
+                   
+                 
+                </div>
+                <div class="gap-3"></div>
+
+              
+            
+        </div>
+
+        </div>
+        </article>
+
+</body>
+</html>

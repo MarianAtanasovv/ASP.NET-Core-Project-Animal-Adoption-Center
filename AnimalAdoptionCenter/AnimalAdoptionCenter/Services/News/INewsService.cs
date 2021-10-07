@@ -1,4 +1,5 @@
 ﻿using AnimalAdoptionCenter.Models;
+using AnimalAdoptionCenter.Models.News;
 using System;
 using System.Collections.Generic;
 
@@ -12,5 +13,7 @@ namespace AnimalAdoptionCenter.Services
             DateTime dateTime);
 
         public IEnumerable<AllNewsViewModel> All();
+
+        public NewsDetailsViewModel Details(int newsId);
     }
 }

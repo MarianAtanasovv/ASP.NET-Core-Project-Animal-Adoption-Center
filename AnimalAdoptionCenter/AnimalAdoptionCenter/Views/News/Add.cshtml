@@ -1,26 +1,26 @@
 ﻿@model AddNewsFormModel
 
 <body>
-<h1 class="text-center mt-2" style="text-align:center; color:black">Add an article!</h1>
-<form class="mx-auto w-50" method="post"  style="color:black; text-align:center;">
-    <div class="form-group">
-        <div class="d-flex justify-content-start">
-            <label asp-for="Title" class="h4 mb-2"></label>
+    <h1 class="text-center mt-2" style="text-align:center; color:black">Add an article!</h1>
+    <form class="mx-auto w-50" method="post" style="color:black; text-align:center;">
+        <div class="form-group">
+            <div class="d-flex justify-content-start">
+                <label asp-for="Title" class="h4 mb-2"></label>
+            </div>
+            <input asp-for="Title" type="text" class="form-control" style="color:black; text-align:center" />
+            <span asp-validation-for="Title" class="small text-danger"></span>
         </div>
-        <input asp-for="Title" type="text" class="form-control" style="color:black; text-align:center"/>
-        <span asp-validation-for="Title" class="small text-danger"></span>
-    </div>
 
-    <div class="d-flex justify-content-start">
-        <label asp-for="Body" class="h4 mb-2"></label>
-    </div>
-    <textarea style="height:120px; color:black; text-align:center" asp-for="Body" type="text" class="form-control"> </textarea>
+        <div class="d-flex justify-content-start">
+            <label asp-for="Body" class="h4 mb-2"></label>
+        </div>
+        <textarea style="height:120px; color:black; text-align:center" asp-for="Body" type="text" class="form-control"> </textarea>
 
-    <span asp-validation-for="Body" class="small text-danger"></span>
+        <span asp-validation-for="Body" class="small text-danger"></span>
 
 
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-block btn-primary text-white mb-3" style="text-align:center; color:black" value="Add">Add</button>
-    </div>
-</form>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-block btn-primary text-white mb-3" style="text-align:center; color:black" value="Add">Add</button>
+        </div>
+    </form>
 </body>

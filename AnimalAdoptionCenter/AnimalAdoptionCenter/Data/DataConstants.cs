@@ -38,6 +38,11 @@
         public const int NewsBodyMinLength = 100;
         public const int NewsBodyMaxLength = 10000;
 
+        public const int ArticleTitleMaxLength = 100;
+        public const int ArticleTitleMinLength = 15;
+        public const int ArticleBodyMinLength = 100;
+        public const int ArticleBodyMaxLength = 10000;
+
 
 
     }

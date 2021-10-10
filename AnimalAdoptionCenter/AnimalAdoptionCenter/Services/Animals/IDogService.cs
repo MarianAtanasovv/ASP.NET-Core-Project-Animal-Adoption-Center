@@ -1,4 +1,5 @@
 ﻿using AnimalAdoptionCenter.Models.Animal;
+using AnimalAdoptionCenter.Models.Animals;
 using AnimalAdoptionCenter.Services.Animals;
 using System.Collections.Generic;
 
@@ -17,6 +18,8 @@ namespace AnimalAdoptionCenter.Services
         public IEnumerable<string> AllDogs();
 
         public int Remove(int id);
+
+        public int Add(AddDogFormModel dogModel);
 
 
     }

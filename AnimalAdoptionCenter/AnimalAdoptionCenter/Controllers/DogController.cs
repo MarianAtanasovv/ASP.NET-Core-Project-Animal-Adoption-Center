@@ -15,12 +15,10 @@ namespace AnimalAdoptionCenter.Controllers
     public class DogController : Controller
     {
 
-        private readonly ApplicationDbContext data;
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IDogService dog;
-        public DogController(ApplicationDbContext data, IWebHostEnvironment hostEnvironment, IDogService animal)
+        public DogController(IWebHostEnvironment hostEnvironment, IDogService animal)
         {
-            this.data = data;
             this.webHostEnvironment = hostEnvironment;
             this.dog = animal;
         }
@@ -61,35 +59,8 @@ namespace AnimalAdoptionCenter.Controllers
                 return View(dogModel);
             }
 
-            var dog = new Dog
-            {
-                Id = dogModel.Id,
-                Name = dogModel.Name,
-                Age = dogModel.Age,
-                Breed = dogModel.Breed,
-                Color = dogModel.Color,
-                Description = dogModel.Description,
-                Gender = dogModel.Gender,
-                Agressive = dogModel.Agressive,
-                Health = dogModel.Health
-            };
-
-            foreach (var image in dogModel.Images)
-            {
-                var uniqueFileName = UploadedFile(image);
-                var animalImageData = new Image
-                {
-                    Name = uniqueFileName,
-                    AnimalId = dog.Id
-                };
-
-                this.data.Images.Add(animalImageData);
-                dog.AnimalImages.Add(animalImageData);
-
-            }
-
-            this.data.Dogs.Add(dog);
-            this.data.SaveChanges();
+            this.dog.Add(dogModel);
+            
 
             return RedirectToAction("Index", "Home", new { area = "" });
         }
@@ -150,6 +121,5 @@ namespace AnimalAdoptionCenter.Controllers
             return uniqueFileName;
         }
 
-        
     }
 }

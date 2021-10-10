@@ -15,6 +15,7 @@ namespace AnimalAdoptionCenter.Models.Animals
         [Required]
         public IFormFileCollection Images { get; set; }
 
+
         [Required]
         [StringLength(AnimalNameMaxLength, MinimumLength = AnimalNameMinLength, ErrorMessage = "Name should be between {2} and {1} characters long.")]
         public string Name { get; set; }

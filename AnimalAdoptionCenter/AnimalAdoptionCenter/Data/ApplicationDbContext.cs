@@ -15,7 +15,7 @@ namespace AnimalAdoptionCenter.Data
         {
         }
 
-        public DbSet<Image> Images { get; set; }
+        public DbSet<AnimalImage> Images { get; set; }
 
         public DbSet<Dog> Dogs { get; set; }
 
@@ -25,12 +25,14 @@ namespace AnimalAdoptionCenter.Data
 
         public DbSet<News> News { get; set; }
 
+        public DbSet<NewsImage> NewsImages { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
             builder
-             .Entity<Image>()
+             .Entity<AnimalImage>()
              .HasOne(fi => fi.Animal)
              .WithMany(f => f.AnimalImages)
              .HasForeignKey(fi => fi.AnimalId)

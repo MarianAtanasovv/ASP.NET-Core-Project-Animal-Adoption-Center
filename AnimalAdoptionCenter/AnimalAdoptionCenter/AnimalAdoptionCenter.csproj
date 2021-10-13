@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\PetCareArticle\" />
+    <Folder Include="wwwroot\databaseFiles\News\" />
   </ItemGroup>
 
 </Project>

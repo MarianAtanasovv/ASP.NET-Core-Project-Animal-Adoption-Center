@@ -10,7 +10,7 @@ namespace AnimalAdoptionCenter.Services.Animals
     {
         public int Id { get; set; }
 
-        public List<Image> AnimalImages { get; set; }
+        public List<AnimalImage> AnimalImages { get; set; }
         public string Name { get; set; }
 
         public int Age { get; set; }
@@ -25,6 +25,6 @@ namespace AnimalAdoptionCenter.Services.Animals
 
         public string Agressive { get; set; }
 
-        public string Health { get; set; }
+        public bool Neutered { get; set; }
     }
 }

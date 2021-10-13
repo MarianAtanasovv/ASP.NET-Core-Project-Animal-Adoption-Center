@@ -7,10 +7,7 @@ namespace AnimalAdoptionCenter.Services
 {
     public interface INewsService 
     {
-        public int Add(
-            string title,
-            string body,
-            DateTime dateTime);
+        public int Add(AddNewsFormModel model);
 
         public IEnumerable<AllNewsViewModel> All();
 

@@ -9,7 +9,7 @@ namespace AnimalAdoptionCenter.Services.Animals
         public int Id { get; set; }
 
         [Required]
-        public List<Image> Images { get; set; }
+        public List<AnimalImage> Images { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -33,6 +33,6 @@ namespace AnimalAdoptionCenter.Services.Animals
         public bool Agressive { get; set; }
 
         [Required]
-        public string Health { get; set; }
+        public bool Neutered { get; set; }
     }
 }

@@ -30,9 +30,7 @@ namespace AnimalAdoptionCenter.Controllers
                 return View(model);
             }
 
-            this.news.Add(model.Title,
-                model.Body,
-                model.DateTime);
+            this.news.Add(model);
 
             return RedirectToAction("Home", "Index");
 

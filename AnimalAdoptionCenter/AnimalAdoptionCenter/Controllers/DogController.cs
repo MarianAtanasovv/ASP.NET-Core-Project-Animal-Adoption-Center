@@ -1,6 +1,4 @@
-﻿using AnimalAdoptionCenter.Data;
-using AnimalAdoptionCenter.Data.Models;
-using AnimalAdoptionCenter.Models.Animal;
+﻿using AnimalAdoptionCenter.Models.Animal;
 using AnimalAdoptionCenter.Models.Animals;
 using AnimalAdoptionCenter.Services;
 using AnimalAdoptionCenter.Services.Animals;
@@ -87,7 +85,7 @@ namespace AnimalAdoptionCenter.Controllers
                 Agressive = dog.Agressive,
                 Gender = dog.Gender,
                 Images = dog.Images,
-                Health = dog.Health
+                Neutered = dog.Neutered
             });
 
         }

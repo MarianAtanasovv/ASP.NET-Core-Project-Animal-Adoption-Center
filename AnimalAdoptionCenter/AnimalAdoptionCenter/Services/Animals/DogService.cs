@@ -81,7 +81,7 @@ namespace AnimalAdoptionCenter.Services.Animals
                 Agressive = x.Agressive,
                 Color = x.Color,
                 Images = x.AnimalImages,
-                Health = x.Health
+                Neutered = x.Neutered
 
             })
               .FirstOrDefault();
@@ -103,7 +103,7 @@ namespace AnimalAdoptionCenter.Services.Animals
                Breed = g.Breed,
                Color = g.Color,
                Gender = g.Gender.ToString(),
-               Health = g.Health
+               Neutered = g.Neutered
 
            })
            .ToList();
@@ -143,13 +143,13 @@ namespace AnimalAdoptionCenter.Services.Animals
                 Description = dogModel.Description,
                 Gender = dogModel.Gender,
                 Agressive = dogModel.Agressive,
-                Health = dogModel.Health
+                Neutered = dogModel.Neutered
             };
 
             foreach (var image in dogModel.Images)
             {
                 var uniqueFileName = UploadedFile(image);
-                var animalImageData = new Image
+                var animalImageData = new AnimalImage
                 {
                     Name = uniqueFileName,
                     AnimalId = dog.Id

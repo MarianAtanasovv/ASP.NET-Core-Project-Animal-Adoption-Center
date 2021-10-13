@@ -42,6 +42,6 @@ namespace AnimalAdoptionCenter.Models.Animals
         public bool Agressive { get; set; }
 
         [Required]
-        public string Health { get; set; }
+        public bool Neutered { get; set; }
     }
 }

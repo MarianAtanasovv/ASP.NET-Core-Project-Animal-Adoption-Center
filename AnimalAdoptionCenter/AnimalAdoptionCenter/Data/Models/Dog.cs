@@ -7,7 +7,7 @@ namespace AnimalAdoptionCenter.Data.Models
     public class Dog
     {   public Dog()
         {
-            this.AnimalImages = new List<Image>();
+            this.AnimalImages = new List<AnimalImage>();
             this.AdoptedDogs = new List<Dog>();
             this.PotentialAdopters = new List<PotentialAdopter>();
         }
@@ -15,7 +15,7 @@ namespace AnimalAdoptionCenter.Data.Models
         public int Id { get; set; }
 
         [Required]
-        public List<Image> AnimalImages { get; set; } 
+        public List<AnimalImage> AnimalImages { get; set; } 
 
         [Required]
         [MaxLength(AnimalNameMaxLength)]
@@ -43,7 +43,7 @@ namespace AnimalAdoptionCenter.Data.Models
         public bool Agressive { get; set; }
 
         [Required]
-        public string Health { get; set; }
+        public bool Neutered { get; set; }
 
         public List<PotentialAdopter> PotentialAdopters { get; set; }
 

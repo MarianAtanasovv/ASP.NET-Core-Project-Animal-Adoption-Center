@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AnimalAdoptionCenter.Data.Models;
+using System.Collections.Generic;
 
 namespace AnimalAdoptionCenter.Models
 {
@@ -10,9 +11,10 @@ namespace AnimalAdoptionCenter.Models
 
         public string Body { get; set; }
 
-        public string DateTime { get; set; } 
+        public string DateTime { get; set; }
 
-        //public IList<News> News { get; set; }
+        public List<NewsImage> NewsImages { get; set; }
+
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AnimalAdoptionCenter.Data;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,6 +14,8 @@ namespace AnimalAdoptionCenter.Models
         [Required]
         [StringLength(NewsTitleMaxLength, MinimumLength = NewsTitleMinLength, ErrorMessage = "Title should be between {2} and {1} characters long.")]
         public string Title { get; set; }
+
+        public IFormFileCollection Images { get; set; }
 
         [Required]
         [StringLength(NewsBodyMaxLength, MinimumLength = NewsBodyMinLength, ErrorMessage = "News body should be between {2} and {1} characters long.")]

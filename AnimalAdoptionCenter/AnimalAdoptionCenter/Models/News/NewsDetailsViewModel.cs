@@ -1,4 +1,7 @@
-﻿namespace AnimalAdoptionCenter.Models.News
+﻿using AnimalAdoptionCenter.Data.Models;
+using System.Collections.Generic;
+
+namespace AnimalAdoptionCenter.Models.News
 {
     public class NewsDetailsViewModel
     {
@@ -8,5 +11,7 @@
         public string Body { get; set; }
 
         public string PublishedOn { get; set; }
+        public List<NewsImage> NewsImages { get; set; }
+
     }
 }

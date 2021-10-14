@@ -1,25 +1,93 @@
 ﻿@model List<AllNewsViewModel>
 
 
-    <div class="grid_5 prefix_1">
-        <h2 class="ic1">Latest News</h2>
-        <ul class="list">
-            @foreach (var news in Model)
-            {
-                <li>
-                    <span style="width: 150px">
-                         @news.DateTime
-                        </span>
-                    <div class="extra_wrapper">
-                        <div class="col1">
-                            <a asp-controller="News" asp-route-newsId="@news.Id" asp-action="Details">@news.Title</a>
-                            <time datetime="@news.DateTime"></time>
-                        </div>
-                        <span>
-                            @news.Body.Substring(0, 50)...
-                        </span>
-                    </div>
-                </li>
-            }
-        </ul>
+<div class="jumbotron jumbotron-fluid overlay">
+    <div class="jumbo-heading">
+        <!-- section-heading -->
+        <div class="section-heading" data-aos="zoom-in">
+            <h1>Woof! Blog</h1>
+        </div>
+        <!-- /section-heading -->
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Blog Home</li>
+            </ol>
+        </nav>
     </div>
+    <!-- /jumbo-heading -->
+</div>
+<!-- /jumbotron -->
+<!-- ==== Page Content ==== -->
+<div id="blog-home" class="page">
+    <div class="container">
+        <div class="row">
+            <!-- Blog Entries Column -->
+            <div class="col-lg-8">
+                @foreach (var news in Model)
+                {
+                    <!-- Blog Post -->
+                    <div class="card blog-card">
+                        <!-- Post info-->
+                        <div class="post-info border-irregular2 text-muted">
+                            @news.DateTime by
+                            <a href="#">Lila Smith</a> /  <a href="#"><i class="fas fa-comment margin-icon"></i></a>
+                        </div>
+                    
+                            <!-- image -->
+                            @foreach (var image in news.NewsImages.Take(1))
+                            {
+                                <img class="card-img-top img-fluid" src="/databaseFiles/News/@image.Name" alt="">
+
+                            }
+                        <div class="card-body">
+                            <a href="blog-single.html">
+                                <h3 class="card-title">@news.Title</h3>
+                            </a>
+                            <!-- excerpt -->
+                            <p class="card-text mt-3">@news.Body.Substring(0,50)</p>
+                            <a asp-controller="News" asp-route-newsId="@news.Id" asp-action="Details" class="btn btn-primary">Read More &rarr;</a>
+                        </div>
+                        <!--card-footer -->
+                    </div>
+                    <!-- /card blog-card -->
+                }
+
+                <div class="col-md-12 mt-5">
+                    <!-- pagination -->
+                    <nav aria-label="pagination">
+                        <ul class="pagination float-right">
+                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                    <!-- /nav -->
+                </div>
+                <!-- /col-md -->
+            </div>
+            <!-- /col-lg-8 -->
+            <!-- Sidebar Widgets Column -->
+            <div class="blog-sidebar bg-light-custom  h-50 border-irregular1 col-lg-4">
+                <!-- Search Widget -->
+                <div class="card">
+                    <h5 class="card-header">Search</h5>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /page -->

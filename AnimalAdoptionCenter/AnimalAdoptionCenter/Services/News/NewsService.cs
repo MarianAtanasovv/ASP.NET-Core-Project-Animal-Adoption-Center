@@ -1,7 +1,6 @@
 ﻿using AnimalAdoptionCenter.Data;
 using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Models;
-using AnimalAdoptionCenter.Models.News;
 using AnimalAdoptionCenter.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,7 +11,7 @@ using System.Linq;
 
 namespace AnimalAdoptionCenter
 {
-    
+
     public class NewsService : INewsService
     {
         private readonly ApplicationDbContext data;
@@ -76,7 +75,8 @@ namespace AnimalAdoptionCenter
                Title = x.Title,
                Body = x.Body,
                PublishedOn = x.PublishedOn,
-               NewsImages = x.NewsImages
+               NewsImages = x.NewsImages,
+               Comments = x.Comments
 
            })
             .FirstOrDefault();

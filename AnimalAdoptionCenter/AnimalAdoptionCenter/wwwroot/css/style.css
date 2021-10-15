@@ -1383,8 +1383,18 @@ Last change: 8th June 2018
     text-align: center;
     padding: 10px;
 }
- .jumbo-heading .section-heading {
-     margin-bottom: 0px;
+.register-box{
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+.register-picture{
+   
+}
+.form-group {
+    width: 200px;
+}
+.jumbo-heading .section-heading {
+    margin-bottom: 0px;
 }
  .jumbo-heading .section-heading h1 {
      color:#fff;
@@ -1891,4 +1901,3 @@ Last change: 8th June 2018
          right:18% 
     }
 }
- 

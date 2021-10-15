@@ -50,20 +50,20 @@
                 <div class="container">
                     <div class="row">
                         <!--<div class="col-md-12">-->
-                            <!-- Start Contact Info -->
-                            <!--<ul class="contact-details float-left">
-                                <li><i class="fa fa-map-marker"></i>Pet Street 123 - New York</li>
-                                <li><i class="fa fa-envelope"></i><a href="mailto:email@site.com">email@yoursite.com</a></li>
-                                <li><i class="fa fa-phone"></i>(123) 456-789</li>
-                            </ul>-->
-                            <!-- End Contact Info -->
-                            <!-- Start Social Links -->
-                            <!--<ul class="social-list float-right list-inline">
-                                <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li class="list-inline-item"><a title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>-->
-                            <!-- /End Social Links -->
+                        <!-- Start Contact Info -->
+                        <!--<ul class="contact-details float-left">
+                    <li><i class="fa fa-map-marker"></i>Pet Street 123 - New York</li>
+                    <li><i class="fa fa-envelope"></i><a href="mailto:email@site.com">email@yoursite.com</a></li>
+                    <li><i class="fa fa-phone"></i>(123) 456-789</li>
+                </ul>-->
+                        <!-- End Contact Info -->
+                        <!-- Start Social Links -->
+                        <!--<ul class="social-list float-right list-inline">
+                    <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>-->
+                        <!-- /End Social Links -->
                         <!--</div>-->
                         <!-- col-md-12 -->
                     </div>
@@ -73,7 +73,21 @@
             </div>
             <!-- End Top bar -->
             <!-- Navbar Starts -->
+       
+
+
             <div class="navbar container-fluid">
+                <div>
+                    <form asp-area="Identity" asp-page="/Account/Register" method="post">
+                        <button type="submit" class="btn btn-danger">Register</button>
+                    </form>
+                </div>
+                <div>
+
+                    <form asp-area="Identity" asp-page="/Account/Login" method="get">
+                        <button type="submit" class="btn btn-danger">Login</button>
+                    </form>
+                </div>
                 <div class="container ">
                     <!-- logo -->
                     <a class="navbar-brand" href="index.html">
@@ -140,8 +154,13 @@
                                     Contact
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="contact-dropdown">
-                                    <a class="dropdown-item" href="contact.html">Contact Style 1</a>
-                                    <a class="dropdown-item" href="contact2.html">Contact Style 2</a>
+                                    <a class="dropdown-item" asp-controller="Dog" asp-action="Add">Add Dog</a>
+                                    <a class="dropdown-item" asp-controller="Dog" asp-action="All">All Dogs</a>
+                                    <a class="dropdown-item" asp-controller="News" asp-action="Add">Add News</a>
+                                    <a class="dropdown-item" asp-controller="News" asp-action="All">All News</a>
+
+
+
                                 </div>
                             </li>
                             <!-- menu item -->
@@ -166,8 +185,8 @@
             </div>
             <!-- /navbar -->
         </div>
-        <!--/row -->
-    </nav>
+            <!--/row -->
+</nav>
     <!-- /nav -->
     @*<div class="container">
         <main role="main" class="pb-3">*@

@@ -1,4 +1,5 @@
 ﻿using AnimalAdoptionCenter.Data.Models;
+using AnimalAdoptionCenter.Dаta;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,8 @@ namespace AnimalAdoptionCenter.Data
         public DbSet<News> News { get; set; }
 
         public DbSet<NewsImage> NewsImages { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

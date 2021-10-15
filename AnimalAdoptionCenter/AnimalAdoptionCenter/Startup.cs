@@ -4,6 +4,8 @@ using AnimalAdoptionCenter.Infrastructure;
 using AnimalAdoptionCenter.Services;
 using AnimalAdoptionCenter.Services.Adoption;
 using AnimalAdoptionCenter.Services.Animals;
+using AnimalAdoptionCenter.Services.Comments;
+using AnimalAdoptionCenter.Services.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -50,6 +52,10 @@ namespace AnimalAdoptionCenter
             services.AddTransient<IDogService, DogService>();
             services.AddTransient<IAdoptionService, AdoptionService>();
             services.AddTransient<INewsService, NewsService>();
+            services.AddTransient<ICommentsService, CommentService>();
+            services.AddTransient<IUserService, UserService>();
+
+
 
         }
 

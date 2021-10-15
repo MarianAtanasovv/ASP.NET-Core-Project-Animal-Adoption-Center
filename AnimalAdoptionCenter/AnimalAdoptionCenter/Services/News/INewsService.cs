@@ -1,5 +1,4 @@
 ﻿using AnimalAdoptionCenter.Models;
-using AnimalAdoptionCenter.Models.News;
 using System;
 using System.Collections.Generic;
 

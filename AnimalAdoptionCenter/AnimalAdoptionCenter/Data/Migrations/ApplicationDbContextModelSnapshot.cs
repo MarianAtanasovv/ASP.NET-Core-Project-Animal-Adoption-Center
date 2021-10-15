@@ -144,32 +144,6 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.ToTable("Dogs");
                 });
 
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.News", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Body")
-                        .IsRequired()
-                        .HasMaxLength(10000)
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PublishedOn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("News");
-                });
-
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.NewsImage", b =>
                 {
                     b.Property<int>("Id")
@@ -269,6 +243,63 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.News", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasMaxLength(10000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PublishedOn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("News");
+                });
+
+            modelBuilder.Entity("AnimalAdoptionCenter.Dаta.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedOn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NewsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NewsId");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -437,7 +468,7 @@ namespace AnimalAdoptionCenter.Data.Migrations
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.NewsImage", b =>
                 {
-                    b.HasOne("AnimalAdoptionCenter.Data.Models.News", "News")
+                    b.HasOne("AnimalAdoptionCenter.Data.News", "News")
                         .WithMany("NewsImages")
                         .HasForeignKey("NewsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -455,6 +486,17 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Dog");
+                });
+
+            modelBuilder.Entity("AnimalAdoptionCenter.Dаta.Comment", b =>
+                {
+                    b.HasOne("AnimalAdoptionCenter.Data.News", "News")
+                        .WithMany("Comments")
+                        .HasForeignKey("NewsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("News");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -519,8 +561,10 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Navigation("PotentialAdopters");
                 });
 
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.News", b =>
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.News", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("NewsImages");
                 });
 #pragma warning restore 612, 618

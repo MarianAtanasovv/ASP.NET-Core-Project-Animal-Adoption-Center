@@ -1,6 +1,8 @@
-﻿using AnimalAdoptionCenter.Data.Models;
+﻿using AnimalAdoptionCenter.Data;
+using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Models;
-using AnimalAdoptionCenter.Models.News;
+using AnimalAdoptionCenter.Models.Comments;
+using AnimalAdoptionCenter.Models.NewsCommentsModel;
 using AnimalAdoptionCenter.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -10,11 +12,13 @@ namespace AnimalAdoptionCenter.Controllers
     public class NewsController : Controller
     {
         private readonly INewsService news;
-
+       
         public NewsController(INewsService news)
         {
             this.news = news;
         }
+       
+
 
         [HttpGet]
         public IActionResult Add()
@@ -57,15 +61,16 @@ namespace AnimalAdoptionCenter.Controllers
             }
 
 
-            return View(new NewsDetailsViewModel
+
+            var commentsData = new AddCommentFormModel();
+            var newsData = details;
+            var model = new NewsCommentsModel
             {
-                Id = details.Id,
-                Title = details.Title,
-                Body = details.Body,
-                PublishedOn = details.PublishedOn
+                AddCommentFormModel = commentsData,
+                NewsDetailsViewModel = newsData
+            };
 
-
-            });
+            return View(model);
         }
 
     }

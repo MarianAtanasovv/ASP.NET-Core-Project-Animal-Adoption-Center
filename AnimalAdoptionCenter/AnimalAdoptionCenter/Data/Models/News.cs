@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AnimalAdoptionCenter.Data.Models;
+using AnimalAdoptionCenter.Dаta;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace AnimalAdoptionCenter.Data.Models
+namespace AnimalAdoptionCenter.Data
 {
     using static DataConstants;
 
@@ -11,6 +12,7 @@ namespace AnimalAdoptionCenter.Data.Models
         public News()
         {
             this.NewsImages = new List<NewsImage>();
+            this.Comments = new List<Comment>();
         }
         public int Id { get; set; }
 
@@ -27,5 +29,7 @@ namespace AnimalAdoptionCenter.Data.Models
 
         [Required]
         public string PublishedOn { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 }

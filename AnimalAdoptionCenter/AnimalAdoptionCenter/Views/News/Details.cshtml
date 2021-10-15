@@ -1,35 +1,50 @@
-﻿@model NewsDetailsViewModel
+﻿@model NewsCommentsModel
+
 
 <!DOCTYPE html>
+<div class="page">
+    <div class="container">
+        <div class="row">
+            <!-- Post Content Column -->
+            <div class="col-lg-8 card blog-card">
+                <div class="card-body">
+                    <h3 class="card-title">@Model.NewsDetailsViewModel.Title</h3>
+                    @foreach (var image in Model.NewsDetailsViewModel.NewsImages.Take(1))
+                    {
+                        <img class="card-img-top img-fluid" src="/databaseFiles/News/@image.Name" alt="">
+                    }
+                    <!-- Post info-->
+                    <div class="post-info border-irregular2 text-muted">
+                        @Model.NewsDetailsViewModel.PublishedOn by
+                        <a href="#">Lila Smith</a> /  <i class="fas fa-comment margin-icon"></i>10 comments
+                    </div>
+                    <hr>
+                    <!-- Preview Image -->
+                    <img src="img/blog.jpg" class="img-fluid" alt="">
+                    <hr>
+                    <!-- Post Content -->
+                    @Model.NewsDetailsViewModel.Body
+                    <!-- Comments Form -->
+                    <div class="card my-4 mt-5 bg-light-custom border-irregular1" >
+                        <h5 class="card-header">Leave a Comment:</h5>
+                        <div class="card-body">
+                            <form  method="post" asp-controller="Comments" asp-action="Add" asp-route-content="@Model.AddCommentFormModel.Content" asp-route-newsId="@Model.NewsDetailsViewModel.Id" >
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="3" type="text" id="content" name="content" asp-for="@Model.AddCommentFormModel.Content"></textarea>
+                                </div>
+                                <div >
+                                    <button type="submit" class="btn btn-primary btn-sm">Comment</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Comment -->
 
-<html lang="en">
-<body style="background-color: white">
 
-    <article class="container" style="text-align: center; background-color: white; color: black; margin-top:20px">
-        <div class="row vertical-gap">
-            <div class="row-md-6">
-                <div class="nk-blog-post">
-                    <a class="nk-post-img">
-                        <h3 style="color: black">
-                            @Model.Title
-                        </h3>
-                        <h1 style="color: black">
-                            @Model.PublishedOn
-                        </h1>
-                    </a>
-                    <div class="nk-gap"></div>
-                   
-                    <div class="nk-gap"></div>
-                        
-                        <p class="nk-post-text">@Model.Body</p>
-                   
+                    <!--/Comment -->
                 </div>
-                <div class="gap-3"></div>
-
-        </div>
-
-        </div>
-        </article>
-
-</body>
-</html>
+                <!--/Card-body -->
+            </div>
+            </div>
+</div>
+</div>

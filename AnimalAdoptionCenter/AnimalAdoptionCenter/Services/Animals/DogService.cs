@@ -81,7 +81,8 @@ namespace AnimalAdoptionCenter.Services.Animals
                 Agressive = x.Agressive,
                 Color = x.Color,
                 Images = x.AnimalImages,
-                Neutered = x.Neutered
+                Neutered = x.Neutered,
+                Vaccinated = x.Vaccinated
 
             })
               .FirstOrDefault();
@@ -103,7 +104,8 @@ namespace AnimalAdoptionCenter.Services.Animals
                Breed = g.Breed,
                Color = g.Color,
                Gender = g.Gender.ToString(),
-               Neutered = g.Neutered
+               Neutered = g.Neutered,
+               Vaccinated = g.Vaccinated
 
            })
            .ToList();
@@ -143,7 +145,8 @@ namespace AnimalAdoptionCenter.Services.Animals
                 Description = dogModel.Description,
                 Gender = dogModel.Gender,
                 Agressive = dogModel.Agressive,
-                Neutered = dogModel.Neutered
+                Neutered = dogModel.Neutered,
+                Vaccinated = dogModel.Vaccinated
             };
 
             foreach (var image in dogModel.Images)

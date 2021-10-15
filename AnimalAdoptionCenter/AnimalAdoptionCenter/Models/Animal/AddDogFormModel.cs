@@ -43,5 +43,11 @@ namespace AnimalAdoptionCenter.Models.Animals
 
         [Required]
         public bool Neutered { get; set; }
+
+        [Required]
+        public bool Vaccinated { get; set; }
+
+
+
     }
 }

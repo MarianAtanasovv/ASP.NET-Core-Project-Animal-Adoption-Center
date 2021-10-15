@@ -85,7 +85,8 @@ namespace AnimalAdoptionCenter.Controllers
                 Agressive = dog.Agressive,
                 Gender = dog.Gender,
                 Images = dog.Images,
-                Neutered = dog.Neutered
+                Neutered = dog.Neutered,
+                Vaccinated = dog.Vaccinated
             });
 
         }

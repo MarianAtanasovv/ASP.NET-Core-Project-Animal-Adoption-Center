@@ -26,5 +26,8 @@ namespace AnimalAdoptionCenter.Services.Animals
         public string Agressive { get; set; }
 
         public bool Neutered { get; set; }
+
+        public bool Vaccinated { get; set; }
+
     }
 }

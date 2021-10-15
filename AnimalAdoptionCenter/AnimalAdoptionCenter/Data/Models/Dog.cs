@@ -44,6 +44,8 @@ namespace AnimalAdoptionCenter.Data.Models
 
         [Required]
         public bool Neutered { get; set; }
+        public bool Vaccinated { get; set; }
+
 
         public List<PotentialAdopter> PotentialAdopters { get; set; }
 

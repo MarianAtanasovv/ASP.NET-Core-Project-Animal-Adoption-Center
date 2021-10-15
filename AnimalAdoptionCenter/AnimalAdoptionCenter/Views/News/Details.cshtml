@@ -25,23 +25,35 @@
                     <!-- Post Content -->
                     @Model.NewsDetailsViewModel.Body
                     <!-- Comments Form -->
-                    <div class="card my-4 mt-5 bg-light-custom border-irregular1" >
+                    <div class="card my-4 mt-5 bg-light-custom border-irregular1" style="margin-bottom: 20px">
                         <h5 class="card-header">Leave a Comment:</h5>
                         <div class="card-body">
-                            <form  method="post" asp-controller="Comments" asp-action="Add" asp-route-content="@Model.AddCommentFormModel.Content" asp-route-newsId="@Model.NewsDetailsViewModel.Id" >
+                            <form method="post" asp-controller="Comments" asp-action="Add" asp-route-content="@Model.AddCommentFormModel.Content" asp-route-newsId="@Model.NewsDetailsViewModel.Id">
                                 <div class="form-group">
                                     <textarea class="form-control" rows="3" type="text" id="content" name="content" asp-for="@Model.AddCommentFormModel.Content"></textarea>
                                 </div>
-                                <div >
+                                <div>
                                     <button type="submit" class="btn btn-primary btn-sm">Comment</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <!-- Comment -->
+                    @foreach (var comment in Model.AllCommentsViewModel)
+                    {
+                        <div class="element-block bg-primary border-irregular1 text-light" style="margin-top:20px">
 
-
-                    <!--/Comment -->
+                            <!-- /col-md -->
+                            
+                                <h6 class="mt-2"><a href="">@comment.PublishedOn</a></h6>
+                                <h6 class="mt-2"><a href="">@comment.Name</a> <small>says:</small></h6>
+                                <p class="comment-news">
+                                    @comment.Comment
+                                </p>
+                            
+                            <!--/media-body -->
+                        </div>
+                    }
                 </div>
                 <!--/Card-body -->
             </div>

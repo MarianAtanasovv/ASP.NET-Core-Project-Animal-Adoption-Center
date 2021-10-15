@@ -927,9 +927,13 @@ Last change: 8th June 2018
 }
  .element-block{
      padding:30px;
+
 }
- .element-section{
-     padding: 150px 100px;
+.comment-news{
+    font-size:20px;
+}
+.element-section {
+    padding: 150px 100px;
 }
  #glyphs {
      border-bottom: 1px solid #ccc;
@@ -1121,6 +1125,7 @@ Last change: 8th June 2018
 }
  .form-control input{
      height:50px;
+     width:200px;
 }
  .form-control:focus{
      outline:none;
@@ -1390,9 +1395,7 @@ Last change: 8th June 2018
 .register-picture{
    
 }
-.form-group {
-    width: 200px;
-}
+
 .jumbo-heading .section-heading {
     margin-bottom: 0px;
 }

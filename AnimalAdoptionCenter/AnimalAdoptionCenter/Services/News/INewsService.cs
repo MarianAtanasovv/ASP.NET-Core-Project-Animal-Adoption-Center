@@ -1,5 +1,4 @@
 ﻿using AnimalAdoptionCenter.Models;
-using System;
 using System.Collections.Generic;
 
 namespace AnimalAdoptionCenter.Services
@@ -8,8 +7,16 @@ namespace AnimalAdoptionCenter.Services
     {
         public int Add(AddNewsFormModel model);
 
-        public IEnumerable<AllNewsViewModel> All();
+        //public IEnumerable<AllNewsViewModel> All();
+
+        public NewsQueryModel All(
+               string searchTerm,
+               int currentPage,
+               int newsPerPage,
+               string name);
 
         public NewsDetailsViewModel Details(int newsId);
+
+        public IEnumerable<string> AllNews();
     }
 }

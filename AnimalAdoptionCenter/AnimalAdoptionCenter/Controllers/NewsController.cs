@@ -1,12 +1,9 @@
-﻿using AnimalAdoptionCenter.Data;
-using AnimalAdoptionCenter.Data.Models;
-using AnimalAdoptionCenter.Models;
+﻿using AnimalAdoptionCenter.Models;
 using AnimalAdoptionCenter.Models.Comments;
 using AnimalAdoptionCenter.Models.NewsCommentsModel;
 using AnimalAdoptionCenter.Services;
 using AnimalAdoptionCenter.Services.Comments;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace AnimalAdoptionCenter.Controllers
 {
@@ -46,11 +43,24 @@ namespace AnimalAdoptionCenter.Controllers
         }
 
         [HttpGet]
-        public IActionResult All()
+        public IActionResult All([FromQuery] AllNewsQueryModel query)
         {
 
-            var news = this.news.All();
-            return View(news);
+            //var news = this.news.All();
+            //return View(news);
+            var newsQueryResult = this.news.All(
+               query.SearchTerm,
+               query.CurrentPage,
+               AllNewsQueryModel.NewsPerPage,
+               query.Name);
+
+            var newsTitles = this.news.AllNews();
+
+            query.TotalNews = newsQueryResult.TotalNews;
+            query.News = newsQueryResult.News;
+            query.Names = newsTitles;
+
+            return this.View(query);
 
         }
 

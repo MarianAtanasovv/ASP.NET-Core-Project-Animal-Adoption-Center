@@ -1,4 +1,4 @@
-﻿@model List<AllNewsViewModel>
+﻿@model AllNewsQueryModel
 
 
 <div class="jumbotron jumbotron-fluid overlay">
@@ -25,28 +25,28 @@
         <div class="row">
             <!-- Blog Entries Column -->
             <div class="col-lg-8">
-                @foreach (var news in Model)
+                @foreach (var news in Model.News)
                 {
                     <!-- Blog Post -->
                     <div class="card blog-card">
                         <!-- Post info-->
                         <div class="post-info border-irregular2 text-muted">
-                            @news.DateTime by
+                            @news.PublishedOn by
                             <a href="#">Lila Smith</a> /  <a href="#"><i class="fas fa-comment margin-icon"></i></a>
                         </div>
-                    
-                            <!-- image -->
-                            @foreach (var image in news.NewsImages.Take(1))
-                            {
-                                <img class="card-img-top img-fluid" src="/databaseFiles/News/@image.Name" alt="">
 
-                            }
+                        <!-- image -->
+                        @foreach (var image in news.NewsImages.Take(1))
+                        {
+                            <img class="card-img-top img-fluid" src="/databaseFiles/News/@image.Name" alt="">
+
+                        }
                         <div class="card-body">
                             <a>
                                 <h3 class="card-title">@news.Title </h3>
                             </a>
                             <!-- excerpt -->
-                            <p class="card-text mt-3">@news.Body.Substring(0,50)</p>
+                            <p class="card-text mt-3">@news.Body.Substring(0, 50)</p>
                             <a asp-controller="News" asp-route-newsId="@news.Id" asp-action="Details" class="btn btn-primary">Read More &rarr;</a>
                         </div>
                         <!--card-footer -->
@@ -54,14 +54,37 @@
                     <!-- /card blog-card -->
                 }
 
+                @{ var previousPage = Model.CurrentPage - 1;
+                    if (previousPage < 1)
+                    {
+                        previousPage = 1;
+                    }
+
+                    var maxPage = Math.Ceiling((double)Model.TotalNews / AllNewsQueryModel.NewsPerPage); }
+             
+
+                    @{ var shouldButtonBeDisabled = Model.CurrentPage == maxPage |
+                                                                       !Model.News.Any(); }
+
+                  
                 <div class="col-md-12 mt-5">
                     <!-- pagination -->
                     <nav aria-label="pagination">
                         <ul class="pagination float-right">
-                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                          
+                            <li class="page-item"><a class="page-link @(shouldButtonBeDisabled ? "disabled" : string.Empty)"
+                           asp-controller="News"
+                           asp-action="All"
+                           asp-route-currentPage="@(Model.CurrentPage + 1)"
+                           asp-route-brand="@Model.Name"
+                           asp-route-searchTerm="@Model.SearchTerm">Next page</a></li>
+
+                            <li class="page-item"><a class="page-link @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+                           asp-controller="News"
+                           asp-action="All"
+                           asp-route-currentPage="@previousPage"
+                           asp-route-brand="@Model.Name"
+                           asp-route-searchTerm="@Model.SearchTerm">Previous page</a></li>
                         </ul>
                     </nav>
                     <!-- /nav -->
@@ -74,16 +97,18 @@
                 <!-- Search Widget -->
                 <div class="card">
                     <h5 class="card-header">Search</h5>
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">Go!</button>
-                            </span>
+                    <form method="get">
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input asp-for="SearchTerm" type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-secondary" type="button" asp-controller="News" asp-action="All">Go!</button>
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-               
+
             </div>
         </div>
         <!-- /.row -->
@@ -91,3 +116,4 @@
     <!-- /.container -->
 </div>
 <!-- /page -->
+

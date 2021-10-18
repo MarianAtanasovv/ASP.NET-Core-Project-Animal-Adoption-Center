@@ -66,9 +66,63 @@ namespace AnimalAdoptionCenter
             return news;
         }
 
-        public NewsDetailsViewModel Details(int newsId)
+        public NewsQueryModel All(
+          string searchTerm,
+          int currentPage,
+          int newsPerPage,
+          string name)
         {
-            var details = this.data.News.Where(x => x.Id == newsId)
+            var newsQuery = this.data.News.AsQueryable();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                newsQuery = newsQuery.Where(x => x.Title == name);
+            }
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                newsQuery = newsQuery.Where(x => x.Title.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+         
+
+            var totalNews = newsQuery.Count();
+
+            var news = GetNews(newsQuery
+                .Skip((currentPage - 1) * newsPerPage)
+                .Take(newsPerPage));
+
+
+            return new NewsQueryModel
+            {
+                TotalNews = totalNews,
+                News = news,
+                CurrentPage = currentPage,
+                NewsPerPage = newsPerPage
+            };
+
+        }
+
+        private static IEnumerable<NewsServiceModel> GetNews(IQueryable<News> newsQuery)
+        {
+            return newsQuery
+           .Select(g => new NewsServiceModel
+           {
+               Id = g.Id,
+               Title = g.Title,
+               Body = g.Body,
+               PublishedOn = g.PublishedOn,
+               Comments = g.Comments,
+               NewsImages = g.NewsImages,
+
+
+           })
+           .ToList();
+        }
+
+            public NewsDetailsViewModel Details(int newsId)
+            {
+                var details = this.data.News.Where(x => x.Id == newsId)
            .Select(x => new NewsDetailsViewModel
            {
                Id = x.Id,
@@ -84,6 +138,15 @@ namespace AnimalAdoptionCenter
             return details;
         }
 
+        public IEnumerable<string> AllNews()
+        {
+            return this.data
+                .News
+                .Select(x => x.Title)
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList();
+        }
         private string UploadedFile(IFormFile imageData)
         {
             string uniqueFileName = null;

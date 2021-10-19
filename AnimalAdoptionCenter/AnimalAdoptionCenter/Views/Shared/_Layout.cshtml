@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CQuicksand:400,500,700" rel="stylesheet">
     <link href="~/fonts/flaticon/flaticon.css" rel="stylesheet" type="text/css">
     <link href="~/fonts/fontawesome/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <!-- Fav icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
@@ -32,6 +33,7 @@
     <link href="~/styles/maincolors.css" rel="stylesheet">
     <!-- LayerSlider CSS -->
     <link rel="stylesheet" href="~/vendor/layerslider/css/layerslider.css">
+
 </head>
 <!-- ==== body starts ==== -->
 <body id="top">
@@ -52,17 +54,17 @@
                         <!--<div class="col-md-12">-->
                         <!-- Start Contact Info -->
                         <!--<ul class="contact-details float-left">
-                    <li><i class="fa fa-map-marker"></i>Pet Street 123 - New York</li>
-                    <li><i class="fa fa-envelope"></i><a href="mailto:email@site.com">email@yoursite.com</a></li>
-                    <li><i class="fa fa-phone"></i>(123) 456-789</li>
-                </ul>-->
+                            <li><i class="fa fa-map-marker"></i>Pet Street 123 - New York</li>
+                            <li><i class="fa fa-envelope"></i><a href="mailto:email@site.com">email@yoursite.com</a></li>
+                            <li><i class="fa fa-phone"></i>(123) 456-789</li>
+                        </ul>-->
                         <!-- End Contact Info -->
                         <!-- Start Social Links -->
                         <!--<ul class="social-list float-right list-inline">
-                    <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-                </ul>-->
+                            <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>-->
                         <!-- /End Social Links -->
                         <!--</div>-->
                         <!-- col-md-12 -->
@@ -73,7 +75,7 @@
             </div>
             <!-- End Top bar -->
             <!-- Navbar Starts -->
-       
+
 
 
             <div class="navbar container-fluid">
@@ -185,15 +187,14 @@
             </div>
             <!-- /navbar -->
         </div>
-            <!--/row -->
-</nav>
+        <!--/row -->
+    </nav>
     <!-- /nav -->
     @*<div class="container">
         <main role="main" class="pb-3">*@
     @RenderBody()
     @*</main>
         </div>*@
-
     <footer class="text-light">
         <div class="container">
             <div class="row">
@@ -261,6 +262,7 @@
     <script src="~/js/contact.js"></script>
     <!-- Prefix free -->
     <script src="~/js/prefixfree.min.js"></script>
+
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

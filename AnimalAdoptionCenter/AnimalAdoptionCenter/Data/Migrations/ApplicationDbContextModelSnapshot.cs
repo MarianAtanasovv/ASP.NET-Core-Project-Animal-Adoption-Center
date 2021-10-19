@@ -147,6 +147,40 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.ToTable("Dogs");
                 });
 
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1500)
+                        .HasColumnType("nvarchar(1500)");
+
+                    b.Property<DateTime>("EndHour")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartHour")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Events");
+                });
+
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.NewsImage", b =>
                 {
                     b.Property<int>("Id")
@@ -181,6 +215,26 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.HasIndex("DogId");
 
                     b.ToTable("PotentialAdopters");
+                });
+
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.ReservedHours", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Hour")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("ReservedHours");
                 });
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.User", b =>
@@ -491,6 +545,13 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Navigation("Dog");
                 });
 
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.ReservedHours", b =>
+                {
+                    b.HasOne("AnimalAdoptionCenter.Data.Models.Event", null)
+                        .WithMany("ReservedHours")
+                        .HasForeignKey("EventId");
+                });
+
             modelBuilder.Entity("AnimalAdoptionCenter.Dаta.Comment", b =>
                 {
                     b.HasOne("AnimalAdoptionCenter.Data.News", "News")
@@ -562,6 +623,11 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Navigation("AnimalImages");
 
                     b.Navigation("PotentialAdopters");
+                });
+
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Event", b =>
+                {
+                    b.Navigation("ReservedHours");
                 });
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.News", b =>

@@ -1395,7 +1395,9 @@ Last change: 8th June 2018
 .register-picture{
    
 }
-
+.event-control{
+    width: 200px;
+}
 .jumbo-heading .section-heading {
     margin-bottom: 0px;
 }
@@ -1904,3 +1906,4 @@ Last change: 8th June 2018
          right:18% 
     }
 }
+

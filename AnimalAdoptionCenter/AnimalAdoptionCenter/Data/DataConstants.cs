@@ -43,6 +43,11 @@
         public const int ArticleBodyMinLength = 100;
         public const int ArticleBodyMaxLength = 10000;
 
+        public const int EventDescriptionMinLenght = 30;
+        public const int EventDescriptonMaxLength = 1500;
+        public const int EventNameMinLength = 10;
+        public const int EventNameMaxLength = 70;
+
 
 
     }

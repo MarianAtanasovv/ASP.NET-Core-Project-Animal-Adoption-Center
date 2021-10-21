@@ -29,9 +29,9 @@ namespace AnimalAdoptionCenter.Controllers
             }
            
             
-            if(this.eventData.checkHour(model.StartHour) == false)
+            if(this.eventData.checkHour(model.StartHour, model.Date) == false)
             {
-                TempData["someWarning"] = " Има такъв час";
+                TempData["someWarning"] = eventData.FreeHours(model.Date);
                 return View(model);
             }
 

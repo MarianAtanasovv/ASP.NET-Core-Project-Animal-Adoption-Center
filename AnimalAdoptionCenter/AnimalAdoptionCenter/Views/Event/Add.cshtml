@@ -81,12 +81,12 @@
 
                         <div class="col form-group">
                             <label class="required">Start Time</label>
-                            <input class="form-control time-input" type="text" id="start_time" asp-for="StartHour" required>
+                            <input class="form-control time-input" type="text" id="start_time" min="10" max="18" asp-for="StartHour" required>
                             @if (TempData["someWarning"] != null)
                             {
                                 
                         <div class="alert alert-warning" role="alert">
-                            @TempData["someWarning"].ToString();
+                            @TempData["someWarning"]
                         </div>
                             }
                         </div>

@@ -24,11 +24,11 @@ namespace AnimalAdoptionCenter.Models
         public string Description { get; set; }
 
         [Required]
-        public DateTime StartHour { get; set; }
+        public string StartHour { get; set; }
         //[Required]
         //public DateTime EndHour { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
     }
 }

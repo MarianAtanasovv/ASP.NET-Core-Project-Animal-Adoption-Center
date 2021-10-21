@@ -58,38 +58,50 @@
                         <div class="col form-group">
                             <label class="required">Date</label>
                             <input class="form-control date-input" type="text" id="date" asp-for="Date" data-trigger="hover" data-toggle="popover" title="Date" data-content="You can select any date from today clicking on the number in the calendar" required>
+                            <span asp-validation-for="Date" class="small text-danger"></span>
                         </div>
                         <div class="col form-group">
                             <label>Description</label>
                             <input class="form-control" type="text" asp-for="Description" id="description">
+                            <span asp-validation-for="Description" class="small text-danger"></span>
                         </div>
                         <div class="col form-group">
                             <label>Phone Number</label>
-                            <input class="form-control" type="text" asp-for="PhoneNumber" id="phoneNumber">
+                            <input class="form-control" type="text" asp-for="PhoneNumber" id="phone_number">
+                            <span asp-validation-for="PhoneNumber" class="small text-danger"></span>
                         </div>
                       
                     </div>
                     <div class="form-row">
                         <div class="col form-group">
                             <label>Full name</label>
-                            <input class="form-control" type="text" asp-for="FullName" id="fullName">
+                            <input class="form-control" type="text" asp-for="FullName" id="full_Name">
+                            <span asp-validation-for="FullName" class="small text-danger"></span>
                         </div>
+
                         <div class="col form-group">
                             <label class="required">Start Time</label>
                             <input class="form-control time-input" type="text" id="start_time" asp-for="StartHour" required>
+                            @if (TempData["someWarning"] != null)
+                            {
+                                
+                        <div class="alert alert-warning" role="alert">
+                            @TempData["someWarning"].ToString();
                         </div>
-                        <div class="col form-group">
-                            <label class="required">End Time</label>
-                            <input class="form-control time-input" type="text" id="end_time" asp-for="EndHour" required>
+                            }
                         </div>
+                      
+
                     </div>
                     <div class="form-row">
                         <div class="col form-group">
                             <button type="button" class="btn btn-warning btn-block" id="clear" onclick="clear_input()">Clear Form</button>
                         </div>
                         <div class="col form-group">
-                            <button type="submit" class="btn btn-primary btn-block" id="submit" onclick="make_appointment()" disabled="disabled">Make Appointment</button>
+                            <button type="submit" class="btn btn-primary btn-block">Make Appointment</button>
                         </div>
+
+
                     </div>
                 </form>
             </div>

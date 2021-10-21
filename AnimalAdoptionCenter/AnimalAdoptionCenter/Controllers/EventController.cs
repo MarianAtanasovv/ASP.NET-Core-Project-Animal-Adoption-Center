@@ -19,12 +19,19 @@ namespace AnimalAdoptionCenter.Controllers
         {
             return View();
         }
-
+     
         [HttpPost]
         public IActionResult Add(AddEventFormModel model)
         {
             if (!ModelState.IsValid)
             {
+                return View(model);
+            }
+           
+            
+            if(this.eventData.checkHour(model.StartHour) == false)
+            {
+                TempData["someWarning"] = " Има такъв час";
                 return View(model);
             }
 

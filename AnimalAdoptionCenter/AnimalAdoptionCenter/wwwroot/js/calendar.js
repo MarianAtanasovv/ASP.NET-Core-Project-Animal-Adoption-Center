@@ -126,8 +126,6 @@ function showCalendar(month, year) {
 
 }
 
-/*$('#date').val($(this).text() + "/" + ($('#month').data('val') + 1) + "/" + $('#year').text());*/
-
 
 $("#days td.active").on("click", function () {
     $('#date').val($(this).text() + "/" + ($('#month').text()) + "/" + $('#year').text());
@@ -154,17 +152,22 @@ $("#days td.inactive").on("click", function () {
     });
 });
 
+
+//id: $("#date").inputmask('unmaskedvalue') + $("#start_time").inputmask('unmaskedvalue') + $("#end_time").inputmask('unmaskedvalue'),
+//end_time: $("#end_time").val(),
 function make_appointment() {
     if (is_empty() == false) {
         is_past_date();
         compare();
         if (is_overlap() == false) {
             var appointment = {
-                id: $("#date").inputmask('unmaskedvalue')+$("#start_time").inputmask('unmaskedvalue')+$("#end_time").inputmask('unmaskedvalue'),
+                id: $("#date").inputmask('unmaskedvalue')+$("#start_time").inputmask('unmaskedvalue'),
                 date: $("#date").val(),
                 description: $("#description").val(),
                 start_time: $("#start_time").val(),
-                end_time: $("#end_time").val(),
+                phone_number: $("#phone_number").val(),
+                full_name: $("#full_name").val(),
+
             };
 
             SaveDataToLocalStorage(appointment);
@@ -489,4 +492,8 @@ function sort_database(data){
         if (temp1 > temp2) return -1;
         if (temp1 < temp2) return 1;
     });
+}
+
+function checkForDate() {
+
 }

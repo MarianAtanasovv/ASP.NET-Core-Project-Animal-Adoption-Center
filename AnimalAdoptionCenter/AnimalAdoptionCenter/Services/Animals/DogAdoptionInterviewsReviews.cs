@@ -24,5 +24,8 @@ namespace AnimalAdoptionCenter.Services.Animals
 
 
         public string Enclosure { get; set; }
+
+        public int DogId { get; set; }
+
     }
 }

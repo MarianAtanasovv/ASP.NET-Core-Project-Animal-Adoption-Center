@@ -81,7 +81,7 @@
 
                         <div class="col form-group">
                             <label class="required">Start Time</label>
-                            <input class="form-control time-input" type="text" id="start_time" min="10" max="18" asp-for="StartHour" required>
+                            <input class="form-control time-input" type="number" id="start_time" min="10" max="18" asp-for="StartHour" required>
                             @if (TempData["someWarning"] != null)
                             {
                                 
@@ -105,49 +105,10 @@
                     </div>
                 </form>
             </div>
-            <div class="col offset-md-1">
-                <div class="row">
-                    <div class="col">
-                        <h3>Appointments</h3>
-                    </div>
-                    <div class="col form-group">
-                        <button type="button" class="btn btn-danger btn-block" id="btn_clear_storage" onclick="clear_storage()">Clear Appointments</button>
-                    </div>
-                </div>
-                <table class="table table-bordered table-hover table-striped table-sm" id="appointment_list">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col" class="text-center align-middle">Date</th>
-                            <th scope="col" class="text-center align-middle">Description</th>
-                            <th scope="col" class="text-center align-middle">Start time</th>
-                            <th scope="col" class="text-center align-middle">End time</th>
-                            <th scope="col" class="text-center align-middle">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
+           
         </div>
         <br><br><br>
-        <blockquote class="blockquote text-center">
-            <p class="mb-0">
-                Made with:
-                <a href="https://getbootstrap.com/">Bootstrap</a>,
-                Javascript,
-                <a href="https://jquery.com/">Jquery</a>,
-                <a href="https://robinherbots.github.io/Inputmask/">Inputmask</a>,
-                <a href="http://izitoast.marcelodolce.com/">iziToast</a> and
-                <a href="https://fontawesome.com/">Fontawesome</a>
-            </p>
-            <footer class="blockquote-footer">
-                Guilherme Felix da Silva Maciel
-                <a href="https://github.com/guifelix/vanhack_calendar_javascript">
-                    <i class="fab fa-github"></i>
-                </a>
-            </footer>
-            <footer class="blockquote-footer">Please, if you're rendering inside hackerrank, try rendering on a new tab for optimize experience</footer>
-        </blockquote>
+   
     </div>
 
 

@@ -27,7 +27,7 @@ namespace AnimalAdoptionCenter.Controllers
             {
                 return View(model);
             }
-           
+            
             
             if(this.eventData.checkHour(model.StartHour, model.Date) == false)
             {
@@ -39,5 +39,6 @@ namespace AnimalAdoptionCenter.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+     
     }
 }

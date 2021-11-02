@@ -1,12 +1,9 @@
 ﻿using AnimalAdoptionCenter.Data;
 using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Models;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web.WebPages.Html;
 
 namespace AnimalAdoptionCenter.Services
 {
@@ -54,7 +51,6 @@ namespace AnimalAdoptionCenter.Services
         public int Add(AddEventFormModel model)
         {
             
-
             var eventData = new Event
             {
                 FullName = model.FullName,
@@ -65,9 +61,6 @@ namespace AnimalAdoptionCenter.Services
                 EndHour = model.StartHour
 
             };
-
-           
-
 
             this.data.Events.Add(eventData);
             this.data.SaveChanges();

@@ -73,7 +73,7 @@ namespace AnimalAdoptionCenter.Services.Adoption
                      HomeInformation = x.HomeInformation,
                      HoursAlone = x.HoursAlone,
                      OwnHome = x.OwnHome,
-                     VetKnowledge = x.VetKnowledge
+                     VetKnowledge = x.VetKnowledge,
                  }
                  )
                  .ToList();

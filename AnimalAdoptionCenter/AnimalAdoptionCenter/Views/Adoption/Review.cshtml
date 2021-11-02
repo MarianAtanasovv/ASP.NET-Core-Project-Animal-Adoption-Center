@@ -39,7 +39,7 @@
       
     </style>
 </head>
-<body>
+<body style="margin-top:150px">
     @if(Model.Count() == 0)
             {
                <div div align="center" class="container" style="height: 300px; width:300px">
@@ -54,65 +54,68 @@
             <form>
                 @foreach (var dog in Model)
                 {
-                    <div class="info">
+                <div class="info" style="width:65%; margin-left:300px">
 
 
-                        <div class="nk-post-text">
-                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px; color:black">Name:</h1>
-
-                            <p>@dog.Name</p>
-                        </div>
-                        <div class="nk-post-text">
-                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Home:</h1>
-                            <div class="divInfo">
-                                <p>@dog.HomeInformation</p>
-                            </div>
-
-                        </div>
-                        <div class="nk-post-text">
-                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Does adopter own the home:</h1>
-                            <p>@dog.OwnHome</p>
-                        </div>
-                        <div class="nk-post-text">
-                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Breed knowledge:</h1>
-                            <div class="divInfo">
-                                <p>@dog.BreedExplanation</p>
-                            </div>
-                        </div>
-                        <div class="nk-post-text">
-                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Hours alone:</h1>
-                            <p>@dog.HoursAlone</p>
-                        </div>
-                        <div class="nk-post-text">
-                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Allergies in family:</h1>
-                            <div class="divInfo">
-                                <p>@dog.AllergiesInFamily</p>
-                            </div>
-                        </div>
-                        <div class="nk-post-text">
-                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Enclosure:</h1>
-                            <p>@dog.Enclosure</p>
-                        </div>
-                        <div class="nk-post-text">
-                            <h1 class="nk-post-date mt-10 mb-10" style="font-size:20px">Vet knowledge:</h1>
-                            <div class="divInfo">
-                                <p>@dog.VetKnowledge</p>
-                            </div>
-                        </div>
-                        <div style="text-align:center; margin-top:20px;">
-                            
-                                <button class="approve" style="margin-right:20px" asp-controller="Adoption" asp-action="Approve" asp-route-dogId="@dog.Id" >
-                                    Approve
-                                    <i class="zmdi zmdi-arrow-right"></i>
-                                </button>
-                          
-                            <button class="disapprove">
-                                Disapprove
-                                <i class="zmdi zmdi-arrow-right"></i>
-                            </button>
-                        </div>
-
+                    <div class="form-group" >
+                        <label for="exampleFormControlInput1">Animal name</label>
+                        <p class="form-control">
+                            @dog.Name
+                        </p>
                     </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Home information</label>
+                        <p class="form-control">
+                            @dog.HomeInformation
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Own home</label>
+                        <p class="form-control">
+                            @dog.OwnHome
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Breed explanation</label>
+                        <p class="form-control">
+                            @dog.BreedExplanation
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Hours alone</label><br />
+                        <p class="form-control">
+                            @dog.HoursAlone
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Allergies in family</label>
+                        <p class="form-control">
+                            @dog.AllergiesInFamily
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Enclosure</label><br />
+                        <p class="form-control">
+                            @dog.Enclosure
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Vet knowledge</label>
+                        <p class="form-control">
+                            @dog.VetKnowledge
+                        </p>
+                    </div>
+                    <div style="text-align:center; margin-top:20px;">
+
+                       
+                        <a class="btn btn-primary btn-sm" asp-controller="Adoption" asp-action="Approve" asp-route-dogId="@dog.Id" style="margin-right:20px">Approve</a>
+                        <button class="btn btn-primary btn-sm">
+                            Disapprove
+                            <i class="zmdi zmdi-arrow-right"></i>
+                        </button>
+                    </div>
+
+                </div>
 
                     <br />
                     <div style="border-bottom: 2px solid red">

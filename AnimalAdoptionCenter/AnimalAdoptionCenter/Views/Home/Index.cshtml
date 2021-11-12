@@ -7,11 +7,11 @@
 
 <body class="page1">
 
-    <div id="slider" style="width:1200px;height:800px;margin:0 auto;margin-bottom: 0px;">
+    <div id="slider" style="width: 1200px; height: 850px; margin: -35px auto 0px 0px ">
         <!-- Slide 1 -->
         <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
             <!-- bg image  -->
-            <img src="~/img/homeDog1.jpg" class="ls-bg" alt="" />
+            <img src="~/img/dogs-dog-cute-muzzle-wallpaper-preview.jpg" class="ls-bg" alt="" />
             <!-- text  -->
             <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
                 <div class="header-text dog-elements">
@@ -19,7 +19,7 @@
                     <!--the div below is hidden on small screens  -->
                     <div class="d-none d-sm-block">
                         <p class="header-p">Search our list of dogs, cats and other pets available for adoption near you</p>
-                        <a class="btn btn-primary " href="adoption.html">Adopt Today</a>
+                        <a class="btn btn-primary " asp-controller="Dog" asp-action="All">Adopt Today</a>
                     </div>
                     <!--/d-none  -->
                 </div>
@@ -31,15 +31,15 @@
         <!-- Slide 2 -->
         <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
             <!-- bg image  -->
-            <img src="img/homeDog2.jpg" class="ls-bg" alt="" />
+            <img src="img/golden_retriever_dogs_with_hats_is_sitting_on_road_hd_dog (1).jpg" class="ls-bg" alt="" />
             <!-- text  -->
             <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
                 <div class="header-text cat-elements">
-                    <h1>High Quality pet food</h1>
+                    <h1>Not sure what to do?</h1>
                     <!--the div below is hidden on small screens  -->
                     <div class="d-none d-sm-block">
-                        <p class="header-p">We have all the best products for your pet, visit our store today!</p>
-                        <a class="btn btn-primary " href="contact.html">Contact us</a>
+                        <p class="header-p">Ask us anything and we'll do our best to help!</p>
+                        <a class="btn btn-primary " asp-controller="Contact" asp-action="Index">Contact us</a>
                     </div>
                     <!--/d-none  -->
                 </div>
@@ -49,29 +49,31 @@
         </div>
         <!-- ls-slide -->
         <!-- Slide 3 -->
-        <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
+        
+
+        <!--<div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">-->
             <!-- bg image  -->
-            <img src="img/homeDog3.jpg" class="ls-bg" alt="" />
+            <!--<img src="img/homeDog3.jpg" class="ls-bg" alt="" />-->
             <!-- text  -->
-            <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
+            <!--<div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
                 <div class="header-text dog-elements">
-                    <h1>Visit our Pet Hotel</h1>
+                    <h1>Visit our Pet Hotel</h1>-->
                     <!--the div below is hidden on small screens  -->
-                    <div class="d-none d-sm-block">
+                    <!--<div class="d-none d-sm-block">
                         <p class="header-p">Our facility is designed to meet the unique needs of your pet</p>
                         <a class="btn btn-primary " href="services.html">Our services</a>
-                    </div>
+                    </div>-->
                     <!--/d-none  -->
-                </div>
+                <!--</div>-->
                 <!-- header-text  -->
-            </div>
+            <!--</div>-->
             <!-- ls-l  -->
-        </div>
+        <!--</div>-->
         <!-- ls-slide -->
         <!-- Slide 4 -->
         <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
             <!-- bg image  -->
-            <img src="img/homeDog4.jpg" class="ls-bg" alt="" />
+            <img src="img/738230.jpg" class="ls-bg" alt="" />
             <!-- text  -->
             <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
                 <div class="header-text cat-elements">
@@ -79,7 +81,7 @@
                     <!-- the div below is hidden on small screens  -->
                     <div class="d-none d-sm-block">
                         <p class="header-p">Your pet is in good hands, meet our highly qualified professionals</p>
-                        <a class="btn btn-primary " href="team.html">Our Team</a>
+                        <a class="btn btn-primary " asp-controller="Event" asp-action="Add">Appointment</a>
                     </div>
                     <!--/d-none  -->
                 </div>

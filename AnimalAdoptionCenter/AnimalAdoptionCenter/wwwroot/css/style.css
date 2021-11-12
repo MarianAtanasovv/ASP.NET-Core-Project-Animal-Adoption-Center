@@ -539,11 +539,11 @@ Last change: 8th June 2018
      margin: 0;
 }
 /* call to action */
- #call-to-action {
-     height: 500px;
-     background-attachment:fixed!important;
-     background-size: cover!important;
-     background: url(../img/calltoaction.jpg);
+#call-to-action {
+    height: 500px;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background: url('https://lh3.googleusercontent.com/proxy/5fzSnsHDz6zuzdJvXRJTzhPL9_uqicmrE6Ammu1y5Dm4170316erw2801sEkkhVUwoLiPO58P6HTampRNlMrBa1L2Av3IF8xaDcYAHNcZM298oP2u3TzaLfgkt3QX6p4UXODDfx8jDELB8jFIFOMLL7viRg8GzEqRM_ZeQ');
 }
 /*=========================== team ============================ */
 /* team style 1 */
@@ -1748,8 +1748,8 @@ Last change: 8th June 2018
      .contact-icon .top-icon, .contact-icon {
          margin-top: 20px;
     }
-     #call-to-action {
-         padding:80px 0px;
+    #call-to-action {
+        padding:80px 0px;
     }
      .ls-outline .ls-nav-prev, .ls-outline .ls-nav-next{
          display:none!important;

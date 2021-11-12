@@ -1,6 +1,10 @@
-﻿using AnimalAdoptionCenter.Models;
+﻿using System.Linq;
+using AnimalAdoptionCenter.Models;
 using AnimalAdoptionCenter.Services;
+using AnimalAdoptionCenter.Services.Event;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
+using Microsoft.VisualBasic;
 
 namespace AnimalAdoptionCenter.Controllers
 {
@@ -19,7 +23,7 @@ namespace AnimalAdoptionCenter.Controllers
         {
             return View();
         }
-     
+
         [HttpPost]
         public IActionResult Add(AddEventFormModel model)
         {
@@ -27,9 +31,9 @@ namespace AnimalAdoptionCenter.Controllers
             {
                 return View(model);
             }
-            
-            
-            if(this.eventData.checkHour(model.StartHour, model.Date) == false)
+
+
+            if (this.eventData.CheckHour(model.StartHour, model.Date) == false)
             {
                 TempData["someWarning"] = eventData.FreeHours(model.Date);
                 return View(model);
@@ -39,6 +43,14 @@ namespace AnimalAdoptionCenter.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-     
+
+
+        public IActionResult All(AllAppointmentsViewModel model)
+        {
+            var appointments = this.eventData.All();
+
+            return View(appointments);
+        }
+
     }
 }

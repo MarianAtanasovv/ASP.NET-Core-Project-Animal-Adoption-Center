@@ -52,15 +52,15 @@ namespace AnimalAdoptionCenter
             return news.Id;
         }
 
-        public IEnumerable<AllNewsViewModel> All()
+        public IEnumerable<AllNewsViewModel> All(AllNewsViewModel model)
         {
             var news =  this.data.News.Select(x => new AllNewsViewModel
             {
-                Id = x.Id,
-                Body = x.Body,
-                Title = x.Title,
-                DateTime = x.PublishedOn,
-                NewsImages = x.NewsImages
+                Id = model.Id,
+                Body = model.Body,
+                Title = model.Title,
+                DateTime = model.DateTime,
+                NewsImages = model.NewsImages
             }).ToList();
 
             return news;
@@ -124,7 +124,7 @@ namespace AnimalAdoptionCenter
             {
                 var details = this.data.News.Where(x => x.Id == newsId)
            .Select(x => new NewsDetailsViewModel
-           {
+            {
                Id = x.Id,
                Title = x.Title,
                Body = x.Body,
@@ -132,7 +132,7 @@ namespace AnimalAdoptionCenter
                NewsImages = x.NewsImages,
                Comments = x.Comments
 
-           })
+            })
             .FirstOrDefault();
 
             return details;

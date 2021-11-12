@@ -79,7 +79,7 @@
 
 
             <div class="navbar container-fluid">
-                <div>
+                <div style="margin-right: 10px">
                     <form asp-area="Identity" asp-page="/Account/Register" method="post">
                         <button type="submit" class="btn btn-danger">Register</button>
                     </form>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="container ">
                     <!-- logo -->
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                         <i class="flaticon-dog-20"></i><span>Woof!</span>
                     </a>
                     <!-- Navbartoggler -->
@@ -105,7 +105,7 @@
                         <ul class="navbar-nav ml-auto">
                             <!-- menu item -->
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">
                                     Home
                                 </a>
                             </li>

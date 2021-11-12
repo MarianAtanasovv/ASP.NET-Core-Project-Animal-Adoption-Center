@@ -45,9 +45,7 @@ namespace AnimalAdoptionCenter.Controllers
         [HttpGet]
         public IActionResult All([FromQuery] AllNewsQueryModel query)
         {
-
-            //var news = this.news.All();
-            //return View(news);
+            
             var newsQueryResult = this.news.All(
                query.SearchTerm,
                query.CurrentPage,

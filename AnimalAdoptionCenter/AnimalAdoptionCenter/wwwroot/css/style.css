@@ -993,9 +993,10 @@ Last change: 8th June 2018
      white-space: normal;
      font-weight: bold;
 }
- .btn-primary, .btn-secondary {
-     transition: background .2s ease-in-out;
-}
+
+    .btn-primary, .btn-secondary {
+        transition: background .2s ease-in-out;
+    }
  .btn-lg {
      padding: 1.5rem 2.4rem!important;
      font-size: 1.25rem!important;

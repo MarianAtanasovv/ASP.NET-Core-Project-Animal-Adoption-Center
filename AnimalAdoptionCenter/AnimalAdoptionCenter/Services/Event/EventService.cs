@@ -1,9 +1,9 @@
 ﻿using AnimalAdoptionCenter.Data;
-using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AnimalAdoptionCenter.Services.Event;
 
 namespace AnimalAdoptionCenter.Services
 {
@@ -16,7 +16,7 @@ namespace AnimalAdoptionCenter.Services
             this.data = data;
             
         }
-        public bool checkHour(string hour, string date)
+        public bool CheckHour(string hour, string date)
         {
             var checkForDate = this.data.Events.Any(x => x.StartHour == hour && x.Date == date);
             FreeHours(date);
@@ -51,14 +51,13 @@ namespace AnimalAdoptionCenter.Services
         public int Add(AddEventFormModel model)
         {
             
-            var eventData = new Event
+            var eventData = new Data.Models.Event
             {
                 FullName = model.FullName,
                 Phone = model.PhoneNumber,
                 Description = model.Description,
                 Date = model.Date,
                 StartHour = model.StartHour,
-                EndHour = model.StartHour
 
             };
 
@@ -67,6 +66,20 @@ namespace AnimalAdoptionCenter.Services
 
             return eventData.Id;
 
+        }
+
+        public IEnumerable<AllAppointmentsViewModel> All()
+        {
+            var appointments = this.data.Events.Select(x => new AllAppointmentsViewModel
+            {
+                Date = x.Date,
+                Description = x.Description,
+                FullName = x.FullName,
+                Phone = x.Phone,
+                StartHour = x.StartHour.Substring(0, 10)
+            }).ToList();
+
+            return appointments;
         }
     }
 }

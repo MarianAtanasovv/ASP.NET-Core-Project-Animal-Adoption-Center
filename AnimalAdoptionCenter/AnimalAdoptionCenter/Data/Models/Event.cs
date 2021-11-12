@@ -27,12 +27,8 @@ namespace AnimalAdoptionCenter.Data.Models
         public string StartHour { get; set; }
 
         [Required]
-        public string EndHour { get; set; }
-
-        [Required]
         public string Date { get; set; }
 
-        public ICollection<ReservedHours> ReservedHours { get; set; }
 
         
     }

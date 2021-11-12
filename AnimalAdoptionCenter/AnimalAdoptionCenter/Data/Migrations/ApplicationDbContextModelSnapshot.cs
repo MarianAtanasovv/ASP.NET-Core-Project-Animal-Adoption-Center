@@ -163,10 +163,6 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .HasMaxLength(1500)
                         .HasColumnType("nvarchar(1500)");
 
-                    b.Property<string>("EndHour")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(70)
@@ -228,15 +224,10 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("EventId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Hour")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EventId");
 
                     b.ToTable("ReservedHours");
                 });
@@ -549,13 +540,6 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Navigation("Dog");
                 });
 
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.ReservedHours", b =>
-                {
-                    b.HasOne("AnimalAdoptionCenter.Data.Models.Event", null)
-                        .WithMany("ReservedHours")
-                        .HasForeignKey("EventId");
-                });
-
             modelBuilder.Entity("AnimalAdoptionCenter.Dаta.Comment", b =>
                 {
                     b.HasOne("AnimalAdoptionCenter.Data.News", "News")
@@ -627,11 +611,6 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Navigation("AnimalImages");
 
                     b.Navigation("PotentialAdopters");
-                });
-
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Event", b =>
-                {
-                    b.Navigation("ReservedHours");
                 });
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.News", b =>

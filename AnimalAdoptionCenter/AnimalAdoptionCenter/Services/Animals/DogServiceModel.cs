@@ -23,7 +23,7 @@ namespace AnimalAdoptionCenter.Services.Animals
 
         public string Gender { get; set; }
 
-        public string Agressive { get; set; }
+        public bool Aggressive { get; set; }
 
         public bool Neutered { get; set; }
 

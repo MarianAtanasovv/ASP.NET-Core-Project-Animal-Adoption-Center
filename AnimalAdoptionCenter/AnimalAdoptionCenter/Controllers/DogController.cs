@@ -82,7 +82,7 @@ namespace AnimalAdoptionCenter.Controllers
                 Color = dog.Color,
                 Breed = dog.Breed,
                 Age = dog.Age,
-                Agressive = dog.Agressive,
+                Aggressive = dog.Aggressive,
                 Gender = dog.Gender,
                 Images = dog.Images,
                 Neutered = dog.Neutered,

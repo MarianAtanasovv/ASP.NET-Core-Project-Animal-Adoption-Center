@@ -39,7 +39,7 @@ namespace AnimalAdoptionCenter.Models.Animals
         public Gender Gender { get; set; }
 
         [Required]
-        public bool Agressive { get; set; }
+        public bool Aggressive { get; set; }
 
         [Required]
         public bool Neutered { get; set; }

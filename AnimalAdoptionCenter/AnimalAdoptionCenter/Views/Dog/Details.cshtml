@@ -37,8 +37,31 @@
                             </div>
                             <div class="col-sm-6">
                                 <ul class="list-unstyled pet-adopt-info">
-                                    <li class="h7">Neutered: <span>@Model.Neutered</span></li>
-                                    <li class="h7">Vaccinated: <span>@Model.Vaccinated</span></li>
+                                    @if (@Model.Aggressive)
+                                    {
+                                        <li><strong>Aggressive: </strong> Yes</li>
+                                    }
+                                    else
+                                    {
+                                        <li><strong>Aggressive: </strong> No</li>
+                                    }
+                                    @if (@Model.Neutered)
+                                    {
+                                        <li class="h7">Neutered: <span> Yes</span></li>
+                                    }
+                                    else
+                                    {
+                                        <li><strong>Neutered: </strong> No</li>
+                                    }
+                                    @if (@Model.Vaccinated)
+                                    {
+                                         <li class="h7">Vaccinated: <span> Yes</span></li>
+                                    }
+                                    else
+                                    {
+                                        <li><strong>Vaccinated: </strong> No</li>
+                                    }
+                                   
                                 </ul>
                             </div>
                             <!-- /div-->

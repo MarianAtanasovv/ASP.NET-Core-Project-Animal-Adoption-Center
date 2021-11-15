@@ -78,7 +78,7 @@ namespace AnimalAdoptionCenter.Services.Animals
                 Breed = x.Breed,
                 Age = x.Age,
                 Gender = x.Gender,
-                Agressive = x.Agressive,
+                Aggressive = x.Aggressive,
                 Color = x.Color,
                 Images = x.AnimalImages,
                 Neutered = x.Neutered,
@@ -100,7 +100,7 @@ namespace AnimalAdoptionCenter.Services.Animals
                Description = g.Description,
                Age = g.Age,
                AnimalImages = g.AnimalImages,
-               Agressive = g.Agressive.ToString(),
+               Aggressive = g.Aggressive,
                Breed = g.Breed,
                Color = g.Color,
                Gender = g.Gender.ToString(),
@@ -144,7 +144,7 @@ namespace AnimalAdoptionCenter.Services.Animals
                 Color = dogModel.Color,
                 Description = dogModel.Description,
                 Gender = dogModel.Gender,
-                Agressive = dogModel.Agressive,
+                Aggressive = dogModel.Aggressive,
                 Neutered = dogModel.Neutered,
                 Vaccinated = dogModel.Vaccinated
             };

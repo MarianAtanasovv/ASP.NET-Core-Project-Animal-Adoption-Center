@@ -88,7 +88,7 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Agressive")
+                    b.Property<bool>("Aggressive")
                         .HasColumnType("bit");
 
                     b.Property<string>("Breed")

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimalAdoptionCenter.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211019101024_EventChangesPhoneNumber")]
-    partial class EventChangesPhoneNumber
+    [Migration("20211115145055_DogAggressiveStringToBool")]
+    partial class DogAggressiveStringToBool
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -156,17 +156,27 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(1500)
+                        .HasColumnType("nvarchar(1500)");
 
                     b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(70)
+                        .HasColumnType("nvarchar(70)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Hour")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("StartHour")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -207,6 +217,21 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.HasIndex("DogId");
 
                     b.ToTable("PotentialAdopters");
+                });
+
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.ReservedHours", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Hour")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ReservedHours");
                 });
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.User", b =>

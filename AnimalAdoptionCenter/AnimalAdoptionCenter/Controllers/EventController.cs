@@ -2,6 +2,7 @@
 using AnimalAdoptionCenter.Models;
 using AnimalAdoptionCenter.Services;
 using AnimalAdoptionCenter.Services.Event;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.VisualBasic;
@@ -19,12 +20,15 @@ namespace AnimalAdoptionCenter.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
+
         public IActionResult Add(AddEventFormModel model)
         {
             if (!ModelState.IsValid)

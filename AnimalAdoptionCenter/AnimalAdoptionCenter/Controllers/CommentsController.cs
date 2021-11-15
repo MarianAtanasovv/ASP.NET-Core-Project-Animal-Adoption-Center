@@ -1,6 +1,7 @@
 ﻿using AnimalAdoptionCenter.Infrastructure;
 using AnimalAdoptionCenter.Services.Comments;
 using AnimalAdoptionCenter.Services.Users;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalAdoptionCenter.Controllers
@@ -18,6 +19,7 @@ namespace AnimalAdoptionCenter.Controllers
             this.users = users;
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Add(string content, int newsId)
         {
             var userId = this.users.IdUser(this.User.Id());

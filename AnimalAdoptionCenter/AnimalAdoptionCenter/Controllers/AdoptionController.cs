@@ -1,5 +1,6 @@
 ﻿using AnimalAdoptionCenter.Models.Adoption;
 using AnimalAdoptionCenter.Services.Adoption;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalAdoptionCenter.Controllers
@@ -20,6 +21,7 @@ namespace AnimalAdoptionCenter.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Interview(AdoptionInterviewFormModel interviewModel, int dogId)
         {
             if (!ModelState.IsValid)

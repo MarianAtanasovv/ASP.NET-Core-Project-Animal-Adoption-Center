@@ -25,19 +25,23 @@
                     <!-- Post Content -->
                     @Model.NewsDetailsViewModel.Body
                     <!-- Comments Form -->
-                    <div class="card my-4 mt-5 bg-light-custom border-irregular1" style="margin-bottom: 20px">
-                        <h5 class="card-header">Leave a Comment:</h5>
-                        <div class="card-body">
-                            <form method="post" asp-controller="Comments" asp-action="Add" asp-route-content="@Model.AddCommentFormModel.Content" asp-route-newsId="@Model.NewsDetailsViewModel.Id">
-                                <div class="form-group">
-                                    <textarea class="form-control" rows="3" type="text" id="content" name="content" asp-for="@Model.AddCommentFormModel.Content"></textarea>
-                                </div>
-                                <div>
-                                    <button type="submit" class="btn btn-primary btn-sm">Comment</button>
-                                </div>
-                            </form>
+                    @*@if (User.Identity.IsAuthenticated)
+                    {*@
+                        <div class="card my-4 mt-5 bg-light-custom border-irregular1" style="margin-bottom: 20px">
+                            <h5 class="card-header">Leave a Comment:</h5>
+                            <div class="card-body">
+                                <form method="post" asp-controller="Comments" asp-action="Add" asp-route-content="@Model.AddCommentFormModel.Content" asp-route-newsId="@Model.NewsDetailsViewModel.Id">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="3" type="text" id="content" name="content" asp-for="@Model.AddCommentFormModel.Content"></textarea>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary btn-sm">Comment</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    @*}*@
+                 
                     <!-- Comment -->
                     @foreach (var comment in Model.AllCommentsViewModel)
                     {

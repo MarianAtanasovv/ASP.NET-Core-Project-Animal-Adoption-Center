@@ -60,7 +60,6 @@
             <div class="container block-padding pt-0">
                 <div class="col-lg-8 offset-lg-2 text-center">
                     <h3>Find a new furry Friend</h3>
-                    <p>Aliquam erat lorem ipsum volutpat In id fermentum augue, ut pellentesque leo. Maecenas at arcu risus. Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec lobortis maximus. Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall.</p>
                 </div>
                 <!-- First row: Adopt a pet -->
                 <div class="row mt-5">
@@ -118,18 +117,44 @@
                     </div>
                         
                 <!-- /row -->
+                
+                @{ var previousPage = Model.CurrentPage - 1;
+                    if (previousPage < 1)
+                    {
+                        previousPage = 1;
+                    }
+
+                    var maxDogs = Math.Ceiling((double)Model.TotalDogs / AllDogsQueryModel.DogsPerPage); }
+             
+
+                @{ var shouldButtonBeDisabled = Model.CurrentPage == maxDogs |
+                                                !Model.Dogs.Any(); }
+
+                  
                 <div class="col-md-12 mt-5">
                     <!-- pagination -->
                     <nav aria-label="pagination">
                         <ul class="pagination float-right">
-                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                          
+                            <li class="page-item"><a class="page-link @(shouldButtonBeDisabled ? "disabled" : string.Empty)"
+                                                     asp-controller="Dog"
+                                                     asp-action="All"
+                                                     asp-route-currentPage="@(Model.CurrentPage + 1)"
+                                                     asp-route-brand="@Model.Name"
+                                                     asp-route-searchTerm="@Model.SearchTerm">Next page</a></li>
+
+                            <li class="page-item"><a class="page-link @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+                                                     asp-controller="Dog"
+                                                     asp-action="All"
+                                                     asp-route-currentPage="@previousPage"
+                                                     asp-route-brand="@Model.Name"
+                                                     asp-route-searchTerm="@Model.SearchTerm">Previous page</a></li>
                         </ul>
                     </nav>
                     <!-- /nav -->
                 </div>
+                <!-- /col-md -->
+
                 <!-- /col-md -->
             </div>
             <!-- /container -->

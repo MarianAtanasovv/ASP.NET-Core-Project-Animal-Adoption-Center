@@ -1,4 +1,4 @@
-﻿@model IList<DogAdoptionInterviewsReviews> 
+﻿@model IList<AnimalAdoptionInterviewsReviews> 
 
 <!DOCTYPE html>
 <html>
@@ -52,63 +52,75 @@
     <div class="wrapper">
         <div class="inner">
             <form>
-                @foreach (var dog in Model)
+                @foreach (var person in Model)
                 {
                 <div class="info" style="width:65%; margin-left:300px">
 
 
                     <div class="form-group" >
-                        <label for="exampleFormControlInput1">Animal name</label>
+                        <label for="exampleFormControlInput1">Name</label>
                         <p class="form-control">
-                            @dog.Name
+                            @person.Name
                         </p>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Home information</label>
                         <p class="form-control">
-                            @dog.HomeInformation
+                            @person.HomeInformation
                         </p>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Own home</label>
-                        <p class="form-control">
-                            @dog.OwnHome
-                        </p>
+                        @if (person.OwnHome)
+                        {
+                            <p class="form-control">
+                         
+                              Owner
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="form-control">
+                         
+                                Not owner
+                            </p>
+                        }
+                       
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Breed explanation</label>
                         <p class="form-control">
-                            @dog.BreedExplanation
+                            @person.BreedExplanation
                         </p>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Hours alone</label><br />
                         <p class="form-control">
-                            @dog.HoursAlone
+                            @person.HoursAlone
                         </p>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Allergies in family</label>
                         <p class="form-control">
-                            @dog.AllergiesInFamily
+                            @person.AllergiesInFamily
                         </p>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Enclosure</label><br />
                         <p class="form-control">
-                            @dog.Enclosure
+                            @person.Enclosure
                         </p>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Vet knowledge</label>
                         <p class="form-control">
-                            @dog.VetKnowledge
+                            @person.VetKnowledge
                         </p>
                     </div>
                     <div style="text-align:center; margin-top:20px;">
 
                        
-                        <a class="btn btn-primary btn-sm" asp-controller="Adoption" asp-action="Approve" asp-route-dogId="@dog.Id" style="margin-right:20px">Approve</a>
+                        <a class="btn btn-primary btn-sm" asp-controller="Adoption" asp-action="Approve" asp-route-dogId="@person.Id" style="margin-right:20px">Approve</a>
                         <button class="btn btn-primary btn-sm">
                             Disapprove
                             <i class="zmdi zmdi-arrow-right"></i>

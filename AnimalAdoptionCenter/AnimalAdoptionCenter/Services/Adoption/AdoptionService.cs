@@ -25,7 +25,7 @@ namespace AnimalAdoptionCenter.Services.Adoption
             string breedExplanation, 
             string enclosure,
             string vetKnowledge,
-            int dogId
+            int animalId
            )
         {
             var interview = new AdoptionInterview()
@@ -39,8 +39,8 @@ namespace AnimalAdoptionCenter.Services.Adoption
                 BreedExplanation = breedExplanation,
                 VetKnowledge = vetKnowledge,
                 Enclosure = enclosure,
-                DogId = dogId
-               
+                AnimalId = animalId
+
             };
 
             this.data.AdoptionInterviews.Add(interview);
@@ -51,21 +51,21 @@ namespace AnimalAdoptionCenter.Services.Adoption
 
         public int Approve(int dogId)
         {
-            var dog = this.data.Dogs.Where(x => x.Id == dogId).FirstOrDefault();
+            var animal = this.data.Animals.Where(x => x.Id == dogId).FirstOrDefault();
 
-            this.data.Remove(dog);
+            this.data.Remove(animal);
             this.data.SaveChanges();
 
-            return dog.Id;
+            return animal.Id;
         }
 
-        public IList<DogAdoptionInterviewsReviews> Review(int dogId)
+        public IList<AnimalAdoptionInterviewsReviews> Review(int animalId)
         {
             return this.data.AdoptionInterviews
-                 .Where(x => x.DogId == dogId)
-                 .Select(x => new DogAdoptionInterviewsReviews
+                 .Where(x => x.AnimalId == animalId)
+                 .Select(x => new AnimalAdoptionInterviewsReviews
                  {
-                     Id = dogId,
+                     Id = animalId,
                      Name = x.Name,
                      AllergiesInFamily = x.AllergiesInFamily,
                      BreedExplanation = x.BreedExplanation,

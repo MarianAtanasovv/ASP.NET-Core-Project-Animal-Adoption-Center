@@ -18,7 +18,7 @@ namespace AnimalAdoptionCenter.Data
 
         public DbSet<AnimalImage> Images { get; set; }
 
-        public DbSet<Dog> Dogs { get; set; }
+        public DbSet<Animal> Animals { get; set; }
 
         public DbSet<PotentialAdopter> PotentialAdopters { get; set; }
 
@@ -51,9 +51,9 @@ namespace AnimalAdoptionCenter.Data
                 .HasForeignKey(x => x.DogId);
 
             builder.Entity<AdoptionInterview>()
-                .HasOne(x => x.Dog)
+                .HasOne(x => x.Animal)
                 .WithMany(x => x.AdoptionInterviews)
-                .HasForeignKey(x => x.DogId)
+                .HasForeignKey(x => x.AnimalId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(builder);

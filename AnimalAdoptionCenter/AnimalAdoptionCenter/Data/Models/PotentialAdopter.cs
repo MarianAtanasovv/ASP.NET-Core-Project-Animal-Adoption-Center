@@ -9,6 +9,6 @@ namespace AnimalAdoptionCenter.Data.Models
 
         public int DogId { get; set; }
 
-        public Dog Dog { get; set; }
+        public Animal Dog { get; set; }
     }
 }

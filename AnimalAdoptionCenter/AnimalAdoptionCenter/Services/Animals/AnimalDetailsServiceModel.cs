@@ -1,33 +1,41 @@
 ﻿using AnimalAdoptionCenter.Data.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace AnimalAdoptionCenter.Services.Animals
 {
-    public class DogServiceModel
+    public class AnimalDetailsServiceModel
     {
         public int Id { get; set; }
 
-        public List<AnimalImage> AnimalImages { get; set; }
+        [Required]
+        public List<AnimalImage> Images { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
-        public int Age { get; set; }
-
-        public string Breed { get; set; }
-
+        [Required]
         public string Description { get; set; }
 
+        [Required]
+        public int Age { get; set; }
+
+        [Required]
+        public string Breed { get; set; }
+
+        [Required]
         public string Color { get; set; }
 
-        public string Gender { get; set; }
+        [Required]
+        public Gender Gender { get; set; }
 
+        [Required]
         public bool Aggressive { get; set; }
 
+        [Required]
         public bool Neutered { get; set; }
 
+        [Required]
         public bool Vaccinated { get; set; }
-
     }
 }

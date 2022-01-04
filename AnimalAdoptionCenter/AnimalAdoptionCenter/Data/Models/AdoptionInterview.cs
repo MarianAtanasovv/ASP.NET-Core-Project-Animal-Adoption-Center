@@ -45,8 +45,8 @@ namespace AnimalAdoptionCenter.Data.Models
 
         public string UserId { get; set; }
 
-        public Dog Dog { get; set; }
+        public Animal Animal { get; set; }
 
-        public int DogId { get; set; }
+        public int AnimalId { get; set; }
     }
 }

@@ -12,65 +12,65 @@ using System.Linq;
 
 namespace AnimalAdoptionCenter.Services.Animals
 {
-    public class DogService : IDogService
+    public class AnimalService : IAnimalService
     {
         private readonly ApplicationDbContext data;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-        public DogService(ApplicationDbContext data, IWebHostEnvironment webHostEnvironment)
+        public AnimalService(ApplicationDbContext data, IWebHostEnvironment webHostEnvironment)
         {
             this.data = data;
             this.webHostEnvironment = webHostEnvironment;
 
         }
 
-        public DogsQueryModel All(
+        public AnimalQueryModel All(
           string searchTerm,
           AnimalSorting sorting,
           int currentPage,
-          int dogsPerPage,
+          int animalsPerPage,
           string name)
         {
-            var dogsQuery = this.data.Dogs.AsQueryable();
+            var animalsQuery = this.data.Animals.AsQueryable();
 
             if (!string.IsNullOrEmpty(name))
             {
-                dogsQuery = dogsQuery.Where(x => x.Name == name);
+                animalsQuery = animalsQuery.Where(x => x.Name == name);
             }
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                dogsQuery = dogsQuery.Where(x => x.Name.ToLower().Contains(searchTerm.ToLower()));
+                animalsQuery = animalsQuery.Where(x => x.Name.ToLower().Contains(searchTerm.ToLower()));
             }
 
-            dogsQuery = sorting switch
+            animalsQuery = sorting switch
             {
-                AnimalSorting.Name => dogsQuery.OrderBy(t => t.Name),
-                AnimalSorting.Age => dogsQuery.OrderByDescending(p => p.Age),
-                _ => dogsQuery.OrderByDescending(x => x.Id)
+                AnimalSorting.Name => animalsQuery.OrderBy(t => t.Name),
+                AnimalSorting.Age => animalsQuery.OrderByDescending(p => p.Age),
+                _ => animalsQuery.OrderByDescending(x => x.Id)
             };
 
-            var totalDogs = dogsQuery.Count();
+            var totalAnimals = animalsQuery.Count();
 
-            var dogs = GetDogs(dogsQuery
-                .Skip((currentPage - 1) * dogsPerPage)
-                .Take(dogsPerPage));
+            var dogs = GetAnimals(animalsQuery
+                .Skip((currentPage - 1) * animalsPerPage)
+                .Take(animalsPerPage));
 
 
-            return new DogsQueryModel
+            return new AnimalQueryModel
             {
-                TotalDogs = totalDogs,
-                Dogs = dogs,
+                TotalAnimals = totalAnimals,
+                Animals = dogs,
                 CurrentPage = currentPage,
-                DogsPerPage = dogsPerPage
+                AnimalsPerPage = animalsPerPage
             };
 
         }
 
-        public DogDetailsServiceModel Details(int id)
+        public AnimalDetailsServiceModel Details(int id)
         {
-            var details = this.data.Dogs.Include(x => x.AnimalImages).Where(x => x.Id == id)
-            .Select(x => new DogDetailsServiceModel
+            var details = this.data.Animals.Include(x => x.AnimalImages).Where(x => x.Id == id)
+            .Select(x => new AnimalDetailsServiceModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -90,10 +90,10 @@ namespace AnimalAdoptionCenter.Services.Animals
             return details;
         }
 
-        private static IEnumerable<DogServiceModel> GetDogs(IQueryable<Dog> dogQuery)
+        private static IEnumerable<AnimalServiceModel> GetAnimals(IQueryable<Animal> animalQuery)
         {
-            return dogQuery
-           .Select(g => new DogServiceModel
+            return animalQuery
+           .Select(g => new AnimalServiceModel
            {
                Id = g.Id,
                Name = g.Name,
@@ -110,10 +110,10 @@ namespace AnimalAdoptionCenter.Services.Animals
            })
            .ToList();
         }
-        public IEnumerable<string> AllDogs()
+        public IEnumerable<string> AllAnimals()
         {
             return this.data
-                .Dogs
+                .Animals
                 .Select(x => x.Name)
                 .Distinct()
                 .OrderBy(x => x)
@@ -122,51 +122,51 @@ namespace AnimalAdoptionCenter.Services.Animals
 
         public int Remove(int id)
         {
-            var dog = this.data.Dogs.Where(x => x.Id == id).FirstOrDefault();
+            var animal = this.data.Animals.Where(x => x.Id == id).FirstOrDefault();
 
-            this.data.Dogs.Remove(dog);
+            this.data.Animals.Remove(animal);
             this.data.SaveChanges();
 
-            return dog.Id;
+            return animal.Id;
         }
 
 
 
-        public int Add(AddDogFormModel dogModel)
+        public int Add(AddAnimalFormModel animalModel)
         {
 
-            var dog = new Dog
+            var animal = new Animal
             {
-                Id = dogModel.Id,
-                Name = dogModel.Name,
-                Age = dogModel.Age,
-                Breed = dogModel.Breed,
-                Color = dogModel.Color,
-                Description = dogModel.Description,
-                Gender = dogModel.Gender,
-                Aggressive = dogModel.Aggressive,
-                Neutered = dogModel.Neutered,
-                Vaccinated = dogModel.Vaccinated
+                Id = animalModel.Id,
+                Name = animalModel.Name,
+                Age = animalModel.Age,
+                Breed = animalModel.Breed,
+                Color = animalModel.Color,
+                Description = animalModel.Description,
+                Gender = animalModel.Gender,
+                Aggressive = animalModel.Aggressive,
+                Neutered = animalModel.Neutered,
+                Vaccinated = animalModel.Vaccinated
             };
 
-            foreach (var image in dogModel.Images)
+            foreach (var image in animalModel.Images)
             {
                 var uniqueFileName = UploadedFile(image);
                 var animalImageData = new AnimalImage
                 {
                     Name = uniqueFileName,
-                    AnimalId = dog.Id
+                    AnimalId = animal.Id
                 };
 
                 this.data.Images.Add(animalImageData);
-                dog.AnimalImages.Add(animalImageData);
+                animal.AnimalImages.Add(animalImageData);
 
             }
 
-            this.data.Dogs.Add(dog);
+            this.data.Animals.Add(animal);
             this.data.SaveChanges();
 
-            return dog.Id;
+            return animal.Id;
         }
 
         private string UploadedFile(IFormFile imageData)

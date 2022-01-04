@@ -8,7 +8,7 @@ namespace AnimalAdoptionCenter.Models.Animals
 {
     using static DataConstants;
 
-    public class AddDogFormModel
+    public class AddAnimalFormModel
     {
         public int Id { get; set; }
 

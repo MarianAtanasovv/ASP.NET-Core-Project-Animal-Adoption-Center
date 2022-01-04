@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace AnimalAdoptionCenter.Services.Animals
 {
-    public class DogsQueryModel
+    public class AnimalQueryModel
     {
         public int CurrentPage { get; set; }
 
-        public int DogsPerPage { get; set; }
+        public int AnimalsPerPage { get; set; }
 
-        public int TotalDogs { get; set; }
+        public int TotalAnimals { get; set; }
 
-        public IEnumerable<DogServiceModel> Dogs { get; set; }
+        public IEnumerable<AnimalServiceModel> Animals { get; set; }
     }
 }

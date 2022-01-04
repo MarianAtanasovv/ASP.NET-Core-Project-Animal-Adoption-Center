@@ -59,7 +59,7 @@ namespace AnimalAdoptionCenter
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
-            services.AddTransient<IDogService, DogService>();
+            services.AddTransient<IAnimalService, AnimalService>();
             services.AddTransient<IAdoptionService, AdoptionService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<ICommentsService, CommentService>();

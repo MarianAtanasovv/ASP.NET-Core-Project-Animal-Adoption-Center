@@ -5,21 +5,21 @@ using System.Collections.Generic;
 
 namespace AnimalAdoptionCenter.Services
 {
-    public interface IDogService
+    public interface IAnimalService
     {
-        DogDetailsServiceModel Details(int id);
-        public DogsQueryModel All(
+        AnimalDetailsServiceModel Details(int id);
+        public AnimalQueryModel All(
                  string searchTerm,
                  AnimalSorting sorting,
                  int currentPage,
-                 int dogsPerPage,
+                 int animalsPerPage,
                  string name);
 
-        public IEnumerable<string> AllDogs();
+        public IEnumerable<string> AllAnimals();
 
         public int Remove(int id);
 
-        public int Add(AddDogFormModel dogModel);
+        public int Add(AddAnimalFormModel animalModel);
 
 
     }

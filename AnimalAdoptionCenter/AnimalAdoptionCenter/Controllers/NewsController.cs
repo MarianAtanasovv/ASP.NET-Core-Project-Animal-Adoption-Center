@@ -19,8 +19,6 @@ namespace AnimalAdoptionCenter.Controllers
             this.comments = comments;
         }
        
-
-
         [HttpGet]
         public IActionResult Add()
         {
@@ -37,8 +35,7 @@ namespace AnimalAdoptionCenter.Controllers
 
             this.news.Add(model);
 
-            return RedirectToAction("Home", "Index");
-
+            return RedirectToAction("Index", "Home");
             
         }
 
@@ -73,8 +70,7 @@ namespace AnimalAdoptionCenter.Controllers
                 return NotFound();
             }
 
-
-
+            
             var commentsData = new AddCommentFormModel();
             var newsData = details;
             var comments = this.comments.All();

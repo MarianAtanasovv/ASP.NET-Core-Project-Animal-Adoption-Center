@@ -10,33 +10,33 @@ using System.IO;
 
 namespace AnimalAdoptionCenter.Controllers
 {
-    public class DogController : Controller
+    public class AnimalController : Controller
     {
 
         private readonly IWebHostEnvironment webHostEnvironment;
-        private readonly IDogService dog;
-        public DogController(IWebHostEnvironment hostEnvironment, IDogService animal)
+        private readonly IAnimalService animal;
+        public AnimalController(IWebHostEnvironment hostEnvironment, IAnimalService animal)
         {
             this.webHostEnvironment = hostEnvironment;
-            this.dog = animal;
+            this.animal = animal;
         }
 
 
         [HttpGet]
-        public IActionResult All([FromQuery] AllDogsQueryModel query)
+        public IActionResult All([FromQuery] AllAnimalsQueryModel query)
         {
-            var dogsQueryResult = this.dog.All(
+            var animalsQueryResult = this.animal.All(
                 query.SearchTerm,
                 query.Sorting,
                 query.CurrentPage,
-                AllDogsQueryModel.DogsPerPage,
+                AllAnimalsQueryModel.AnimalsPerPage,
                 query.Name);
 
-            var dogNames = this.dog.AllDogs();
+            var animalsNames = this.animal.AllAnimals();
               
-            query.TotalDogs = dogsQueryResult.TotalDogs;
-            query.Dogs = dogsQueryResult.Dogs;
-            query.Names = dogNames;
+            query.TotalAnimals = animalsQueryResult.TotalAnimals;
+            query.Animals = animalsQueryResult.Animals;
+            query.Names = animalsNames;
             
             return this.View(query);
         }
@@ -49,15 +49,15 @@ namespace AnimalAdoptionCenter.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(AddDogFormModel dogModel)
+        public IActionResult Add(AddAnimalFormModel animalModel)
         {
 
             if (!ModelState.IsValid)
             {
-                return View(dogModel);
+                return View(animalModel);
             }
 
-            this.dog.Add(dogModel);
+            this.animal.Add(animalModel);
             
 
             return RedirectToAction("Index", "Home", new { area = "" });
@@ -67,14 +67,14 @@ namespace AnimalAdoptionCenter.Controllers
         public IActionResult Details(int id)
         {
 
-            var dog = this.dog.Details(id);
+            var dog = this.animal.Details(id);
 
             if (dog == null)
             {
                 return NotFound();
             }
 
-            return View(new DogDetailsServiceModel
+            return View(new AnimalDetailsServiceModel
             {
                 Id = dog.Id,
                 Name = dog.Name,
@@ -93,14 +93,14 @@ namespace AnimalAdoptionCenter.Controllers
 
         public IActionResult Remove(int id)
         {
-            var dog = this.dog.Remove(id);
+            var dog = this.animal.Remove(id);
 
             if (dog == 0)
             {
                 return NotFound();
             }
 
-            return RedirectToAction("All", "Dog");
+            return RedirectToAction("All", "Animal");
 
         }
 

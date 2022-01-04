@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AnimalAdoptionCenter.Services.Animals
 {
-    public class DogAdoptionInterviewsReviews
+    public class AnimalAdoptionInterviewsReviews
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -25,7 +25,7 @@ namespace AnimalAdoptionCenter.Services.Animals
 
         public string Enclosure { get; set; }
 
-        public int DogId { get; set; }
+        public int AnimalId { get; set; }
 
     }
 }

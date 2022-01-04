@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations;
 namespace AnimalAdoptionCenter.Data.Models
 {
     using static DataConstants;
-    public class Dog
-    {   public Dog()
+    public class Animal
+    {   public Animal()
         {
             this.AnimalImages = new List<AnimalImage>();
-            this.AdoptedDogs = new List<Dog>();
+            this.AdoptedDogs = new List<Animal>();
             this.PotentialAdopters = new List<PotentialAdopter>();
         }
 
@@ -51,7 +51,7 @@ namespace AnimalAdoptionCenter.Data.Models
 
         public List<AdoptionInterview> AdoptionInterviews { get; set; }
 
-        public List<Dog> AdoptedDogs { get; set; }
+        public List<Animal> AdoptedDogs { get; set; }
 
     }
 }

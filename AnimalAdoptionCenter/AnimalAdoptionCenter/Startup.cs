@@ -1,3 +1,4 @@
+using AnimalAdoptionCenter.Controllers;
 using AnimalAdoptionCenter.Data;
 using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Infrastructure;
@@ -9,12 +10,11 @@ using AnimalAdoptionCenter.Services.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalAdoptionCenter
 {
@@ -34,7 +34,9 @@ namespace AnimalAdoptionCenter
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddDatabaseDeveloperPageExceptionFilter();
+            services.AddMvc();
             services.AddCors(options =>
             {
                 options.AddPolicy(name: MyAllowSpecificOrigins,
@@ -44,7 +46,8 @@ namespace AnimalAdoptionCenter
                                                           "http://www.contoso.com");
                                   });
             });
-            services.AddDefaultIdentity<User>(options =>
+
+            services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.Password.RequireDigit = false;
@@ -52,23 +55,24 @@ namespace AnimalAdoptionCenter
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
             })
+                .AddDefaultUI()
+                .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider)
             .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddHealthChecks();
 
             services.AddControllersWithViews(options =>
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
+
             services.AddTransient<IAnimalService, AnimalService>();
             services.AddTransient<IAdoptionService, AdoptionService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<ICommentsService, CommentService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IEventService, EventService>();
-
-
-
-
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -97,9 +101,15 @@ namespace AnimalAdoptionCenter
                  
                  .UseEndpoints(endpoints =>
                  {
+                     endpoints.MapDefaultAreaRoute();
                      endpoints.MapControllerRoute(
-                     name: "default",
-                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                     name: "Animal Details",
+                     pattern: "/Animal/Details/{id}/{information}",
+                         defaults: new
+                         {
+                             controller = typeof(AnimalController).GetControllerName(),
+                             action = nameof(AnimalController.Details)
+                         });
                      endpoints.MapDefaultControllerRoute();
                      endpoints.MapRazorPages();
             });

@@ -19,7 +19,7 @@ namespace AnimalAdoptionCenter.Areas.Identity.Pages.Account
         private readonly SignInManager<User> signInManager;
         private readonly ILogger<LoginModel> logger;
 
-        public LoginModel(SignInManager<User> signInManager, 
+        public LoginModel(SignInManager<User> signInManager,
             ILogger<LoginModel> logger,
             UserManager<User> userManager)
         {
@@ -74,7 +74,7 @@ namespace AnimalAdoptionCenter.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
 
             ExternalLogins = (await signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        
+
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout

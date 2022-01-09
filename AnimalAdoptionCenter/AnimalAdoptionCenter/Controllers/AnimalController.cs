@@ -42,26 +42,7 @@ namespace AnimalAdoptionCenter.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult Add()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Add(AddAnimalFormModel animalModel)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View(animalModel);
-            }
-
-            this.animal.Add(animalModel);
-            
-
-            return RedirectToAction("Index", "Home", new { area = "" });
-        }
+        
 
         [HttpGet]
         public IActionResult Details(int id)
@@ -91,34 +72,6 @@ namespace AnimalAdoptionCenter.Controllers
 
         }
 
-        public IActionResult Remove(int id)
-        {
-            var dog = this.animal.Remove(id);
-
-            if (dog == 0)
-            {
-                return NotFound();
-            }
-
-            return RedirectToAction("All", "Animal");
-
-        }
-
-        private string UploadedFile(IFormFile imageData)
-        {
-            string uniqueFileName = null;
-
-            if (imageData != null)
-            {
-                var uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "databaseFiles/Animals");
-                uniqueFileName = Guid.NewGuid() + "_" + imageData.FileName;
-                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using var fileStream = new FileStream(filePath, FileMode.Create);
-                imageData.CopyTo(fileStream);
-            }
-
-            return uniqueFileName;
-        }
-
+      
     }
 }

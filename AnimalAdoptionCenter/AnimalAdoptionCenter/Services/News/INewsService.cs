@@ -7,8 +7,6 @@ namespace AnimalAdoptionCenter.Services
     {
         public int Add(AddNewsFormModel model);
 
-        //public IEnumerable<AllNewsViewModel> All(AllNewsViewModel model);
-
         public NewsQueryModel All(
                string searchTerm,
                int currentPage,

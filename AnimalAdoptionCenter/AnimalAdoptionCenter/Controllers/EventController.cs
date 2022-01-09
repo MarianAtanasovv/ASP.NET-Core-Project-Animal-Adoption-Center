@@ -1,11 +1,8 @@
-﻿using System.Linq;
-using AnimalAdoptionCenter.Models;
+﻿using AnimalAdoptionCenter.Models;
 using AnimalAdoptionCenter.Services;
 using AnimalAdoptionCenter.Services.Event;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Diagnostics;
-using Microsoft.VisualBasic;
 
 namespace AnimalAdoptionCenter.Controllers
 {

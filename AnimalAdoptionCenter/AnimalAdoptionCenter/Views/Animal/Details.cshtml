@@ -55,13 +55,13 @@
                                     }
                                     @if (@Model.Vaccinated)
                                     {
-                                         <li class="h7">Vaccinated: <span> Yes</span></li>
+                                        <li class="h7">Vaccinated: <span> Yes</span></li>
                                     }
                                     else
                                     {
                                         <li><strong>Vaccinated: </strong> No</li>
                                     }
-                                   
+
                                 </ul>
                             </div>
                             <!-- /div-->
@@ -70,19 +70,23 @@
                         <label>My story:</label>
                         <p class="font-weight-bold">@Model.Description</p>
                         <!-- button -->
-                
+
                         <div>
 
                             <a asp-controller="Adoption" asp-action="Interview" asp-route-dogId="@Model.Id" class="btn btn-primary"> Adopt me!</a>
 
                         </div>
-                        <div>
-                            <a asp-controller="Adoption" asp-action="Review" asp-route-dogId="@Model.Id" class="btn btn-primary"> Review interviews!</a>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <div>
+                                <a asp-controller="Adoption" asp-action="Review" asp-route-dogId="@Model.Id" class="btn btn-primary"> Review interviews!</a>
 
-                        </div>
-                        <div>
-                            <a asp-controller="Animals" asp-action="Remove"  asp-area="Administration" asp-route-id="@Model.Id" class="btn btn-primary" >Remove</a>
-                        </div>
+                            </div>
+                            <div>
+                                <a asp-controller="Animals" asp-action="Remove" asp-area="Administration" asp-route-id="@Model.Id" class="btn btn-primary">Remove</a>
+                            </div>
+
+                        }
 
 
                     </div>

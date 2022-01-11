@@ -12,7 +12,6 @@ namespace AnimalAdoptionCenter.Services
 
         public List<NewsImage> NewsImages { get; set; }
 
-       
         public string Body { get; set; }
 
         public string PublishedOn { get; set; }

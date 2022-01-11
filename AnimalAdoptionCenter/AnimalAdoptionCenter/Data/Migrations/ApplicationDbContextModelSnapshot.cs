@@ -202,21 +202,6 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.ToTable("NewsImages");
                 });
 
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.PotentialAdopter", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("DogId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DogId");
-
-                    b.ToTable("PotentialAdopters");
-                });
-
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.ReservedHours", b =>
                 {
                     b.Property<int>("Id")
@@ -432,12 +417,10 @@ namespace AnimalAdoptionCenter.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -474,12 +457,10 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -527,17 +508,6 @@ namespace AnimalAdoptionCenter.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("News");
-                });
-
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.PotentialAdopter", b =>
-                {
-                    b.HasOne("AnimalAdoptionCenter.Data.Models.Animal", "Dog")
-                        .WithMany("PotentialAdopters")
-                        .HasForeignKey("DogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Dog");
                 });
 
             modelBuilder.Entity("AnimalAdoptionCenter.Dаta.Comment", b =>
@@ -609,8 +579,6 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Navigation("AdoptionInterviews");
 
                     b.Navigation("AnimalImages");
-
-                    b.Navigation("PotentialAdopters");
                 });
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.News", b =>

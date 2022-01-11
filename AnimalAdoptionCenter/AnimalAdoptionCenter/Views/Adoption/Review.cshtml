@@ -119,12 +119,9 @@
                     </div>
                     <div style="text-align:center; margin-top:20px;">
 
-                       
+
                         <a class="btn btn-primary btn-sm" asp-controller="Adoption" asp-action="Approve" asp-route-dogId="@person.Id" style="margin-right:20px">Approve</a>
-                        <button class="btn btn-primary btn-sm">
-                            Disapprove
-                            <i class="zmdi zmdi-arrow-right"></i>
-                        </button>
+                        <a class="btn btn-primary btn-sm" asp-controller="Adoption" asp-action="Disapprove" asp-route-dogId="@person.Id" style="margin-right:20px">Disapprove</a>
                     </div>
 
                 </div>

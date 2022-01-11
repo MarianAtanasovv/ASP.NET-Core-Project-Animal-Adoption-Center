@@ -9,7 +9,7 @@ namespace AnimalAdoptionCenter.Data.Models
         {
             this.AnimalImages = new List<AnimalImage>();
             this.AdoptedDogs = new List<Animal>();
-            this.PotentialAdopters = new List<PotentialAdopter>();
+           
         }
 
         public int Id { get; set; }
@@ -45,9 +45,6 @@ namespace AnimalAdoptionCenter.Data.Models
         [Required]
         public bool Neutered { get; set; }
         public bool Vaccinated { get; set; }
-
-
-        public List<PotentialAdopter> PotentialAdopters { get; set; }
 
         public List<AdoptionInterview> AdoptionInterviews { get; set; }
 

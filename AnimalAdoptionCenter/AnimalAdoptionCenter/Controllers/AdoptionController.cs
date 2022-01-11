@@ -1,4 +1,5 @@
-﻿using AnimalAdoptionCenter.Models.Adoption;
+﻿using AnimalAdoptionCenter.Infrastructure;
+using AnimalAdoptionCenter.Models.Adoption;
 using AnimalAdoptionCenter.Services.Adoption;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,7 @@ namespace AnimalAdoptionCenter.Controllers
                 return View();
             }
 
+            string userId = User.Id();
             this.interview.Add(
                 interviewModel.Name,
                 interviewModel.HomeInformation,
@@ -38,9 +40,10 @@ namespace AnimalAdoptionCenter.Controllers
                 interviewModel.BreedExplanation,
                 interviewModel.Enclosure,
                 interviewModel.VetKnowledge,
-                dogId);
-
-            return RedirectToAction("Index", "Home");
+                dogId,
+                userId);
+            return RedirectToAction("ThankYou", "Adoption");
+            
         }
 
         [HttpGet]
@@ -54,10 +57,20 @@ namespace AnimalAdoptionCenter.Controllers
         [HttpGet]
         public IActionResult Approve(int dogId)
         {
-            var approved = this.interview.Approve(dogId);
 
-            return RedirectToAction("ThankYou", "Adoption");
+            var approved = this.interview.Approve(dogId);
+            return RedirectToAction("Index", "Home");
+
         }
+        [HttpGet]
+        public IActionResult Disapprove(int dogId)
+        {
+
+            this.interview.Disapprove(dogId);
+            return RedirectToAction("Index", "Home");
+
+        }
+
 
         [HttpGet]
         public IActionResult ThankYou()

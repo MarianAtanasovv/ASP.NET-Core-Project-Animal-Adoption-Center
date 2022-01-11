@@ -6,7 +6,7 @@ using AnimalAdoptionCenter.Services;
 using AnimalAdoptionCenter.Services.Adoption;
 using AnimalAdoptionCenter.Services.Animals;
 using AnimalAdoptionCenter.Services.Comments;
-using AnimalAdoptionCenter.Services.Users;
+using AnimalAdoptionCenter.Services.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;

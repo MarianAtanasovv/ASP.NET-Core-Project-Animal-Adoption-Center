@@ -29,7 +29,7 @@ namespace AnimalAdoptionCenter.Infrastructure
         {
             var data = services.GetRequiredService<ApplicationDbContext>();
 
-            data.Database.Migrate();
+            //data.Database.Migrate();
         }
         
         private static void SeedAdministrator(IServiceProvider services)

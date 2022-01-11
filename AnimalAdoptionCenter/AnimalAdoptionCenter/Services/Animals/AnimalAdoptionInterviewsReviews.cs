@@ -27,5 +27,7 @@ namespace AnimalAdoptionCenter.Services.Animals
 
         public int AnimalId { get; set; }
 
+        public string UserId { get; set; }
+
     }
 }

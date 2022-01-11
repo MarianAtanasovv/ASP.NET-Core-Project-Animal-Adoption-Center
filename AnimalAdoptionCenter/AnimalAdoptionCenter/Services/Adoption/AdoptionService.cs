@@ -25,8 +25,9 @@ namespace AnimalAdoptionCenter.Services.Adoption
             string breedExplanation, 
             string enclosure,
             string vetKnowledge,
-            int animalId
-           )
+            int animalId,
+            string userId
+        )
         {
             var interview = new AdoptionInterview()
             {
@@ -39,7 +40,9 @@ namespace AnimalAdoptionCenter.Services.Adoption
                 BreedExplanation = breedExplanation,
                 VetKnowledge = vetKnowledge,
                 Enclosure = enclosure,
-                AnimalId = animalId
+                AnimalId = animalId,
+                UserId = userId
+
 
             };
 
@@ -58,6 +61,13 @@ namespace AnimalAdoptionCenter.Services.Adoption
 
             return animal.Id;
         }
+        public void Disapprove(int dogId)
+        {
+            var interview = this.data.AdoptionInterviews.Where(x => x.AnimalId == dogId).FirstOrDefault();
+            var removeInterview = this.data.AdoptionInterviews.Remove(interview);
+            this.data.SaveChanges();
+
+        }
 
         public IList<AnimalAdoptionInterviewsReviews> Review(int animalId)
         {
@@ -74,10 +84,13 @@ namespace AnimalAdoptionCenter.Services.Adoption
                      HoursAlone = x.HoursAlone,
                      OwnHome = x.OwnHome,
                      VetKnowledge = x.VetKnowledge,
+                     UserId = x.UserId
                  }
                  )
                  .ToList();
 
         }
+
+        
     }
 }

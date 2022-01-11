@@ -1,6 +1,6 @@
 ﻿using AnimalAdoptionCenter.Infrastructure;
 using AnimalAdoptionCenter.Services.Comments;
-using AnimalAdoptionCenter.Services.Users;
+using AnimalAdoptionCenter.Services.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

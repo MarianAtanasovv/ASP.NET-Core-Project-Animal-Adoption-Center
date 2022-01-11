@@ -17,10 +17,13 @@ namespace AnimalAdoptionCenter.Services.Adoption
             string breedExplanation,
             string enclosure,
             string vetKnowledge,
-            int dogId);
+            int dogId,
+            string userId);
 
         public IList<AnimalAdoptionInterviewsReviews> Review(int id);
 
         public int Approve(int dogId);
+
+        public void Disapprove(int dogId);
     }
 }

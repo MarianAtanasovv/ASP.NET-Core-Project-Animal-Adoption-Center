@@ -16,10 +16,11 @@ namespace AnimalAdoptionCenter.Services.Comments
             this.data = data;
         }
 
-        public int Add(string content, int newsId, string userId, string username)
+        public int Add( string content, int newsId, string userId, string username)
         {
             var comment = new Comment
             {
+                
                 Content = content,
                 CreatedOn = DateTime.UtcNow.ToString("r"),
                 NewsId = newsId,
@@ -38,12 +39,29 @@ namespace AnimalAdoptionCenter.Services.Comments
         {
             var comments = this.data.Comments.Select(x => new AllCommentsViewModel
             {
+                Id = x.Id,
                 Name = x.Username,
                 Comment = x.Content,
                 PublishedOn = x.CreatedOn
             }).ToList();
 
             return comments;
+        }
+
+        public bool Delete(int id)
+        {
+            var comment = this.data.Comments.Find(id);
+
+            if (comment == null)
+            {
+                return false;
+            }
+
+            this.data.Remove(comment);
+            this.data.SaveChanges();
+
+            return true;
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model NewsCommentsModel
+﻿@using AnimalAdoptionCenter.Infrastructure
+@model NewsCommentsModel
 
 
 <!DOCTYPE html>
@@ -34,7 +35,7 @@
                                     <div class="form-group">
                                         <textarea class="form-control" rows="3" type="text" id="content" name="content" asp-for="@Model.AddCommentFormModel.Content"></textarea>
                                     </div>
-                                    <div>
+                                    <div >
                                         <button type="submit" class="btn btn-primary btn-sm">Comment</button>
                                     </div>
                                 </form>
@@ -51,8 +52,19 @@
                             
                                 <h6 class="mt-2"><a href="">@comment.PublishedOn</a></h6>
                                 <h6 class="mt-2"><a href="">@comment.Name</a> <small>says:</small></h6>
-                                <p class="comment-news">
+                            <p class="comment-news" style="margin-right: 100px"
+                               >
                                     @comment.Comment
+
+                                    @if (User.IsInRole("Administrator") || User.Name() == comment.Name)
+                                    {
+                                        <div style="float: right; margin-top: -50px">
+                                    <a asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id" asp-route-newsId="@Model.NewsDetailsViewModel.Id" class="alert alert-danger" role="alert" >
+                                        Delete
+                                    </a>
+                                        </div>
+                                    }
+                                   
                                 </p>
                             
                             <!--/media-body -->

@@ -55,7 +55,7 @@
                                 <h3 class="card-title">@news.Title </h3>
                             </a>
                             <!-- excerpt -->
-                            <p class="card-text mt-3">@news.Body.Substring(0, 50)</p>
+                            <p class="card-text mt-3">@news.Body.Substring(0, 600)...</p>
                             <a asp-controller="News" asp-route-newsId="@news.Id" asp-action="Details" class="btn btn-primary">Read More &rarr;</a>
                         </div>
                         <!--card-footer -->

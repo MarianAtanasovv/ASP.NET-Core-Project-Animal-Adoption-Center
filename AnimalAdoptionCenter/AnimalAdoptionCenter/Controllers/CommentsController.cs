@@ -35,19 +35,32 @@ namespace AnimalAdoptionCenter.Controllers
                 return NotFound();
             }
 
-            this.comments.Add(content,
+            this.comments.Add(
+                
+                content,
                 newsId,
                 userId,
                 username
                 );
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Details", "News", new { newsId });
         }
 
         public IActionResult All()
         {
             var comments = this.comments.All();
             return View(comments);
+        }
+
+        public IActionResult Delete(int id, int newsId)
+        {
+            if (!User.IsInRole("Administrator"))
+            {
+                return Unauthorized();
+            }
+
+            this.comments.Delete(id);
+            return RedirectToAction("Details", "News", new {newsId});
         }
     }
 }

@@ -5,11 +5,12 @@ namespace AnimalAdoptionCenter.Services.Comments
 {
     public interface ICommentsService
     {
-        //bool Delete(int id);
+        public bool Delete(int id);
 
         public IEnumerable<AllCommentsViewModel> All();
 
         int Add(
+        
         string content,
         int newsId,
         string userId,

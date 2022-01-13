@@ -1,42 +1,42 @@
 ﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
 @model AllAnimalsQueryModel
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <![endif]-->
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <!-- page title -->
-        <title>Woof!</title>
-        <!--[if lt IE 9]>
-        <script src="js/respond.js"></script>
-        <![endif]-->
-        <!-- Font files -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CQuicksand:400,500,700" rel="stylesheet">
-        <link href="~/fonts/flaticon/flaticon.css" rel="stylesheet" type="text/css">
-        <link href="~/fonts/fontawesome/fontawesome-all.min.css" rel="stylesheet" type="text/css">
-        <!-- Fav icons -->
-        <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <!-- Bootstrap core CSS -->
-        <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!-- style CSS -->
-        <link href="~/css/style.css" rel="stylesheet">
-        <!-- plugins CSS -->
-        <link href="~/css/plugins.css" rel="stylesheet">
-        <!-- Colors CSS -->
-        <link href="~/styles/maincolors.css" rel="stylesheet">
-    </head>
-    <!-- ==== body starts ==== -->
-    <body>
-   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- page title -->
+    <title>Woof!</title>
+    <!--[if lt IE 9]>
+    <script src="js/respond.js"></script>
+    <![endif]-->
+    <!-- Font files -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CQuicksand:400,500,700" rel="stylesheet">
+    <link href="~/fonts/flaticon/flaticon.css" rel="stylesheet" type="text/css">
+    <link href="~/fonts/fontawesome/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+    <!-- Fav icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- style CSS -->
+    <link href="~/css/style.css" rel="stylesheet">
+    <!-- plugins CSS -->
+    <link href="~/css/plugins.css" rel="stylesheet">
+    <!-- Colors CSS -->
+    <link href="~/styles/maincolors.css" rel="stylesheet">
+</head>
+<!-- ==== body starts ==== -->
+<body>
+
     <div class="jumbotron jumbotron-fluid overlay">
         <div class="jumbo-heading">
 
@@ -59,7 +59,7 @@
     <!-- ==== Page Content ==== -->
     <div class="page">
         <div class="container block-padding pt-0">
-            @if(Model.TotalAnimals == 0)
+            @if (Model.TotalAnimals == 0)
             {
                 <div class="col-lg-8 offset-lg-2 text-center">
                     <h3>
@@ -67,16 +67,12 @@
                     </h3>
                 </div>
             }
-          
-            <!-- First row: Adopt a pet -->
-        <div class="row">
-            <form method="get">
-                <div class="form-group col-md-4">
-                    <label asp-for="SearchTerm"></label>
-                    <input asp-for="SearchTerm" class="form-control" placeholder="Search..." style="width: 250px; text-align: center">
-                </div>
-            </form>
 
+            <!-- First row: Adopt a pet -->
+            <form id="form" style="text-align: center">
+                <input type="search" id="query" name="q" placeholder="Search...">
+                <button onclick="search()">Search</button>
+            </form>
             <div class="row mt-5">
 
                 <!-- Pet  -->
@@ -187,7 +183,7 @@
     <script src="~/js/plugins.js"></script>
     <!-- Prefix free -->
     <script src="~/js/prefixfree.min.js"></script>
-   
-    </body>
+
+</body>
 </html>
 

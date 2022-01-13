@@ -35,7 +35,7 @@ namespace AnimalAdoptionCenter.Controllers
 
             this.news.Add(model);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("All", "News");
             
         }
 

@@ -72,7 +72,7 @@ namespace AnimalAdoptionCenter
             services.AddTransient<ICommentsService, CommentService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IEventService, EventService>();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

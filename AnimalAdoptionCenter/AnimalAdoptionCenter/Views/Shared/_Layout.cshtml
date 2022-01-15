@@ -1,4 +1,7 @@
 ﻿
+@using AnimalAdoptionCenter.Areas.Administration
+@using AnimalAdoptionCenter.Areas
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +69,8 @@
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
 
-                            @if (User.IsInRole("Administrator"))
+                            @if (User.IsInRole(AdministrationConstants.
+                                 AdministratorRoleName))
                             {
 
                                 <li class="nav-item dropdown">
@@ -75,7 +79,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="services-dropdown">
                                         <a class="dropdown-item" asp-area="Administration" asp-controller="Animals" asp-action="Add">Add dog</a>
-                                        <a class="dropdown-item" asp-controller="News" asp-action="Add">Add news</a>
+                                        <a class="dropdown-item" asp-area="Administration" asp-controller="News" asp-action="Add">Add news</a>
                                     </div>
                                 </li>
                             }
@@ -91,10 +95,21 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="others-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Appointments
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="others-dropdown">
-                                    <a class="dropdown-item" asp-controller="Event" asp-action="Add">Add Appointment</a>
+                               
+                                @if (User.IsInRole(VetConstants.VetRoleName))
+                                {
+                                    <div class="dropdown-menu" aria-labelledby="others-dropdown">
+                                        <a class="dropdown-item" asp-area="Vet" asp-controller="Appointment" asp-action="All">All Appointments</a>
 
-                                </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="dropdown-menu" aria-labelledby="others-dropdown">
+                                        <a class="dropdown-item" asp-controller="Appointment" asp-action="Add">Add Appointment</a>
+
+                                    </div>
+                                }
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="others-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -123,26 +138,26 @@
 
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <div style="margin-right: 50px">
+                                <li style="margin-right: -20px">
 
                                     <form class="nk-contacts-icons" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                                         <button type="submit" class="btn btn-danger">Logout</button>
                                     </form>
-                                </div>
+                                </li>
                             }
                             else
                             {
-                                <div>
+                                <li>
                                     <form asp-area="Identity" asp-page="/Account/Register" method="post">
                                         <button type="submit" class="btn btn-danger">Register</button>
                                     </form>
-                                </div>
-                                <div style="margin-right: 100px">
+                                </li>
+                                <li style="margin-right: -30px">
 
                                     <form asp-area="Identity" asp-page="/Account/Login" method="get">
                                         <button type="submit" class="btn btn-danger">Login</button>
                                     </form>
-                                </div>
+                                </li>
                             }
 
                         </ul>

@@ -19,25 +19,7 @@ namespace AnimalAdoptionCenter.Controllers
             this.comments = comments;
         }
        
-        [HttpGet]
-        public IActionResult Add()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Add(AddNewsFormModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            this.news.Add(model);
-
-            return RedirectToAction("All", "News");
-            
-        }
+        
 
         [HttpGet]
         public IActionResult All([FromQuery] AllNewsQueryModel query)

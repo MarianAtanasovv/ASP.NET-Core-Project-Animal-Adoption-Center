@@ -36,4 +36,11 @@
     <Folder Include="wwwroot\databaseFiles\News\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Areas\Vet\Views\Appointment\All.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

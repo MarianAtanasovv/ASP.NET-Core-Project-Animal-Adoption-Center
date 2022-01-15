@@ -149,7 +149,7 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.ToTable("Dogs");
                 });
 
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Event", b =>
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Appointment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -553,7 +553,7 @@ namespace AnimalAdoptionCenter.Data.Migrations
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.ReservedHours", b =>
                 {
-                    b.HasOne("AnimalAdoptionCenter.Data.Models.Event", null)
+                    b.HasOne("AnimalAdoptionCenter.Data.Models.Appointment", null)
                         .WithMany("ReservedHours")
                         .HasForeignKey("EventId");
                 });
@@ -631,7 +631,7 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Navigation("PotentialAdopters");
                 });
 
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Event", b =>
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Appointment", b =>
                 {
                     b.Navigation("ReservedHours");
                 });

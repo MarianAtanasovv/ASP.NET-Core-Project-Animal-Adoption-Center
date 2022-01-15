@@ -1,11 +1,7 @@
 ﻿using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Dаta;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AnimalAdoptionCenter.Data
 {
@@ -28,7 +24,7 @@ namespace AnimalAdoptionCenter.Data
 
         public DbSet<Comment> Comments { get; set; }
 
-        public DbSet<Event> Events { get; set; }
+        public DbSet<Appointment> Events { get; set; }
 
         public DbSet<ReservedHours> ReservedHours { get; set; }
 

@@ -149,7 +149,7 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.ToTable("Dogs");
                 });
 
-            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Event", b =>
+            modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.Appointment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

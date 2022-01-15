@@ -67,15 +67,27 @@
                     </h3>
                 </div>
             }
-          
+            <div class="row">
             <!-- First row: Adopt a pet -->
-        <div class="row">
-            <form method="get">
-                <div class="form-group col-md-4">
-                    <label asp-for="SearchTerm"></label>
-                    <input asp-for="SearchTerm" class="form-control" placeholder="Search..." style="width: 250px; text-align: center">
-                </div>
-            </form>
+            @if (Model.TotalAnimals > 0)
+            {
+               
+                    <div class="card" style="background: #FBF4DE; margin-left: 420px">
+             
+                        <form method="get">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <input asp-for="SearchTerm" type="text" class="form-control" placeholder="Search for..." id="search">
+                                    <span class="input-group-btn">
+                                        
+                                        <button class="btn btn-secondary" type="submit" asp-controller="Animal" asp-action="All">Go!</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+            }
+       
 
             <div class="row mt-5">
 

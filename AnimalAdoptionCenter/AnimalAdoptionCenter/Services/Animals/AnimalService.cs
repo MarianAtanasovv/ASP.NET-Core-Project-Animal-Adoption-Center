@@ -122,8 +122,7 @@ namespace AnimalAdoptionCenter.Services.Animals
 
         public int Remove(int id)
         {
-            var animal = this.data.Animals.Where(x => x.Id == id).FirstOrDefault();
-
+            var animal = this.data.Animals.Single(x => x.Id == id);
             this.data.Animals.Remove(animal);
             this.data.SaveChanges();
 

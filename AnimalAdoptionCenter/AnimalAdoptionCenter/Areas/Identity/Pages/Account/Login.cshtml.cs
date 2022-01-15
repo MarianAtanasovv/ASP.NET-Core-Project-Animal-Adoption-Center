@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using AnimalAdoptionCenter.Services;
 
 namespace AnimalAdoptionCenter.Areas.Identity.Pages.Account
 {
@@ -18,14 +19,16 @@ namespace AnimalAdoptionCenter.Areas.Identity.Pages.Account
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
         private readonly ILogger<LoginModel> logger;
+        private readonly IAppointmentService appointment;
 
         public LoginModel(SignInManager<User> signInManager,
             ILogger<LoginModel> logger,
-            UserManager<User> userManager)
+            UserManager<User> userManager, IAppointmentService appointment)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.logger = logger;
+            this.appointment = appointment;
         }
 
         [BindProperty]
@@ -79,7 +82,13 @@ namespace AnimalAdoptionCenter.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                
                 var result = await signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                
+                if (Input.Email == "testVet123@abv.bg")
+                {
+                    appointment.DeleteAfterDate();
+                }
                 if (result.Succeeded)
                 {
                     logger.LogInformation("User logged in.");

@@ -1,13 +1,11 @@
 ﻿using AnimalAdoptionCenter.Data;
+using AnimalAdoptionCenter.Data.Models;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using AnimalAdoptionCenter.Data.Models;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnimalAdoptionCenter.Infrastructure
 {
@@ -29,8 +27,8 @@ namespace AnimalAdoptionCenter.Infrastructure
 
         private static void MigrateDatabase(IServiceProvider services)
         {
-            var data = services.GetRequiredService<ApplicationDbContext>(); 
-            //data.Database.Migrate();
+            var data = services.GetRequiredService<ApplicationDbContext>();
+            data.Database.Migrate();
         }
 
         private static void SeedVet(IServiceProvider services)

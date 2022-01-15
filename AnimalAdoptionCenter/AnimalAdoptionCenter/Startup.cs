@@ -21,11 +21,13 @@ namespace AnimalAdoptionCenter
     public class Startup
     {
         readonly string MyAllowSpecificOrigins = "myAllowSpecificOrigins";
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
         }
-
+      
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -71,13 +73,14 @@ namespace AnimalAdoptionCenter
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<ICommentsService, CommentService>();
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IEventService, EventService>();
+            services.AddTransient<IAppointmentService, AppointmentService>();
 
         }
-
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+           
             app.PrepareDatabase();
             
             if (env.IsDevelopment())
@@ -114,5 +117,6 @@ namespace AnimalAdoptionCenter
                      endpoints.MapRazorPages();
             });
         }
+       
     }
 }

@@ -24,7 +24,7 @@ namespace AnimalAdoptionCenter.Data
 
         public DbSet<Comment> Comments { get; set; }
 
-        public DbSet<Appointment> Events { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
 
         public DbSet<ReservedHours> ReservedHours { get; set; }
 

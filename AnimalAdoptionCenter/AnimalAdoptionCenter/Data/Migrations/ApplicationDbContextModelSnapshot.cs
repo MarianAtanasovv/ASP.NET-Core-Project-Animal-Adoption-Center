@@ -178,7 +178,7 @@ namespace AnimalAdoptionCenter.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("Appointments");
                 });
 
             modelBuilder.Entity("AnimalAdoptionCenter.Data.Models.NewsImage", b =>

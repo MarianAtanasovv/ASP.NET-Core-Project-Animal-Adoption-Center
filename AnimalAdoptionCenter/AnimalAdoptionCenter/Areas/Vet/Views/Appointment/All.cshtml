@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AllAppointmentsViewModel>
+<table class="table table-striped" style="margin: 100px; table-layout: fixed; width: 85%">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Phone</th>
+            <th>Description</th>
+            <th>Start Hour</th>
+            <th>Date</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var appointment in Model)
+    {
+        <tr style="overflow-wrap: break-word">
+            <td>@appointment.FullName</td>
+            <td>@appointment.Phone</td>
+            <td>@appointment.Description</td>
+            <td>@appointment.StartHour</td>
+            <td>@appointment.Date</td>
+            <td> <div>
+                <a asp-area="Vet" asp-controller="Appointment" asp-action="Delete" asp-route-id="@appointment.Id" class="btn btn-primary">Remove</a>
+            </div></td>
+          
+        </tr>
+
+
+    }
+
+    </tbody>
+</table>

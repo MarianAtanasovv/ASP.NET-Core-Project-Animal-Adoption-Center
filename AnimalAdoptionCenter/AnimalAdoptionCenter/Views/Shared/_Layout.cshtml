@@ -84,11 +84,11 @@
                                 </li>
                             }
 
-                            <li class="nav-item"> <a class="nav-link" asp-controller="Animal" asp-action="All">All animals</a> </li>
+                            <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Animal" asp-action="All">All animals</a> </li>
 
                             <!-- menu item -->
 
-                            <li class="nav-item"> <a class="nav-link" asp-controller="News" asp-action="All">News</a> </li>
+                            <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="News" asp-action="All">News</a> </li>
 
                             <!-- menu item -->
                             <li class="nav-item dropdown">
@@ -106,7 +106,7 @@
                                 else
                                 {
                                     <div class="dropdown-menu" aria-labelledby="others-dropdown">
-                                        <a class="dropdown-item" asp-controller="Appointment" asp-action="Add">Add Appointment</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Appointment" asp-action="Add">Add Appointment</a>
 
                                     </div>
                                 }
@@ -116,13 +116,13 @@
                                     Pet Care & Health
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="others-dropdown">
-                                    <a class="dropdown-item" asp-controller="PetHealth" asp-action="CatDogNutrition">Cat and Dog Nutrition</a>
-                                    <a class="dropdown-item" asp-controller="PetHealth" asp-action="BasicDogCare">Basic Dog Care</a>
-                                    <a class="dropdown-item" asp-controller="PetHealth" asp-action="DogBehaviourAndTraining">Dog Behaviour and Training</a>
-                                    <a class="dropdown-item" asp-controller="PetHealth" asp-action="DogHealth">Dog Health</a>
-                                    <a class="dropdown-item" asp-controller="PetHealth" asp-action="BasicCatCare">Basic Cat Care</a>
-                                    <a class="dropdown-item" asp-controller="PetHealth" asp-action="CatBehaviourAndTraining">Cat Behaviour and Training</a>
-                                    <a class="dropdown-item" asp-controller="PetHealth" asp-action="CatHealth">Cat Health</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PetHealth" asp-action="CatDogNutrition">Cat and Dog Nutrition</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PetHealth" asp-action="BasicDogCare">Basic Dog Care</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PetHealth" asp-action="DogBehaviourAndTraining">Dog Behaviour and Training</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PetHealth" asp-action="DogHealth">Dog Health</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PetHealth" asp-action="BasicCatCare">Basic Cat Care</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PetHealth" asp-action="CatBehaviourAndTraining">Cat Behaviour and Training</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="PetHealth" asp-action="CatHealth">Cat Health</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -130,8 +130,8 @@
                                     Information
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="others-dropdown">
-                                    <a class="dropdown-item" asp-controller="Contact" asp-action="Index">Contact Us</a>
-                                    <a class="dropdown-item" asp-controller="AboutUs" asp-action="Index">About Us</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="Index">Contact Us</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="AboutUs" asp-action="Index">About Us</a>
                                 </div>
                             </li>
 

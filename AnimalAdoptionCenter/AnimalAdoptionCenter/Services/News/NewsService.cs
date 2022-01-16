@@ -138,7 +138,16 @@ namespace AnimalAdoptionCenter
             return details;
         }
 
-        public IEnumerable<string> AllNews()
+            public int Delete(int newsId)
+            {
+                var newsToDelete = this.data.News.Single(x => x.Id == newsId);
+                this.data.Remove(newsToDelete);
+                this.data.SaveChanges();
+
+                return newsToDelete.Id;
+            }
+
+            public IEnumerable<string> AllNews()
         {
             return this.data
                 .News

@@ -54,7 +54,7 @@ namespace AnimalAdoptionCenter.Services.Adoption
 
         public int Approve(int dogId)
         {
-            var animal = this.data.Animals.Where(x => x.Id == dogId).FirstOrDefault();
+            var animal = this.data.Animals.Single(x => x.Id == dogId);
 
             this.data.Remove(animal);
             this.data.SaveChanges();
@@ -63,7 +63,7 @@ namespace AnimalAdoptionCenter.Services.Adoption
         }
         public void Disapprove(int dogId)
         {
-            var interview = this.data.AdoptionInterviews.Where(x => x.AnimalId == dogId).FirstOrDefault();
+            var interview = this.data.AdoptionInterviews.Single(x => x.AnimalId == dogId);
             var removeInterview = this.data.AdoptionInterviews.Remove(interview);
             this.data.SaveChanges();
 

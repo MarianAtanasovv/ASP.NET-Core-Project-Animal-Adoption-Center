@@ -56,7 +56,7 @@ namespace AnimalAdoptionCenter.Areas.Administration.Controllers
                 return NotFound();
             }
 
-            return RedirectToAction("All", "Animal");
+            return RedirectToAction("All", "Animal", new { area = "" });
 
         }
 

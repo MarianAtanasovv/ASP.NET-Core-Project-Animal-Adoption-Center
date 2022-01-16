@@ -1,4 +1,5 @@
 ﻿@using AnimalAdoptionCenter.Infrastructure
+@using Microsoft.CodeAnalysis.CSharp.Syntax
 @model NewsCommentsModel
 
 
@@ -15,16 +16,32 @@
                         <img class="card-img-top img-fluid" src="/databaseFiles/News/@image.Name" alt="">
                     }
                     <!-- Post info-->
-                    <div class="post-info border-irregular2 text-muted">
-                        @Model.NewsDetailsViewModel.PublishedOn by
-                        <a href="#">Lila Smith</a> /  <i class="fas fa-comment margin-icon"></i>10 comments
-                    </div>
+                <div class="post-info border-irregular2 text-muted">
+                    @Model.NewsDetailsViewModel.PublishedOn by
+                    @if (Model.NewsDetailsViewModel.Comments.Count == 1)
+                    {
+                        <a>Lila Smith / </a> <i class="fas fa-comment margin-icon"></i> @Model.NewsDetailsViewModel.Comments.Count <a>Comment</a>
+
+                    }
+                    else
+                    {
+                        <a>Lila Smith / </a> <i class="fas fa-comment margin-icon"></i> @Model.NewsDetailsViewModel.Comments.Count <a>Comments</a>
+                    }
+                </div>
                     <hr>
                     <!-- Preview Image -->
                     <img src="img/blog.jpg" class="img-fluid" alt="">
                     <hr>
                     <!-- Post Content -->
                     @Model.NewsDetailsViewModel.Body
+                    @if (User.IsInRole("Administrator"))
+                    {
+                       
+                        <div>
+                            <a asp-controller="News" asp-action="Delete" asp-area="Administration" asp-route-newsId="@Model.NewsDetailsViewModel.Id" class="btn btn-primary">Remove</a>
+                        </div>
+
+                    }
                     <!-- Comments Form -->
                     @*@if (User.Identity.IsAuthenticated)
                     {*@
@@ -70,6 +87,7 @@
                             <!--/media-body -->
                         </div>
                     }
+
                 </div>
                 <!--/Card-body -->
             </div>

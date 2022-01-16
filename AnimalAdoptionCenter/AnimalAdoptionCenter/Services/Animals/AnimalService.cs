@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AnimalAdoptionCenter.Services.Animals
 {
@@ -120,6 +121,7 @@ namespace AnimalAdoptionCenter.Services.Animals
                 .ToList();
         }
 
+        [Authorize]
         public int Remove(int id)
         {
             var animal = this.data.Animals.Single(x => x.Id == id);
@@ -129,8 +131,7 @@ namespace AnimalAdoptionCenter.Services.Animals
             return animal.Id;
         }
 
-
-
+        [Authorize]
         public int Add(AddAnimalFormModel animalModel)
         {
 

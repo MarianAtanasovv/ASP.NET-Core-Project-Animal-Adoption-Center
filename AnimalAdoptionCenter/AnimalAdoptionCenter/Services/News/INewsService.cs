@@ -14,7 +14,7 @@ namespace AnimalAdoptionCenter.Services
                string name);
 
         public NewsDetailsViewModel Details(int newsId);
-
+        public int Delete(int newsId);
         public IEnumerable<string> AllNews();
     }
 }

@@ -17,7 +17,6 @@ namespace AnimalAdoptionCenter.Areas.Administration.Controllers
         public NewsController(INewsService news)
         {
             this.news = news;
-           
         }
 
         [HttpGet]
@@ -40,6 +39,14 @@ namespace AnimalAdoptionCenter.Areas.Administration.Controllers
 
             return RedirectToAction("All", "News", new { area = "" });
 
+        }
+
+        [Authorize]
+        public IActionResult Delete(int newsId)
+        {
+            this.news.Delete(newsId);
+
+            return RedirectToAction("All", "News", new {area = ""});
         }
     }
 }

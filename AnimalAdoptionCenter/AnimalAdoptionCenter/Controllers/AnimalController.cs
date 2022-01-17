@@ -1,12 +1,9 @@
 ﻿using AnimalAdoptionCenter.Models.Animal;
-using AnimalAdoptionCenter.Models.Animals;
 using AnimalAdoptionCenter.Services;
 using AnimalAdoptionCenter.Services.Animals;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.IO;
+using AnimalAdoptionCenter.Infrastructure;
 
 namespace AnimalAdoptionCenter.Controllers
 {
@@ -45,29 +42,33 @@ namespace AnimalAdoptionCenter.Controllers
         
 
         [HttpGet]
-        public IActionResult Details(int id)
+        public IActionResult Details(int id, string information)
         {
 
-            var dog = this.animal.Details(id);
+            var animal = this.animal.Details(id);
 
-            if (dog == null)
+            if (animal == null)
             {
                 return NotFound();
+            }
+            if (information != animal.GetInformationAnimal())
+            {
+                return Unauthorized();
             }
 
             return View(new AnimalDetailsServiceModel
             {
-                Id = dog.Id,
-                Name = dog.Name,
-                Description = dog.Description,
-                Color = dog.Color,
-                Breed = dog.Breed,
-                Age = dog.Age,
-                Aggressive = dog.Aggressive,
-                Gender = dog.Gender,
-                Images = dog.Images,
-                Neutered = dog.Neutered,
-                Vaccinated = dog.Vaccinated
+                Id = animal.Id,
+                Name = animal.Name,
+                Description = animal.Description,
+                Color = animal.Color,
+                Breed = animal.Breed,
+                Age = animal.Age,
+                Aggressive = animal.Aggressive,
+                Gender = animal.Gender,
+                Images = animal.Images,
+                Neutered = animal.Neutered,
+                Vaccinated = animal.Vaccinated
             });
 
         }

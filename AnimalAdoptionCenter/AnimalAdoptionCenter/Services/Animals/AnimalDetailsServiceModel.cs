@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AnimalAdoptionCenter.Services.Animals
 {
-    public class AnimalDetailsServiceModel
+    public class AnimalDetailsServiceModel : IAnimalModel
     {
         public int Id { get; set; }
 

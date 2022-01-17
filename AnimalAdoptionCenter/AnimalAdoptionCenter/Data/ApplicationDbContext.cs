@@ -27,10 +27,7 @@ namespace AnimalAdoptionCenter.Data
         public DbSet<Appointment> Appointments { get; set; }
 
         public DbSet<ReservedHours> ReservedHours { get; set; }
-
-       
-
-
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
 

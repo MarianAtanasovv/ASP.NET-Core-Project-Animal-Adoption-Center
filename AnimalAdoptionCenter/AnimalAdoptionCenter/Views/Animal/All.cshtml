@@ -1,4 +1,5 @@
 ﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+@using AnimalAdoptionCenter.Infrastructure
 @model AllAnimalsQueryModel
 
     <!-- ==== body starts ==== -->
@@ -39,7 +40,7 @@
             @if (Model.TotalAnimals > 0)
         {
 
-            <div class="card" style="background: #FBF4DE; margin-left: 420px">
+            <div class="card" style="background: #FBF4DE; margin-left: 320px; margin-right:400px">
 
                 <form method="get">
                     <div class="card-body">
@@ -97,7 +98,7 @@
                                     </ul>
                                     <!-- Buttons -->
                                     <div class="text-center">
-                                        <a asp-controller="Animal" asp-action="Details" asp-route-id="@animal.Id" class="btn btn-primary">More Info</a>
+                                        <a asp-controller="Animal" asp-action="Details" asp-route-id="@animal.Id" asp-route-information="@animal.GetInformationAnimal()" class="btn btn-primary">More Info</a>
                                     </div>
                                 </div>
                             </div>

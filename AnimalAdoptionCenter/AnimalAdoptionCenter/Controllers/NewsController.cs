@@ -1,4 +1,5 @@
-﻿using AnimalAdoptionCenter.Models;
+﻿using AnimalAdoptionCenter.Infrastructure;
+using AnimalAdoptionCenter.Models;
 using AnimalAdoptionCenter.Models.Comments;
 using AnimalAdoptionCenter.Models.NewsCommentsModel;
 using AnimalAdoptionCenter.Services;
@@ -42,7 +43,7 @@ namespace AnimalAdoptionCenter.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int newsId)
+        public IActionResult Details(int newsId, string information)
         {
             var details = this.news.Details(newsId);
             
@@ -51,8 +52,12 @@ namespace AnimalAdoptionCenter.Controllers
             {
                 return NotFound();
             }
+            if (information != details.GetInformationNews())
+            {
+                return Unauthorized();
+            }
 
-            
+
             var commentsData = new AddCommentFormModel();
             var newsData = details;
             var comments = this.comments.All();

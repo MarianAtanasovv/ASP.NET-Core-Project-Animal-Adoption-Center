@@ -1,10 +1,11 @@
 ﻿using AnimalAdoptionCenter.Data.Models;
 using AnimalAdoptionCenter.Dаta;
 using System.Collections.Generic;
+using AnimalAdoptionCenter.Services.News;
 
 namespace AnimalAdoptionCenter.Services
 {
-    public class NewsServiceModel
+    public class NewsServiceModel : INewsModel
     {
         public int Id { get; set; }
 

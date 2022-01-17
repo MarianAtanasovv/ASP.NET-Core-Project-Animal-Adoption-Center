@@ -70,12 +70,14 @@
                         <label>My story:</label>
                         <p class="font-weight-bold">@Model.Description</p>
                         <!-- button -->
-
+                    @if (User.IsInRole("Administrator") || !User.IsInRole("Vet"))
+                    {
                         <div>
 
                             <a asp-controller="Adoption" asp-action="Interview" asp-route-dogId="@Model.Id" class="btn btn-primary"> Adopt me!</a>
 
                         </div>
+                    }
                         @if (User.IsInRole("Administrator"))
                         {
                             <div>

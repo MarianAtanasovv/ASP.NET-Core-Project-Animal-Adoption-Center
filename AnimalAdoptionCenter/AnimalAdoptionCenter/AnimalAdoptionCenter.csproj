@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Areas\Vet\Views\Appointment\All.cshtml">
+    <Content Update="Areas\Administration\Vet\Views\Appointment\All.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

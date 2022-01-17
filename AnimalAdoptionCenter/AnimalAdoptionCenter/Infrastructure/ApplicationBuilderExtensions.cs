@@ -23,8 +23,7 @@ namespace AnimalAdoptionCenter.Infrastructure
 
             return app;
         }
-
-
+        
         private static void MigrateDatabase(IServiceProvider services)
         {
             var data = services.GetRequiredService<ApplicationDbContext>();

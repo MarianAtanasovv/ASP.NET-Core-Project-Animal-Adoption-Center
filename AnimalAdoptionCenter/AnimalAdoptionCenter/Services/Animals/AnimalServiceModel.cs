@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalAdoptionCenter.Services.Animals
 {
-    public class AnimalServiceModel
+    public class AnimalServiceModel : IAnimalModel
     {
         public int Id { get; set; }
 

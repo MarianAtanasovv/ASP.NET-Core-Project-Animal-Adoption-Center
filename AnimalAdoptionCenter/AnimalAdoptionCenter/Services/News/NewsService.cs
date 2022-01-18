@@ -156,7 +156,26 @@ namespace AnimalAdoptionCenter
                 .OrderBy(x => x)
                 .ToList();
         }
-        private string UploadedFile(IFormFile imageData)
+
+            public bool Edit(int id, 
+                string title, 
+                string body)
+            {
+                var newsData = this.data.News.Find(id);
+                if (newsData == null)
+                {
+                    return false;
+                }
+
+                newsData.Title = title;
+                newsData.Body = body;
+
+                this.data.SaveChanges();
+
+                return true;
+            }
+
+            private string UploadedFile(IFormFile imageData)
         {
             string uniqueFileName = null;
 

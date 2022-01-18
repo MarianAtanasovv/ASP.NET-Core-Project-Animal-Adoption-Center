@@ -36,7 +36,10 @@
                     @Model.NewsDetailsViewModel.Body
                     @if (User.IsInRole("Administrator"))
                     {
-                       
+                        <div>
+                            <a asp-controller="News" asp-action="Edit" asp-area="Administration" asp-route-id="@Model.NewsDetailsViewModel.Id" class="btn btn-primary">Edit</a>
+
+                        </div>
                         <div>
                             <a asp-controller="News" asp-action="Delete" asp-area="Administration" asp-route-newsId="@Model.NewsDetailsViewModel.Id" class="btn btn-primary">Remove</a>
                         </div>

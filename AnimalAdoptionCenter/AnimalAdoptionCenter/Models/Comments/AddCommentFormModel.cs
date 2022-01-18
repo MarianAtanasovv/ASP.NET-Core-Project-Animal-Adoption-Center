@@ -15,7 +15,7 @@ namespace AnimalAdoptionCenter.Models.Comments
         [Required]
         public string Username { get; set; }
 
-        public News News { get; set; }
+        public Data.News News { get; set; }
 
         public int NewsId { get; set; }
 

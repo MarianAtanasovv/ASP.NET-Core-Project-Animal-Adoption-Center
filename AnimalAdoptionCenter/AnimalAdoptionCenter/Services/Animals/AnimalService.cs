@@ -185,6 +185,7 @@ namespace AnimalAdoptionCenter.Services.Animals
             return uniqueFileName;
         }
 
+        [Authorize]
         public bool Edit(int id, 
             string name, 
             int age,

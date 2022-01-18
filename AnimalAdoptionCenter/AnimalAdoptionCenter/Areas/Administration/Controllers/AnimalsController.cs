@@ -1,14 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AnimalAdoptionCenter.Models.Animal;
 using AnimalAdoptionCenter.Models.Animals;
 using AnimalAdoptionCenter.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalAdoptionCenter.Areas.Administration.Controllers
 {
@@ -58,6 +53,56 @@ namespace AnimalAdoptionCenter.Areas.Administration.Controllers
 
             return RedirectToAction("All", "Animal", new { area = "" });
 
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var animalEdit = this.animal.Details(id);
+
+            if (animalEdit == null)
+            {
+                return NotFound();
+            }
+
+            return View(new EditAnimalFormModel
+            {
+                Name = animalEdit.Name,
+                Age = animalEdit.Age,
+                Description = animalEdit.Description,
+                Aggressive = animalEdit.Aggressive,
+                Neutered = animalEdit.Neutered,
+                Breed = animalEdit.Breed,
+                Gender = animalEdit.Gender,
+                Color = animalEdit.Color,
+
+            });
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Edit(int id, EditAnimalFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            this.animal.Edit(id,
+                model.Name,
+                model.Age,
+                model.Aggressive,
+                model.Description,
+                model.Neutered,
+                model.Vaccinated,
+                model.Breed,
+                model.Gender,
+                model.Color
+             
+            );
+
+            return RedirectToAction("All", "Animal", new {area = ""});
         }
 
     }

@@ -14,8 +14,8 @@
 
                                 <div class="col-md-12">
                                     <!-- image -->
-                                    <a href="img/adoption/adoption1.jpg" title="your caption here">
-                                        <img src="/databaseFiles/Animals/@image.Name" class="border-irregular1 img-fluid hover-opacity" alt="">
+                                    <a href="~/databaseFiles/Animals/@image.Name" title="@Model.Name">
+                                        <img src="~/databaseFiles/Animals/@image.Name" class="border-irregular1 img-fluid hover-opacity" alt="">
                                     </a>
                                 </div>
                             }
@@ -70,14 +70,7 @@
                         <label>My story:</label>
                         <p class="font-weight-bold">@Model.Description</p>
                         <!-- button -->
-                    @if (User.IsInRole("Administrator") || !User.IsInRole("Vet"))
-                    {
-                        <div>
-
-                            <a asp-controller="Adoption" asp-action="Interview" asp-route-dogId="@Model.Id" class="btn btn-primary"> Adopt me!</a>
-
-                        </div>
-                    }
+                 
                         @if (User.IsInRole("Administrator"))
                         {
                             <div>
@@ -85,9 +78,22 @@
 
                             </div>
                             <div>
+                                <a asp-controller="Animals" asp-action="Edit" asp-area="Administration" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+
+                            </div>
+                            <div>
                                 <a asp-controller="Animals" asp-action="Remove" asp-area="Administration" asp-route-id="@Model.Id" class="btn btn-primary">Remove</a>
                             </div>
+                          
 
+                        }
+                        else
+                        {
+                            <div>
+
+                                <a asp-controller="Adoption" asp-action="Interview" asp-route-dogId="@Model.Id" class="btn btn-primary"> Adopt me!</a>
+
+                            </div>
                         }
 
 

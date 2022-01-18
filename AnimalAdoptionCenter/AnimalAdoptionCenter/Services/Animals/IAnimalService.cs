@@ -2,6 +2,8 @@
 using AnimalAdoptionCenter.Models.Animals;
 using AnimalAdoptionCenter.Services.Animals;
 using System.Collections.Generic;
+using AnimalAdoptionCenter.Data.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace AnimalAdoptionCenter.Services
 {
@@ -21,6 +23,16 @@ namespace AnimalAdoptionCenter.Services
 
         public int Add(AddAnimalFormModel animalModel);
 
-
+        public bool Edit(int id,
+            string name,
+            int age,
+            bool aggressive,
+            string description,
+            bool neutered, 
+            bool vaccinated,
+            string breed,
+            Gender gender, 
+            string color
+        );
     }
 }

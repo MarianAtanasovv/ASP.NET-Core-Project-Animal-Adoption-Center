@@ -185,6 +185,37 @@ namespace AnimalAdoptionCenter.Services.Animals
             return uniqueFileName;
         }
 
+        public bool Edit(int id, 
+            string name, 
+            int age,
+            bool aggressive,
+            string description,
+            bool neutered, 
+            bool vaccinated,
+            string breed, 
+            Gender gender, 
+            string color
+           )
+        {
+            var animalData = this.data.Animals.Find(id);
+            if (animalData == null)
+            {
+                return false;
+            }
+
+            animalData.Name = name;
+            animalData.Age = age;
+            animalData.Description = description;
+            animalData.Aggressive = aggressive;
+            animalData.Neutered = neutered;
+            animalData.Vaccinated = vaccinated;
+            animalData.Breed = breed;
+            animalData.Gender = gender;
+            animalData.Color = color;
+
+            this.data.SaveChanges();
+            return true;
+        }
     }
 
 }

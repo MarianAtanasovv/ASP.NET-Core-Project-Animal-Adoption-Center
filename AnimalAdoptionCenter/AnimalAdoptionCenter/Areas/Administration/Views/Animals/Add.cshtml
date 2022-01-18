@@ -73,14 +73,12 @@
 
 
 
-                        <div class="form-group">
-                            <label asp-for="Images" class="control-label">Choose Images</label>
-                            <div class="custom-file">
-                                <input asp-for="Images" style="color:white" class="custom-file-input" id="customFile" multiple>
-                                <label style="background-color:red; width: 80px" class="custom-file-label" for="customFile"></label>
-                            </div>
-                            <span asp-validation-for="Images" class="text-danger"></span>
-                        </div>
+                      
+                <div class="mb-3">
+                    <label asp-for="Images" for="formFileMultiple" class="form-label mb-1"></label>
+                    <input asp-for="Images" class="form-control" type="file" id="formFileMultiple" multiple>
+                    <span asp-validation-for="Images" class="small text-danger"></span>
+                </div>
 
                         <input class="btn btn-primary btn-sm" type="submit" value="Save">
 </form>

@@ -50,14 +50,23 @@
                             <img class="card-img-top img-fluid" src="/databaseFiles/News/@image.Name" alt="">
 
                         }
-                        <div class="card-body">
-                            <a>
-                                <h3 class="card-title">@news.Title </h3>
-                            </a>
-                            <!-- excerpt -->
-                            <p class="card-text mt-3">@news.Body.Substring(0, 600)...</p>
-                            <a asp-controller="News" asp-route-newsId="@news.Id" asp-action="Details" asp-route-information="@news.GetInformationNews()" class="btn btn-primary">Read More &rarr;</a>
-                        </div>
+                    <div class="card-body">
+                        <a>
+                            <h3 class="card-title">@news.Title </h3>
+                        </a>
+                        <!-- excerpt -->
+                        @if (@news.Body.Length > 500)
+                        {
+                            <p class="card-text mt-3">@news.Body.Substring(0, 500)...</p>
+                        }
+                        else
+                        {
+                            <p class="card-text mt-3">@news.Body...</p>
+                        }
+
+
+                        <a asp-controller="News" asp-route-newsId="@news.Id" asp-action="Details" asp-route-information="@news.GetInformationNews()" class="btn btn-primary">Read More &rarr;</a>
+                    </div>
                         <!--card-footer -->
                     </div>
                     <!-- /card blog-card -->

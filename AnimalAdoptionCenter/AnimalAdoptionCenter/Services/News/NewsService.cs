@@ -140,6 +140,7 @@ namespace AnimalAdoptionCenter
 
             public int Delete(int newsId)
             {
+                DeleteImages(newsId);
                 var newsToDelete = this.data.News.Single(x => x.Id == newsId);
                 this.data.Remove(newsToDelete);
                 this.data.SaveChanges();
@@ -176,7 +177,7 @@ namespace AnimalAdoptionCenter
             }
 
             private string UploadedFile(IFormFile imageData)
-        {
+            {
             string uniqueFileName = null;
 
             if (imageData != null)
@@ -189,6 +190,23 @@ namespace AnimalAdoptionCenter
             }
 
             return uniqueFileName;
-        }
+            }
+            private void DeleteImages(int id)
+            {
+
+                var newsImages = this.data.NewsImages.Where(x => x.NewsId == id).ToList();
+                foreach (var image in newsImages)
+                {
+                    var uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "databaseFiles/News");
+                    var imageName = image.Name;
+                    FileInfo fi = new FileInfo(uploadsFolder + "/" + imageName);
+                    if (fi.Exists)
+                    {
+                        fi.Delete();
+                    }
+
+                }
+
+            }
     }
 }

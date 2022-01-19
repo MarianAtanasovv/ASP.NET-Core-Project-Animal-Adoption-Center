@@ -220,7 +220,7 @@ namespace AnimalAdoptionCenter.Services.Animals
             return true;
         }
 
-        public void DeleteImages(int id)
+        private void DeleteImages(int id)
         {
             
             var animalImages = this.data.Images.Where(x => x.AnimalId == id).ToList();

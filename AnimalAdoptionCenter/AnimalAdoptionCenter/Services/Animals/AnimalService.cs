@@ -124,9 +124,11 @@ namespace AnimalAdoptionCenter.Services.Animals
         [Authorize]
         public int Remove(int id)
         {
+            DeleteImages(id);
             var animal = this.data.Animals.Single(x => x.Id == id);
             this.data.Animals.Remove(animal);
             this.data.SaveChanges();
+
 
             return animal.Id;
         }
@@ -216,6 +218,24 @@ namespace AnimalAdoptionCenter.Services.Animals
 
             this.data.SaveChanges();
             return true;
+        }
+
+        public void DeleteImages(int id)
+        {
+            
+            var animalImages = this.data.Images.Where(x => x.AnimalId == id).ToList();
+            foreach (var image in animalImages)
+            {
+                var uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "databaseFiles/Animals");
+                var imageName = image.Name;
+                FileInfo fi = new FileInfo(uploadsFolder + "/" + imageName);
+                if (fi.Exists)
+                {
+                    fi.Delete();
+                }
+              
+            }
+
         }
     }
 

@@ -39,7 +39,43 @@ namespace AnimalAdoptionCenter.Controllers
         }
 
 
-        
+        [HttpGet]
+        public IActionResult AllCats([FromQuery] AllAnimalsQueryModel query)
+        {
+            var animalsQueryResult = this.animal.AllCats(
+                query.SearchTerm,
+                query.Sorting,
+                query.CurrentPage,
+                AllAnimalsQueryModel.AnimalsPerPage,
+                query.Name);
+
+            var animalsNames = this.animal.AllAnimals();
+
+            query.TotalAnimals = animalsQueryResult.TotalAnimals;
+            query.Animals = animalsQueryResult.Animals;
+            query.Names = animalsNames;
+
+            return this.View(query);
+        }
+
+        [HttpGet]
+        public IActionResult AllDogs([FromQuery] AllAnimalsQueryModel query)
+        {
+            var animalsQueryResult = this.animal.AllDogs(
+                query.SearchTerm,
+                query.Sorting,
+                query.CurrentPage,
+                AllAnimalsQueryModel.AnimalsPerPage,
+                query.Name);
+
+            var animalsNames = this.animal.AllAnimals();
+
+            query.TotalAnimals = animalsQueryResult.TotalAnimals;
+            query.Animals = animalsQueryResult.Animals;
+            query.Names = animalsNames;
+
+            return this.View(query);
+        }
 
         [HttpGet]
         public IActionResult Details(int id, string information)

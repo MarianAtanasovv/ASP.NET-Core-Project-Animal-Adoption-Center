@@ -116,6 +116,9 @@ namespace AnimalAdoptionCenter.Data.Migrations
                     b.Property<bool>("Neutered")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Vaccinated")
                         .HasColumnType("bit");
 

@@ -1,4 +1,5 @@
 ﻿using AnimalAdoptionCenter.Infrastructure;
+using AnimalAdoptionCenter.Models.Comments;
 using AnimalAdoptionCenter.Services.Comments;
 using AnimalAdoptionCenter.Services.User;
 using Microsoft.AspNetCore.Authorization;
@@ -20,7 +21,7 @@ namespace AnimalAdoptionCenter.Controllers
         }
         [HttpPost]
         [Authorize]
-        public IActionResult Add(string content, int newsId)
+        public IActionResult Add(AddCommentFormModel model,  int newsId)
         {
             var userId = this.users.IdUser(this.User.Id());
             var username = this.users.Username(this.User.Id());
@@ -36,14 +37,13 @@ namespace AnimalAdoptionCenter.Controllers
             }
 
             this.comments.Add(
-                
-                content,
+                model.Content,
                 newsId,
-                userId,
+                model.UserId,
                 username
                 );
 
-            return RedirectToAction("Details", "News", new { newsId });
+            return RedirectToAction("Details", "News", new { newsId = newsId });
         }
 
         public IActionResult All()

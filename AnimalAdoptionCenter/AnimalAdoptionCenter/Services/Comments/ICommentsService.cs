@@ -9,11 +9,6 @@ namespace AnimalAdoptionCenter.Services.Comments
 
         public IEnumerable<AllCommentsViewModel> All();
 
-        int Add(
-        
-        string content,
-        int newsId,
-        string userId,
-        string username);
+        int Add(string content, int newsId, string userId, string username);
     }
 }

@@ -16,7 +16,7 @@ namespace AnimalAdoptionCenter.Services.Comments
             this.data = data;
         }
 
-        public int Add( string content, int newsId, string userId, string username)
+        public int Add(string content, int newsId, string userId, string username)
         {
             var comment = new Comment
             {

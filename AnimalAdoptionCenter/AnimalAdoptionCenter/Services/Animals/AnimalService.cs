@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Type = AnimalAdoptionCenter.Data.Models.Type;
 
 namespace AnimalAdoptionCenter.Services.Animals
 {
@@ -66,6 +67,92 @@ namespace AnimalAdoptionCenter.Services.Animals
                 AnimalsPerPage = animalsPerPage
             };
 
+        }
+
+
+        public AnimalQueryModel AllCats(string searchTerm,
+            AnimalSorting sorting,
+            int currentPage,
+            int animalsPerPage,
+            string name)
+        {
+            var cats = this.data.Animals.Where(x => x.Type == Type.Cat).AsQueryable();
+
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                cats = cats.Where(x => x.Name == name);
+            }
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                cats = cats.Where(x => x.Name.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+            cats = sorting switch
+            {
+                AnimalSorting.Name => cats.OrderBy(t => t.Name),
+                AnimalSorting.Age => cats.OrderByDescending(p => p.Age),
+                _ => cats.OrderByDescending(x => x.Id)
+            };
+
+            var totalAnimals = cats.Count();
+
+            var dogs = GetAnimals(cats
+                .Skip((currentPage - 1) * animalsPerPage)
+                .Take(animalsPerPage));
+
+
+            return new AnimalQueryModel
+            {
+                TotalAnimals = totalAnimals,
+                Animals = dogs,
+                CurrentPage = currentPage,
+                AnimalsPerPage = animalsPerPage
+            };
+        }
+
+        public AnimalQueryModel AllDogs(
+            string searchTerm,
+            AnimalSorting sorting, 
+            int currentPage, 
+            int animalsPerPage, 
+            string name)
+        {
+            var dogsQuery = this.data.Animals.Where(x => x.Type == Type.Dog).AsQueryable();
+
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                dogsQuery = dogsQuery.Where(x => x.Name == name);
+            }
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                dogsQuery = dogsQuery.Where(x => x.Name.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+            dogsQuery = sorting switch
+            {
+                AnimalSorting.Name => dogsQuery.OrderBy(t => t.Name),
+                AnimalSorting.Age => dogsQuery.OrderByDescending(p => p.Age),
+                _ => dogsQuery.OrderByDescending(x => x.Id)
+            };
+
+            var totalAnimals = dogsQuery.Count();
+
+            var dogs = GetAnimals(dogsQuery
+                .Skip((currentPage - 1) * animalsPerPage)
+                .Take(animalsPerPage));
+
+
+            return new AnimalQueryModel
+            {
+                TotalAnimals = totalAnimals,
+                Animals = dogs,
+                CurrentPage = currentPage,
+                AnimalsPerPage = animalsPerPage
+            };
         }
 
         public AnimalDetailsServiceModel Details(int id)
@@ -148,7 +235,8 @@ namespace AnimalAdoptionCenter.Services.Animals
                 Gender = animalModel.Gender,
                 Aggressive = animalModel.Aggressive,
                 Neutered = animalModel.Neutered,
-                Vaccinated = animalModel.Vaccinated
+                Vaccinated = animalModel.Vaccinated,
+                Type = animalModel.Type
             };
 
             foreach (var image in animalModel.Images)
@@ -170,6 +258,8 @@ namespace AnimalAdoptionCenter.Services.Animals
 
             return animal.Id;
         }
+
+      
 
         private string UploadedFile(IFormFile imageData)
         {
@@ -226,7 +316,7 @@ namespace AnimalAdoptionCenter.Services.Animals
             var animalImages = this.data.Images.Where(x => x.AnimalId == id).ToList();
             foreach (var image in animalImages)
             {
-                var uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "databaseFiles/Animals");
+                var uploadsFolder = Path.Combine("E:\\Softuni\\New folder\\ASP.NET-Core-Project-Animal-Adoption-Center\\AnimalAdoptionCenter\\AnimalAdoptionCenter\\wwwroot\\databaseFiles\\Animals\\");
                 var imageName = image.Name;
                 FileInfo fi = new FileInfo(uploadsFolder + "/" + imageName);
                 if (fi.Exists)

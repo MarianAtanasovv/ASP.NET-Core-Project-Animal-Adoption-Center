@@ -28,20 +28,15 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Web.Deployment" Version="4.0.5" />
     <PackageReference Include="Modernizr" Version="2.8.3" />
     <PackageReference Include="Quartz" Version="3.3.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\databaseFiles\Animals\" />
+    <Folder Include="wwwroot\databaseFiles\Test\" />
     <Folder Include="wwwroot\databaseFiles\News\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="Areas\Administration\Vet\Views\Appointment\All.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>

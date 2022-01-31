@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AnimalAdoptionCenter.Data.Models
+﻿namespace AnimalAdoptionCenter.Data.Models
 {
     public enum Type
     {

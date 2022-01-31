@@ -13,7 +13,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CQuicksand:400,500,700" rel="stylesheet">
     <link href="~/fonts/flaticon/flaticon.css" rel="stylesheet" type="text/css">
     <link href="~/fonts/fontawesome/fontawesome-all.min.css" rel="stylesheet" type="text/css">
-    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
     <!-- Fav icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
@@ -83,8 +85,18 @@
                                     </div>
                                 </li>
                             }
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="services-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Animals
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="services-dropdown">
+                                    <a class="nav-link" asp-area="" asp-controller="Animal" asp-action="All"> <i class="fas fa-paw"></i> All animals</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Animal" asp-action="AllCats">  <i class="fas fa-cat"></i> All cats</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Animal" asp-action="AllDogs"><i class="fas fa-dog"></i> All dogs</a>
 
-                            <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Animal" asp-action="All">All animals</a> </li>
+                                </div>
+                            </li>
+             
 
                             <!-- menu item -->
 
@@ -182,15 +194,15 @@
             <div class="row">
                 <div class="col-lg-6">
                     <a class="navbar-brand" href="index.html"><i class="flaticon-dog-20"></i><span>Woof!</span></a>
-                    <p class="mt-3">Cras enim wisi elit aenean, amet eros curabitur. Wisi ad eget ipsum metus sociis Cras enim wisi elit aenean.</p>
+                    <p class="mt-3">Help us make the world a better place for the animals who are in need!</p>
                 </div>
                 <!--/ col-lg -->
                 <div class="col-lg-3">
                     <h6><i class="fas fa-envelope margin-icon"></i>Contact Us</h6>
                     <ul class="list-unstyled">
-                        <li>(123) 456-789</li>
-                        <li><a href="mailto:email@yoursite.com">email@yoursite.com</a></li>
-                        <li>Pet Street 123 - New York </li>
+                        <li>088789865</li>
+                        <li><a>animal-adoption@abv.bg</a></li>
+                        <li>President Lincoln Blvd, Sofia, Bulgaria </li>
                     </ul>
                     <!--/ul -->
                 </div>
@@ -199,8 +211,7 @@
                     <h6><i class="far fa-clock margin-icon"></i>Working Hours</h6>
                     <ul class="list-unstyled">
                         <li>Open 9am - 10pm</li>
-                        <li>Holidays - Closed</li>
-                        <li>Weekends - Closed</li>
+                        
                     </ul>
                     <!--/ul -->
                 </div>

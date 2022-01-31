@@ -12,7 +12,7 @@ namespace AnimalAdoptionCenter.Models.Comments
         [Required]
         public string Content { get; set; }
 
-        [Required]
+        
         public string Username { get; set; }
 
         public Data.News News { get; set; }

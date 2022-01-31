@@ -3,6 +3,7 @@ using AnimalAdoptionCenter.Data.Models;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
+using Type = AnimalAdoptionCenter.Data.Models.Type;
 
 namespace AnimalAdoptionCenter.Models.Animals
 {
@@ -27,6 +28,9 @@ namespace AnimalAdoptionCenter.Models.Animals
         [Required]
         [Range(AnimalAgeMin, AnimalAgeMax, ErrorMessage = "Age should be between {2} and {1} years.")]
         public int Age { get; set; }
+
+        [Required]
+        public Type Type { get; set; }
 
         [Required]
         [StringLength(AnimalBreedMaxLength, MinimumLength = AnimalBreedMinLength, ErrorMessage = "Breed should be between {2} and {1} characters long.")]

@@ -30,6 +30,9 @@ namespace AnimalAdoptionCenter.Data.Models
         public string Breed { get; set; }
 
         [Required]
+        public Type Type { get; set; }
+
+        [Required]
         [MaxLength(AnimalDescriptionMaxLength)]
         public string Description { get; set; }
 

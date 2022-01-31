@@ -64,7 +64,7 @@ namespace AnimalAdoptionCenter.Services.Adoption
         public void Disapprove(int dogId)
         {
             var interview = this.data.AdoptionInterviews.Single(x => x.AnimalId == dogId);
-            var removeInterview = this.data.AdoptionInterviews.Remove(interview);
+            this.data.AdoptionInterviews.Remove(interview);
             this.data.SaveChanges();
 
         }

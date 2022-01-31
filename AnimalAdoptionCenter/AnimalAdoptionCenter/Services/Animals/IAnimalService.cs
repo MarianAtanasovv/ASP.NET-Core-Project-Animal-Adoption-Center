@@ -22,6 +22,19 @@ namespace AnimalAdoptionCenter.Services
         public int Remove(int id);
 
         public int Add(AddAnimalFormModel animalModel);
+        public AnimalQueryModel AllCats(
+            string searchTerm,
+            AnimalSorting sorting,
+            int currentPage,
+            int animalsPerPage,
+            string name);
+
+        public AnimalQueryModel AllDogs(
+            string searchTerm,
+            AnimalSorting sorting,
+            int currentPage,
+            int animalsPerPage,
+            string name);
 
         public bool Edit(int id,
             string name,

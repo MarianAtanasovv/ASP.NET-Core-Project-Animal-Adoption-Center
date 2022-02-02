@@ -22,6 +22,6 @@ adminEmail = "test123@abv.bg"\
 adminPassword = "test123"
 
 Vet Credentials:
-adminUsername = "testVet123";
-adminEmail = "testVet123@abv.bg";
+adminUsername = "testVet123";\
+adminEmail = "testVet123@abv.bg";\
 adminPassword = "testVet123";

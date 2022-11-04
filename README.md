@@ -11,7 +11,7 @@ ASP.NET CORE Areas\
 MSSQL Server\
 Bootstrap\
 CSS\
-HTML\
+HTML
 
 CSS/HTML Template bought from: 
 https://themeforest.net/item/woof-pet-html5-template/21498730
